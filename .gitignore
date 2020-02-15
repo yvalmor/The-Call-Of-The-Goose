@@ -15,6 +15,7 @@ bin/
 *.user
 *.unityproj
 *.booproj
+*.csproj
 
 .DS_Store
 .DS_Store?
