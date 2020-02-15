@@ -1,4 +1,5 @@
-﻿namespace Assets.Scripts
+﻿using System;
+namespace Assets.Scripts
 {
     public class Player
     {
@@ -10,6 +11,7 @@
         protected int exp = 0;
         protected int mana;
         protected int endurance;
+        protected int armor;
         protected int gold = 0;
         public string name;
         protected int[] expTreshold = {100, 164, 268, 441, 723, 1186, 1945, 3190, 5233}; // exp nécessaire pour lvl up
@@ -31,9 +33,11 @@
 
         public void TakeDamage(int damage)
         {
-            if (hp - damage <= 0)
+            if (damage - armor <= 0)
+                return; 
+            if (hp - (damage - armor) <= 0)
                 throw new NotImplementedException();
-            hp -= damage;
+            hp -= damage - armor;
         }
 
         public void Heal(int heal)
