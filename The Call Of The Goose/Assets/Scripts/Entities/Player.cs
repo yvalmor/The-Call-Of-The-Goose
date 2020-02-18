@@ -68,7 +68,10 @@ namespace Assets.Scripts
             {
                 exp -= expTreshold[lvl - 1];
                 lvl++;
+                return true;
             }
+
+            return false;
         }
 
 

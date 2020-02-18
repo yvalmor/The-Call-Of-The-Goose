@@ -4,6 +4,7 @@ namespace Assets.Scripts
 {
     public class Ennemy
     {
+	    /*
         private int maxHp;
         private int hp;
         private int gold_loot;
@@ -11,6 +12,6 @@ namespace Assets.Scripts
         private Consumable c_loot;
         private string name;
         private int armor;
-        
+		*/   
     }
 }
