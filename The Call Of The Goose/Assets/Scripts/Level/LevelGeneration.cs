@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LevelGeneration : MonoBehaviour
 {
 	public Transform[] positions;
 	public GameObject[] rooms;
+	public GameObject player;
 	private Transform _spawnRoom, _bossRoom, _shopRoom;
 
 	private void Start()
@@ -23,6 +22,11 @@ public class LevelGeneration : MonoBehaviour
 			else room = rooms[Random.Range(3, rooms.Length)];
 			Instantiate(room, transfo.position, Quaternion.identity);
 		}
+
+		Vector3 playerSpawn = _spawnRoom.position;
+		playerSpawn.x += 15;
+		playerSpawn.y -= 17.5f;
+		Instantiate(player, playerSpawn, Quaternion.identity);
 	}
 
 	private void GetPositions()

@@ -521,13 +521,13 @@ PrefabInstance:
     - target: {fileID: 298486623755911397, guid: 784f23e5a3ca91742bb2321448aa1086,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 298486623755911397, guid: 784f23e5a3ca91742bb2321448aa1086,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1915516634}
+      objectReference: {fileID: 667560323}
     - target: {fileID: 298486623755911397, guid: 784f23e5a3ca91742bb2321448aa1086,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -538,10 +538,35 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 298486623755911397, guid: 784f23e5a3ca91742bb2321448aa1086,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 298486623755911397, guid: 784f23e5a3ca91742bb2321448aa1086,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 298486623755911397, guid: 784f23e5a3ca91742bb2321448aa1086,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 298486623755911397, guid: 784f23e5a3ca91742bb2321448aa1086,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 298486623867030715, guid: 784f23e5a3ca91742bb2321448aa1086,
         type: 3}
       propertyPath: m_Name
       value: Play Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 298486623867030715, guid: 784f23e5a3ca91742bb2321448aa1086,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 298486623867030716, guid: 784f23e5a3ca91742bb2321448aa1086,
         type: 3}
@@ -667,8 +692,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11500000, guid: 475c07b7435a72540876d3b3e8f170dc,
+      objectReference: {fileID: 298486624474817849}
+    - target: {fileID: 298486624064609187, guid: 784f23e5a3ca91742bb2321448aa1086,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BeginGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 298486624064609187, guid: 784f23e5a3ca91742bb2321448aa1086,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 298486624495029147, guid: 784f23e5a3ca91742bb2321448aa1086,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -679,8 +713,30 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 298486624640752607, guid: 784f23e5a3ca91742bb2321448aa1086,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -504
+      objectReference: {fileID: 0}
+    - target: {fileID: 298486624640752607, guid: 784f23e5a3ca91742bb2321448aa1086,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -228
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 784f23e5a3ca91742bb2321448aa1086, type: 3}
+--- !u!114 &298486624474817849 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5768567022804477113, guid: 784f23e5a3ca91742bb2321448aa1086,
+    type: 3}
+  m_PrefabInstance: {fileID: 298486624474817848}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667560323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 475c07b7435a72540876d3b3e8f170dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1899594196175913830
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -816,6 +872,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Main Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3502645725872985232, guid: 10e51d901dc345c409dc42f693153447,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3502645725872985233, guid: 10e51d901dc345c409dc42f693153447,
         type: 3}
