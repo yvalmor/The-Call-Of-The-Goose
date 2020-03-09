@@ -12,7 +12,6 @@ namespace Entities
         protected int exp = 0;
         protected int mana;
         protected int endurance;
-        protected int armor;
         protected int gold = 0;
         public string name;
         protected int[] expTreshold = {100, 164, 268, 441, 723, 1186, 1945, 3190, 5233}; // exp nécessaire pour lvl up
@@ -34,11 +33,9 @@ namespace Entities
 
         public void TakeDamage(int damage)
         {
-            if (damage - armor <= 0)
-                return; 
-            if (hp - (damage - armor) <= 0)
+            if (hp - damage <= 0)
                 throw new NotImplementedException();
-            hp -= damage - armor;
+            hp -= damage;
         }
 
         public void Heal(int heal)
