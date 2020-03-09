@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
-public class MainMenu : MonoBehaviour
+namespace Menu
 {
-    public void QuitGame()
+    public class MainMenu : MonoBehaviour
     {
-        Debug.Log("Closing Game");
-        Application.Quit();
+        public void QuitGame()
+        {
+            Debug.Log("Closing Game");
+            Application.Quit();
+        }
     }
 }

@@ -1,8 +1,8 @@
-﻿namespace Assets.Scripts
+﻿namespace Entities
 {
-    public class Test_player : Player
+    public class TestPlayer : Player
     {
-        public Test_player(string name) : base(name)
+        public TestPlayer(string name) : base(name)
         {
             maxHp = 20;
             maxEndurance = 50;
