@@ -350,7 +350,7 @@ PrefabInstance:
     - target: {fileID: 1899594194587591917, guid: dfe81c44156a2b04eae27939aeeb15b5,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1899594194680526166, guid: dfe81c44156a2b04eae27939aeeb15b5,
         type: 3}
@@ -420,12 +420,17 @@ PrefabInstance:
     - target: {fileID: 1899594195157609540, guid: dfe81c44156a2b04eae27939aeeb15b5,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1899594195419968584, guid: dfe81c44156a2b04eae27939aeeb15b5,
         type: 3}
       propertyPath: m_Name
       value: Options Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899594195419968584, guid: dfe81c44156a2b04eae27939aeeb15b5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1899594195419968585, guid: dfe81c44156a2b04eae27939aeeb15b5,
         type: 3}
@@ -1103,7 +1108,7 @@ PrefabInstance:
     - target: {fileID: 3502645725872985232, guid: 10e51d901dc345c409dc42f693153447,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3502645725872985233, guid: 10e51d901dc345c409dc42f693153447,
         type: 3}
