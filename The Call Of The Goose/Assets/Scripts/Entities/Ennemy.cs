@@ -1,6 +1,4 @@
-﻿using System.Runtime.ConstrainedExecution;
-
-namespace Assets.Scripts
+﻿namespace Entities
 {
     public class Ennemy
     {

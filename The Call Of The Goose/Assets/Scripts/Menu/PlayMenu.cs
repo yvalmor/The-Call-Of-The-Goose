@@ -1,10 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayMenu : MonoBehaviour
+namespace Menu
 {
-    public void BeginGame()
+    public class PlayMenu : MonoBehaviour
     {
-        SceneManager.LoadScene("Lv1");
+        public void BeginGame()
+        {
+            SceneManager.LoadScene("Lv1");
+        }
+
+        public void BeginTutorial()
+        {
+            SceneManager.LoadScene("Tuto");
+        }
     }
 }
