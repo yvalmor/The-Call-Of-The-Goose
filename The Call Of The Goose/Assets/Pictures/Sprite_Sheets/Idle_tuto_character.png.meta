@@ -1,7 +1,109 @@
 fileFormatVersion: 2
 guid: f4c0b0e7f3dcc834e8efcd5fd31de1da
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 965436407311175512
+    second: Idle_tuto_character_0
+  - first:
+      213: -411579966476371300
+    second: Idle_tuto_character_1
+  - first:
+      213: -722251472879585858
+    second: Idle_tuto_character_2
+  - first:
+      213: -4378523144242607024
+    second: Idle_tuto_character_3
+  - first:
+      213: 8915740322750545007
+    second: Idle_tuto_character_4
+  - first:
+      213: -2881176225892671369
+    second: Idle_tuto_character_5
+  - first:
+      213: 3921912250306561001
+    second: Idle_tuto_character_6
+  - first:
+      213: -5953247756968632097
+    second: Idle_tuto_character_7
+  - first:
+      213: -3919522922690136720
+    second: Idle_tuto_character_8
+  - first:
+      213: 4570570581655710963
+    second: Idle_tuto_character_9
+  - first:
+      213: 493155089629781658
+    second: Idle_tuto_character_10
+  - first:
+      213: -6515714188245808565
+    second: Idle_tuto_character_11
+  - first:
+      213: -4801734574735595014
+    second: Idle_tuto_character_12
+  - first:
+      213: 151857876857333962
+    second: Idle_tuto_character_13
+  - first:
+      213: -7713649828018981300
+    second: Idle_tuto_character_14
+  - first:
+      213: 6697653045541866897
+    second: Idle_tuto_character_15
+  - first:
+      213: -2790931760581639838
+    second: Idle_tuto_character_16
+  - first:
+      213: -3934239738736938759
+    second: Idle_tuto_character_17
+  - first:
+      213: -5716301340994965512
+    second: Idle_tuto_character_18
+  - first:
+      213: -6217620590526018794
+    second: Idle_tuto_character_19
+  - first:
+      213: -606180631793080740
+    second: Idle_tuto_character_20
+  - first:
+      213: 1745275817434036721
+    second: Idle_tuto_character_21
+  - first:
+      213: 7305981850019628837
+    second: Idle_tuto_character_22
+  - first:
+      213: -93548054472859997
+    second: Idle_tuto_character_23
+  - first:
+      213: -7628767715629885746
+    second: Idle_tuto_character_24
+  - first:
+      213: 4595299806930169667
+    second: Idle_tuto_character_25
+  - first:
+      213: -6554921610101505611
+    second: Idle_tuto_character_26
+  - first:
+      213: -1243087998125944172
+    second: Idle_tuto_character_27
+  - first:
+      213: 675749075243530473
+    second: Idle_tuto_character_28
+  - first:
+      213: -4460808100220402672
+    second: Idle_tuto_character_29
+  - first:
+      213: 1612170243422116819
+    second: Idle_tuto_character_30
+  - first:
+      213: -1142170654462944244
+    second: Idle_tuto_character_31
+  - first:
+      213: 6757364441617712847
+    second: Idle_tuto_character_32
+  - first:
+      213: 1808584503997331525
+    second: Idle_tuto_character_33
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -31,7 +133,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -40,7 +142,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -70,9 +172,201 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Idle_tuto_character_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 720
+        width: 390
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85f030f1c4be56d00800000000000000
+      internalID: 965436407311175512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_tuto_character_1
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 720
+        width: 390
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9a328d7336c94af0800000000000000
+      internalID: -411579966476371300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_tuto_character_2
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 720
+        width: 390
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb57280bc1c0af5f0800000000000000
+      internalID: -722251472879585858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_tuto_character_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 360
+        width: 390
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05cc792166c5c33c0800000000000000
+      internalID: -4378523144242607024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_tuto_character_4
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 360
+        width: 390
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6c3c2ff5921bbb70800000000000000
+      internalID: 8915740322750545007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_tuto_character_5
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 360
+        width: 390
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 770ed58dc710408d0800000000000000
+      internalID: -2881176225892671369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_tuto_character_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 390
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e386c7996e6d6630800000000000000
+      internalID: 3921912250306561001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_tuto_character_7
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 0
+        width: 390
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd06ef9e4b0d16da0800000000000000
+      internalID: -5953247756968632097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
