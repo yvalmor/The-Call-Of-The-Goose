@@ -10,7 +10,6 @@
             hp = maxHp;
             endurance = maxEndurance;
             mana = maxMana;
-            //armor = 10;
         }
     }
 }

@@ -8,6 +8,7 @@ namespace Entities
         protected int maxMana;
         protected int maxEndurance;
         protected int hp;
+        protected int armor;
         protected int lvl = 1;
         protected int exp = 0;
         protected int mana;
