@@ -510,6 +510,7 @@ GameObject:
   - component: {fileID: 1040424594}
   - component: {fileID: 1040424593}
   - component: {fileID: 1040424595}
+  - component: {fileID: 1040424596}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -592,6 +593,25 @@ MonoBehaviour:
   ManaPlayer: {fileID: 987160016}
   EndurancePlayer: {fileID: 1814769440}
   Attaque: 10
+--- !u!95 &1040424596
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040424591}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6c6184532188e394cae59e20b4fc56cf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1169245919
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,7 +680,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Endurance Attaque
+  m_Text: 'Endurance
+
+'
 --- !u!222 &1169245922
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -856,6 +878,7 @@ GameObject:
   - component: {fileID: 1540193677}
   - component: {fileID: 1540193676}
   - component: {fileID: 1540193678}
+  - component: {fileID: 1540193679}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -881,7 +904,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 290, y: 23.8}
-  m_SizeDelta: {x: 119, y: 67.2}
+  m_SizeDelta: {x: 59.5, y: 33.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1540193676
 MonoBehaviour:
@@ -935,6 +958,25 @@ MonoBehaviour:
   HP: 50
   MaxHP: 50
   HPE: {fileID: 1363304689}
+--- !u!95 &1540193679
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540193674}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d5f25e5fc2fbc384c939b4759e63f122, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1572339644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,7 +1380,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Mana Attaque
+  m_Text: 'Mana
+
+'
 --- !u!222 &1897638519
 CanvasRenderer:
   m_ObjectHideFlags: 0
