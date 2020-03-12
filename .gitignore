@@ -4,6 +4,8 @@ Temp/
 SwitchIL2CPPCache/
 SwitchIL2CPPStats/
 
+Build/
+
 ExportedObj/
 obj/
 .idea/
@@ -15,6 +17,8 @@ bin/
 *.user
 *.unityproj
 *.booproj
+*.csproj
+*.iss
 
 .DS_Store
 .DS_Store?

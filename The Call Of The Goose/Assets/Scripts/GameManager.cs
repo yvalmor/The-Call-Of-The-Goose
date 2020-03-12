@@ -1,18 +1,55 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public enum GameState
+{
+    MAIN_MENU,
+    OPTION_MENU,
+    PLAY_MENU,
+    TUTORIAL,
+    PLAY,
+    PAUSE,
+    GAME_OVER
+};
+
+public delegate void OnStateChangeHandler();
 
 public class GameManager : MonoBehaviour
 {
-    private void Awake()
+    protected GameManager(){}
+    private static GameManager instance = null;
+    public event OnStateChangeHandler OnStateChange;
+    public GameState gameState { get; private set; }
+
+    public static GameManager Instance
     {
-        throw new NotImplementedException();
+        get
+        {
+            if (GameManager.instance == null)
+            {
+                DontDestroyOnLoad(GameManager.instance);
+                GameManager.instance = new GameManager();
+            }
+
+            return GameManager.instance;
+        }
     }
 
-    // Start is called before the first frame update
+    public void SetGameState(GameState state)
+    {
+        this.gameState = state;
+        OnStateChange();
+    }
+
+    public void OnApplicationQuit()
+    {
+        GameManager.instance = null;
+    }
+
+    /*// Start is called before the first frame update
     void Start()
     {
+        runMenuScene();
         throw new NotImplementedException();
     }
 
@@ -20,5 +57,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         throw new NotImplementedException();
+    }*/
+
+    public static void runMenuScene()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

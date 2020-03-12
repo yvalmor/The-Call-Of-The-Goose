@@ -18,7 +18,7 @@ public class JoinGame : MonoBehaviour
     
     private NetworkManager networkManager;
 
-    private void Start()
+    /*private void Start()
     {
         networkManager = NetworkManager.singleton;
         if (networkManager.matchMaker == null)
@@ -58,7 +58,7 @@ public class JoinGame : MonoBehaviour
         {
             status.text = "No rooms at the moment";
         }
-    }
+    }*/
 
     void ClearRoomList()
     {
