@@ -8,16 +8,16 @@ public class Host : MonoBehaviour
     
     private string roomName;
 
-    private NetworkManager managedNetwork;
+    //private NetworkManager managedNetwork;
 
-    private void Start()
-    {
-        managedNetwork = NetworkManager.singleton;
-        if (managedNetwork.matchMaker == null)
-        {
-            managedNetwork.StartMatchMaker();
-        }
-    }
+    // private void Start()
+    // {
+    //     managedNetwork = NetworkManager.singleton;
+    //     if (managedNetwork.matchMaker == null)
+    //     {
+    //         managedNetwork.StartMatchMaker();
+    //     }
+    // }
 
     public void SetRoomName(string name)
     {
