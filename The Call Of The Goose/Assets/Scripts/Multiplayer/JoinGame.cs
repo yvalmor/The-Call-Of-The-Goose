@@ -56,7 +56,7 @@ public class JoinGame : MonoBehaviour
 
         if (roomList.Count == 0)
         {
-            status.text = "No rooms at the moment";
+            status.text = "No roomsPrefab at the moment";
         }
     }*/
 
