@@ -1,92 +1,70 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Level
 {
 	public class LevelGeneration : MonoBehaviour
 	{
-		public Transform[] positions;
-		public GameObject[] rooms;
-		public GameObject hWall, vWall;
+		public GameObject[] positions;
 		public GameObject player;
 		private Transform _spawnRoom, _bossRoom, _shopRoom;
 
+		private Room[] _rooms;
+
 		private void Start()
 		{
+			GenLevel();
+		}
+
+		// private void Update()
+		// {
+		// 	Vector3 playerPos = player.transform.position,
+		// 		bossPos = _bossRoom.position;
+		// 	if (!(playerPos.x >= bossPos.x) || !(playerPos.x <= bossPos.x + 30) || !(playerPos.y <= bossPos.y) ||
+		// 	    !(playerPos.y >= bossPos.y - 35)) return;
+		// 	DestroyLevel();
+		// 	GenLevel();
+		// }
+
+		private void GetPositions()
+		{
+			_spawnRoom = positions[Random.Range(0, positions.Length)].transform; 
+
+			do _shopRoom = positions[Random.Range(0, positions.Length)].transform;
+			while (_spawnRoom == _shopRoom);
+
+			do _bossRoom = positions[Random.Range(0, positions.Length)].transform;
+			while (_spawnRoom == _bossRoom || _shopRoom == _bossRoom);
+		}
+
+		private void GenLevel()
+		{
 			GetPositions();
+
+			_rooms = new Room[positions.Length];
 			for (int i = 0; i < positions.Length; i++)
+				_rooms[i] = positions[i].GetComponent<Room>();
+
+			for (int i = 0; i < _rooms.Length; i++)
 			{
-				Transform transfo = positions[i];
-				GameObject room;
-				if (transfo == _spawnRoom)
-					room = rooms[0];
-				else if (transfo == _bossRoom)
-					room = rooms[1];
-				else if (transfo == _shopRoom)
-					room = rooms[2];
-				else
-				{
-					int index = Random.Range(0, 6);
-					room = index == 0 ? rooms[5] :
-						index > 2 ? rooms[3] :
-						rooms[4];
-				}
-
-				Instantiate(room, transfo.position, Quaternion.identity);
-			
-				if (i % 4 == 0)
-				{
-					Vector3 position = transfo.position;
-					if (room == rooms[0] || room == rooms[4])
-						position.x += 5;
-					else if (room == rooms[1])
-						position.x += 8;
-					else if (room == rooms[3])
-						position.x += 10;
-					Instantiate(vWall, position, Quaternion.identity);
-				}
-			
-				if (i % 4 == 3)
-				{
-					Vector3 position = transfo.position;
-					if (room == rooms[0] || room == rooms[4])
-						position.x += 25;
-					else if (room == rooms[1])
-						position.x += 22;
-					else if (room == rooms[3])
-						position.x += 20;
-					else position.x += 30;
-					Instantiate(vWall, position, Quaternion.identity);
-				}
-			
-				if (i / 4 == 0)
-				{
-					Vector3 position = transfo.position;
-					if (room == rooms[0])
-						position.y -= 7;
-					else if (room == rooms[2])
-						position.y -= 2;
-					else if (room == rooms[1] || room == rooms[3])
-						position.y -= 10;
-					else if (room == rooms[4])
-						position.y -= 5;
-					Instantiate(hWall, position, Quaternion.identity);
-				}
-
-				if (i / 4 != 4) continue;
-				{
-					Vector3 position = transfo.position;
-					if (room == rooms[0])
-						position.y -= 27;
-					else if (room == rooms[2])
-						position.y -= 32;
-					else if (room == rooms[1] || room == rooms[3])
-						position.y -= 24;
-					else if (room == rooms[4])
-						position.y -= 29;
-					else position.y -= 34;
-					Instantiate(hWall, position, Quaternion.identity);
-				}
+				if (positions[i].transform == _spawnRoom)
+					_rooms[i].size = 0;
+				else if (positions[i].transform == _bossRoom)
+					_rooms[i].size = 1;
+				else if (positions[i].transform == _shopRoom)
+					_rooms[i].size = 2;
+				else _rooms[i].size = Random.Range(3, 6);
+				_rooms[i].Generate();
+				
+				if (i > 0 && i % 4 != 0 && _rooms[i - 1].right)
+					_rooms[i].left = true;
+				if (i > 3 && _rooms[i - 4].down)
+					_rooms[i].up = true;
 			}
+
+			foreach (Room room in _rooms)
+				room.GenerateCorridors();
 
 			Vector3 playerSpawn = _spawnRoom.position;
 			playerSpawn.x += 15;
@@ -94,15 +72,10 @@ namespace Level
 			Instantiate(player, playerSpawn, Quaternion.identity);
 		}
 
-		private void GetPositions()
+		private void DestroyLevel()
 		{
-			_spawnRoom = positions[Random.Range(0, positions.Length)]; 
-
-			do _shopRoom = positions[Random.Range(0, positions.Length)];
-			while (_spawnRoom == _shopRoom);
-
-			do _bossRoom = positions[Random.Range(0, positions.Length)];
-			while (_spawnRoom == _bossRoom || _shopRoom == _bossRoom);
+			foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Generation"))
+				Destroy(obj);
 		}
 	}
 }
