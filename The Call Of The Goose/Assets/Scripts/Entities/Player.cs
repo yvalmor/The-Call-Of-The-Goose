@@ -16,7 +16,7 @@ namespace Entities
         protected int gold = 0;
         public string name;
         protected int[] expTreshold = {100, 164, 268, 441, 723, 1186, 1945, 3190, 5233}; // exp nécessaire pour lvl up
-        //public Item[] consumablesInventory;
+        public Item[] consumablesInventory;
         //public List<Relic> relicInventory;
 
         public int Hp
@@ -28,14 +28,14 @@ namespace Entities
         public Player(string name)
         {
             this.name = name;
-            //consumablesInventory = new Item[10];
+            consumablesInventory = new Consumables[5];
             //relicInventory = new List<Relic>();
         }
 
         public void TakeDamage(int damage)
         {
             if (hp - damage <= 0)
-                throw new NotImplementedException();
+                GameOver();
             hp -= damage;
         }
 
@@ -59,6 +59,51 @@ namespace Entities
                 endurance = maxEndurance;
             endurance += regen;
         }
+
+        public void UseConsumable(Consumables consumable)
+        {
+            bool faux = false;
+            int i = 0;
+            while (!faux && i < consumablesInventory.Length)
+            {
+                if (consumablesInventory[i] == consumable)
+                    faux = true;
+                else
+                    i++;
+            }
+
+            if (faux)
+            {
+                if (consumable.HpRegen != 0)
+                    Heal(consumable.HpRegen);
+                
+                if (consumable.ManaRegen != 0)
+                    RegenMana(consumable.ManaRegen);
+                
+                if (consumable.EnduRegen != 0)
+                    RegenEndurance(consumable.EnduRegen);
+                
+                consumablesInventory[i] = null;
+
+                bool vrai = true;
+                while(vrai && i < consumablesInventory.Length -1)
+                {
+                    if (consumablesInventory[i] == null && consumablesInventory[i+1] != null)
+                    {
+                        consumablesInventory[i] = consumablesInventory[j + 1];
+                        consumablesInventory[i + 1] = null;
+                    }
+                    else if(consumablesInventory[i] == null && consumablesInventory[i+1] == null)
+                    {
+                        vrai = false;
+                    }
+
+                    i++;
+                }
+            }
+            else
+                throw new NotImplementedException();
+        }
         
         public bool GainExp(int gain)
         {
@@ -71,6 +116,11 @@ namespace Entities
             }
 
             return false;
+        }
+
+        public void GameOver()
+        {
+            throw new NotImplementedException();
         }
 
 
