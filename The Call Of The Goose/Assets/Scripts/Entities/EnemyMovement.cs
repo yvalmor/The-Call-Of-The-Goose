@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Entities
 {
@@ -34,10 +35,15 @@ namespace Entities
             else
                 closest = player[0].transform.position;
 
-            if (closest.x - rb.position.x + closest.y - rb.position.y < detectionRange)
+            if (Math.Abs(closest.x - rb.position.x) + Math.Abs(closest.y - rb.position.y) < detectionRange)
             {
                 _movement.x = closest.x - rb.position.x;
                 _movement.y = closest.y - rb.position.y;
+            }
+            else
+            {
+                _movement.x = 0;
+                _movement.y = 0;
             }
         }
 
