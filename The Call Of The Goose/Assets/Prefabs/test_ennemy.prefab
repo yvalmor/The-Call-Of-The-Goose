@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 462cf8b27fbc991468e3e6a1f8984a58, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a99c4e5d686de91498a1b0a7709df9eb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -114,11 +114,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4754841578696095726}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8b20e3f1f64a054f8aa2006bfc3fc45, type: 3}
+  m_Script: {fileID: 11500000, guid: fd794e13fec1ac043bc5c57526faa823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
-  rb: {fileID: 4754841578696095721}
+  moveSpeed: 2.8
+  detectionRange: 10
+  rb: {fileID: 0}
 --- !u!61 &4754841578696095722
 BoxCollider2D:
   m_ObjectHideFlags: 0
