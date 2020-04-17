@@ -7,7 +7,7 @@ namespace Menu
     {
         public void BeginGame()
         {
-            SceneManager.LoadScene("Lv1");
+            SceneManager.LoadScene("Niveau");
         }
 
         public void BeginTutorial()
