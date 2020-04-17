@@ -16,7 +16,7 @@ namespace Entities
         protected int gold = 0;
         public string name;
         protected int[] expTreshold = {100, 164, 268, 441, 723, 1186, 1945, 3190, 5233}; // exp nécessaire pour lvl up
-        public Item[] consumablesInventory;
+        public Consumables[] consumablesInventory;
         //public List<Relic> relicInventory;
 
         public int Hp
@@ -90,7 +90,7 @@ namespace Entities
                 {
                     if (consumablesInventory[i] == null && consumablesInventory[i+1] != null)
                     {
-                        consumablesInventory[i] = consumablesInventory[j + 1];
+                        consumablesInventory[i] = consumablesInventory[i + 1];
                         consumablesInventory[i + 1] = null;
                     }
                     else if(consumablesInventory[i] == null && consumablesInventory[i+1] == null)
