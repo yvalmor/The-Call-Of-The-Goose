@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Entities
 {
@@ -15,27 +16,70 @@ namespace Entities
         protected int endurance;
         protected int gold = 0;
         public string name;
+        public int floor;
         protected int[] expTreshold = {100, 164, 268, 441, 723, 1186, 1945, 3190, 5233}; // exp nécessaire pour lvl up
-        //public Item[] consumablesInventory;
-        //public List<Relic> relicInventory;
+        public Consumables[] consumablesInventory;
+        public List<Relic> relicInventory;
 
         public int Hp
         {
             get { return hp; }
             set { hp = value; }
         }
+        
+        public int MaxHp
+        {
+            get { return maxHp; }
+            set { MaxHp = value; }
+        }
+        
+        public int MaxMana
+        {
+            get { return maxMana; }
+            set { maxMana = value; }
+        }
+
+        public int Mana
+        {
+            get { return mana; }
+            set { mana = value; }
+        }
+
+        public int MaxEndurance
+        {
+            get { return maxEndurance; }
+            set { maxEndurance = value; }
+        }
+
+        public int Endurance
+        {
+            get { return endurance; }
+            set { endurance = value; }
+        }
+
+        public int Gold
+        {
+            get { return gold; }
+            set { gold = value; }
+        }
+        public int Armor
+        {
+            get { return armor; }
+            set { armor = value; }
+        }
+        
 
         public Player(string name)
         {
             this.name = name;
-            //consumablesInventory = new Item[10];
-            //relicInventory = new List<Relic>();
+            consumablesInventory = new Consumables[5];
+            relicInventory = new List<Relic>();
         }
 
         public void TakeDamage(int damage)
         {
             if (hp - damage <= 0)
-                throw new NotImplementedException();
+                GameOver();
             hp -= damage;
         }
 
@@ -59,6 +103,51 @@ namespace Entities
                 endurance = maxEndurance;
             endurance += regen;
         }
+
+        public void UseConsumable(Consumables consumable)
+        {
+            bool faux = false;
+            int i = 0;
+            while (!faux && i < consumablesInventory.Length)
+            {
+                if (consumablesInventory[i] == consumable)
+                    faux = true;
+                else
+                    i++;
+            }
+
+            if (faux)
+            {
+                if (consumable.HpRegen != 0)
+                    Heal(consumable.HpRegen);
+                
+                if (consumable.ManaRegen != 0)
+                    RegenMana(consumable.ManaRegen);
+                
+                if (consumable.EnduRegen != 0)
+                    RegenEndurance(consumable.EnduRegen);
+                
+                consumablesInventory[i] = null;
+
+                bool vrai = true;
+                while(vrai && i < consumablesInventory.Length -1)
+                {
+                    if (consumablesInventory[i] == null && consumablesInventory[i+1] != null)
+                    {
+                        consumablesInventory[i] = consumablesInventory[i + 1];
+                        consumablesInventory[i + 1] = null;
+                    }
+                    else if(consumablesInventory[i] == null && consumablesInventory[i+1] == null)
+                    {
+                        vrai = false;
+                    }
+
+                    i++;
+                }
+            }
+            else
+                throw new NotImplementedException();
+        }
         
         public bool GainExp(int gain)
         {
@@ -71,6 +160,11 @@ namespace Entities
             }
 
             return false;
+        }
+
+        public void GameOver()
+        {
+            throw new NotImplementedException();
         }
 
 

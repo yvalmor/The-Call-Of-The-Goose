@@ -17,7 +17,7 @@ namespace Entities
 
         private void FixedUpdate()
         {
-            rb.MovePosition(rb.position + _movement * moveSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + Time.fixedDeltaTime * moveSpeed * _movement);
         }
     }
 }
