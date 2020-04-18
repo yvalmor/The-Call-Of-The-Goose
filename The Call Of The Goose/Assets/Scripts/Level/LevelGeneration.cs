@@ -17,16 +17,6 @@ namespace Level
 			GenLevel();
 		}
 
-		// private void Update()
-		// {
-		// 	Vector3 playerPos = player.transform.position,
-		// 		bossPos = _bossRoom.position;
-		// 	if (!(playerPos.x >= bossPos.x) || !(playerPos.x <= bossPos.x + 30) || !(playerPos.y <= bossPos.y) ||
-		// 	    !(playerPos.y >= bossPos.y - 35)) return;
-		// 	DestroyLevel();
-		// 	GenLevel();
-		// }
-
 		private void GetPositions()
 		{
 			_spawnRoom = positions[Random.Range(0, positions.Length)].transform; 
@@ -38,7 +28,7 @@ namespace Level
 			while (_spawnRoom == _bossRoom || _shopRoom == _bossRoom);
 		}
 
-		private void GenLevel()
+		public void GenLevel()
 		{
 			GetPositions();
 
@@ -69,10 +59,10 @@ namespace Level
 			Vector3 playerSpawn = _spawnRoom.position;
 			playerSpawn.x += 15;
 			playerSpawn.y -= 17.5f;
-			Instantiate(player, playerSpawn, Quaternion.identity);
+			player.transform.position = playerSpawn;
 		}
 
-		private void DestroyLevel()
+		public void DestroyLevel()
 		{
 			foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Generation"))
 				Destroy(obj);

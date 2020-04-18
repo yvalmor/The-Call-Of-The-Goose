@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using Level;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CombatEncounter : MonoBehaviour
 {
-    private bool _input, _quit;
+    private bool _input, _quit, _next;
+    public LevelGeneration level;
 
     private void Start()
     {
@@ -12,7 +15,7 @@ public class CombatEncounter : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         _input = Input.GetKey(KeyCode.K);
         if (_input)
@@ -20,5 +23,9 @@ public class CombatEncounter : MonoBehaviour
         _quit = Input.GetKey(KeyCode.Escape);
         if (_quit)
             SceneManager.LoadScene("Menu");
+        _next = Input.GetKey(KeyCode.N);
+        if (!_next) return;
+        level.DestroyLevel();
+        level.GenLevel();
     }
 }
