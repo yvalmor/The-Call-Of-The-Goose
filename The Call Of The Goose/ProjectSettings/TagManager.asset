@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Generation
   - Game Over
+  - Ennemy
   layers:
   - Default
   - TransparentFX

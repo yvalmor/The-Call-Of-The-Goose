@@ -15,16 +15,16 @@ namespace Level
 		public void Generate()
 		{
 			Instantiate(rooms[size], transform.position, Quaternion.identity);
-			if (down || right) return;
-			if (Random.Range(0, 2) == 0)
-				down = true;
-			else right = true;
 			if (size > 2)
 				GenerateMobs();
 			/*else if (size == 2)
 				GenerateBoss();
 			else if (size == 1)
 				GenerateShop();*/
+			if (down || right) return;
+			if (Random.Range(0, 2) == 0)
+				down = true;
+			else right = true;
 		}
 
 		private void GenerateMobs()
@@ -34,21 +34,21 @@ namespace Level
 			switch (size)
 			{
 				case 3:
-					nbMobs = Random.Range(1, 3);
+					nbMobs = Random.Range(0, 3);
 					minX = 11.5f;
 					maxX = 19.5f;
 					minY = 11.5f;
 					maxY = 23.5f;
 					break;
 				case 4:
-					nbMobs = Random.Range(2, 5);
+					nbMobs = Random.Range(2, 4);
 					minX = 6.5f;
 					maxX = 24.5f;
 					minY = 6.5f;
 					maxY = 28.5f;
 					break;
 				default:
-					nbMobs = Random.Range(3, 6);
+					nbMobs = Random.Range(3, 5);
 					minX = 1.5f;
 					maxX = 29.5f;
 					minY = 1.5f;

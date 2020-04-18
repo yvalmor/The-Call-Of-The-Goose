@@ -66,6 +66,8 @@ namespace Level
 		{
 			foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Generation"))
 				Destroy(obj);
+			foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Ennemy"))
+				Destroy(obj);
 		}
 	}
 }

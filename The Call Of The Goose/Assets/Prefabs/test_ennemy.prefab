@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4754841578696095722}
   m_Layer: 0
   m_Name: test_ennemy
-  m_TagString: Untagged
+  m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,12 +73,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: a99c4e5d686de91498a1b0a7709df9eb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 30e648ad8d15d9445ae4fad49c664ccb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.1, y: 0.84}
+  m_Size: {x: 6.1, y: 7.7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -103,7 +103,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &4754841578696095717
 MonoBehaviour:
@@ -114,12 +114,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4754841578696095726}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd794e13fec1ac043bc5c57526faa823, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f846ac3421cf464aacc7fae2c885828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2.8
-  detectionRange: 10
-  rb: {fileID: 0}
+  moveSpeed: 1.8
+  detectionRange: 15
+  rb: {fileID: 4754841578696095721}
 --- !u!61 &4754841578696095722
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -137,8 +137,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.1, y: 0.84}
-    newSize: {x: 2.1, y: 0.84}
+    oldSize: {x: 6.1, y: 7.7}
+    newSize: {x: 6.1, y: 7.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
