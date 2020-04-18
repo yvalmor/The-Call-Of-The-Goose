@@ -9,6 +9,7 @@ namespace Level
 		
 		public GameObject[] rooms;
 		public GameObject HWall, VWall, floors, walls;
+		public GameObject Ennemy, Boss, Merchant;
 		public int size;
 		
 		public void Generate()
@@ -18,6 +19,52 @@ namespace Level
 			if (Random.Range(0, 2) == 0)
 				down = true;
 			else right = true;
+			if (size > 2)
+				GenerateMobs();
+			/*else if (size == 2)
+				GenerateBoss();
+			else if (size == 1)
+				GenerateShop();*/
+		}
+
+		private void GenerateMobs()
+		{
+			int nbMobs;
+			float minX, maxX, minY, maxY;
+			switch (size)
+			{
+				case 3:
+					nbMobs = Random.Range(1, 3);
+					minX = 11.5f;
+					maxX = 19.5f;
+					minY = 11.5f;
+					maxY = 23.5f;
+					break;
+				case 4:
+					nbMobs = Random.Range(2, 5);
+					minX = 6.5f;
+					maxX = 24.5f;
+					minY = 6.5f;
+					maxY = 28.5f;
+					break;
+				default:
+					nbMobs = Random.Range(3, 6);
+					minX = 1.5f;
+					maxX = 29.5f;
+					minY = 1.5f;
+					maxY = 34.5f;
+					break;
+			}
+
+			for (int i = 0; i < nbMobs; i++)
+			{
+				Vector3 position = transform.position;
+
+				position.x += Random.Range(minX, maxX);
+				position.y -= Random.Range(minY, maxY);
+				
+				Instantiate(Ennemy, position, Quaternion.identity);
+			}
 		}
 
 		#region Corridors
