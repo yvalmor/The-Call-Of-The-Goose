@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Entities
 {
@@ -15,21 +16,64 @@ namespace Entities
         protected int endurance;
         protected int gold = 0;
         public string name;
+        public int floor;
         protected int[] expTreshold = {100, 164, 268, 441, 723, 1186, 1945, 3190, 5233}; // exp nécessaire pour lvl up
         public Consumables[] consumablesInventory;
-        //public List<Relic> relicInventory;
+        public List<Relic> relicInventory;
 
         public int Hp
         {
             get { return hp; }
             set { hp = value; }
         }
+        
+        public int MaxHp
+        {
+            get { return maxHp; }
+            set { MaxHp = value; }
+        }
+        
+        public int MaxMana
+        {
+            get { return maxMana; }
+            set { maxMana = value; }
+        }
+
+        public int Mana
+        {
+            get { return mana; }
+            set { mana = value; }
+        }
+
+        public int MaxEndurance
+        {
+            get { return maxEndurance; }
+            set { maxEndurance = value; }
+        }
+
+        public int Endurance
+        {
+            get { return endurance; }
+            set { endurance = value; }
+        }
+
+        public int Gold
+        {
+            get { return gold; }
+            set { gold = value; }
+        }
+        public int Armor
+        {
+            get { return armor; }
+            set { armor = value; }
+        }
+        
 
         public Player(string name)
         {
             this.name = name;
             consumablesInventory = new Consumables[5];
-            //relicInventory = new List<Relic>();
+            relicInventory = new List<Relic>();
         }
 
         public void TakeDamage(int damage)

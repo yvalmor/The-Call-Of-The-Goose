@@ -13,9 +13,11 @@ namespace Entities
         public float moveSpeed = 4f;
         public float detectionRange = 200;
 
+        private float distance;
+        private int playerNumber;
+
         public Rigidbody2D rb;
-
-
+        
         private void Awake()
         {
             player = GameObject.FindGameObjectsWithTag("Player");
@@ -30,10 +32,26 @@ namespace Entities
                               rb.position.y;
                 float dist1 = player[1].transform.position.x - rb.position.x + player[1].transform.position.y -
                               rb.position.y;
-                closest = dist1 > dist0 ? player[0].transform.position : player[1].transform.position;
+                if (dist1 > dist0)
+                {
+                    closest = player[0].transform.position;
+                    distance = dist0;
+                    playerNumber = 0;
+                }
+                else
+                {
+                    closest = player[1].transform.position;
+                    distance = dist1;
+                    playerNumber = 1;
+                }
             }
             else
+            {
                 closest = player[0].transform.position;
+                distance = player[0].transform.position.x - rb.position.x + player[0].transform.position.y -
+                           rb.position.y;
+                playerNumber = 0;
+            }
 
             if (Math.Abs(closest.x - rb.position.x) + Math.Abs(closest.y - rb.position.y) < detectionRange)
             {
