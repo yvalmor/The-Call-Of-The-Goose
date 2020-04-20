@@ -9,14 +9,16 @@ namespace Entities
         private int mana;
         private int endurance;
         private int gold;
+        private int attack;
 
-        public Relic(int hp, int armor, int mana, int endurance, int gold)
+        public Relic(int hp, int armor, int mana, int endurance, int gold, int attack)
         {
             this.hp = hp;
             this.armor = armor;
             this.mana = mana;
             this.endurance = endurance;
             this.gold = gold;
+            this.attack = attack;
         }
 
         public int Hp => hp;
@@ -24,6 +26,7 @@ namespace Entities
         public int Mana => mana;
         public int Endurance => endurance;
         public int Gold => gold;
+        public int Attack => attack;
 
         public void addToInventory(Relic relic, Player player)
         {
@@ -51,6 +54,9 @@ namespace Entities
 
             if (gold != 0)
                 player.Gold += gold;
+
+            if (attack != 0)
+                player.Attack += attack;
         }
     }
 }

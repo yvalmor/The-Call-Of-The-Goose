@@ -11,10 +11,11 @@ namespace Entities
         protected int hp;
         protected int armor;
         protected int lvl = 1;
-        protected int exp = 0;
+        protected int exp;
         protected int mana;
         protected int endurance;
-        protected int gold = 0;
+        protected int gold;
+        protected int attack;
         public string name;
         public int floor;
         protected int[] expTreshold = {100, 164, 268, 441, 723, 1186, 1945, 3190, 5233}; // exp nécessaire pour lvl up
@@ -67,7 +68,13 @@ namespace Entities
             get { return armor; }
             set { armor = value; }
         }
-        
+
+        public int Attack
+        {
+            get => attack;
+            set => attack = value;
+        }
+
 
         public Player(string name)
         {

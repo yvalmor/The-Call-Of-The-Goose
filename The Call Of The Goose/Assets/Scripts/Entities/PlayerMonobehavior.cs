@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace Entities
 {
@@ -20,8 +21,8 @@ namespace Entities
         public HealthPoint EndurancePlayer;
         public int Attaque;
         protected int[] expTreshold = {100, 164, 268, 441, 723, 1186, 1945, 3190, 5233}; // exp nécessaire pour lvl up
-        //public Item[] consumablesInventory;
-        //public List<Relic> relicInventory;
+        public Consumables[] consumablesInventory;
+        public List<Relic> relicInventory;
 
         public int Hp
         {
@@ -44,8 +45,8 @@ namespace Entities
         public PlayerMonobehavior(string name)
         {
             this.name = name;
-            //consumablesInventory = new Item[10];
-            //relicInventory = new List<Relic>();
+            consumablesInventory = new Consumables[5];
+            relicInventory = new List<Relic>();
         }
 
         public void Start()
