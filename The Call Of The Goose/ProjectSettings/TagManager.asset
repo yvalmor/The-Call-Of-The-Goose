@@ -7,6 +7,8 @@ TagManager:
   - Generation
   - Game Over
   - Ennemy
+  - Minimap
+  - Level
   layers:
   - Default
   - TransparentFX

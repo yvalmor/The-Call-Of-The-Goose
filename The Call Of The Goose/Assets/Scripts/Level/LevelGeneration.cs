@@ -12,7 +12,9 @@ namespace Level
 
 		private Room[] _rooms;
 
-		private void Start()
+		public Room[] Rooms => _rooms;
+
+		private void Awake()
 		{
 			GenLevel();
 		}
@@ -67,6 +69,8 @@ namespace Level
 			foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Generation"))
 				Destroy(obj);
 			foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Ennemy"))
+				Destroy(obj);
+			foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Minimap"))
 				Destroy(obj);
 		}
 	}
