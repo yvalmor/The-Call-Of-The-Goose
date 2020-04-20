@@ -5,85 +5,89 @@ using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerSetUp : MonoBehaviourPunCallbacks
+namespace Multiplayer
 {
-    [SerializeField] private GameObject findOpponent = null;
-    [SerializeField] private GameObject waitingStatus = null;
-    [SerializeField] private Text waitingText = null;
-
-    private bool isConnect = false;
-
-    private const String Ver = "Oui";
-    private const int MaxPlayer = 2;
-
-    private void Awake()
+    public class PlayerSetUp : MonoBehaviourPunCallbacks
     {
-        PhotonNetwork.AutomaticallySyncScene = true;
-    }
+        [SerializeField] private GameObject findOpponent = null;
+        [SerializeField] private GameObject waitingStatus = null;
+        [SerializeField] private Text waitingText = null;
 
-    public void FindOpponent()
-    {
-        isConnect = true;
-        
-        findOpponent.SetActive(false);
-        waitingStatus.SetActive(true);
+        private bool isConnect = false;
 
-        waitingText.text = "Wait...";
+        private const String Ver = "Oui";
+        private const int MaxPlayer = 2;
 
-        if (PhotonNetwork.IsConnected)
+        private void Awake()
         {
-            PhotonNetwork.JoinRandomRoom();
+            PhotonNetwork.AutomaticallySyncScene = true;
         }
-        else
+
+        public void FindOpponent()
         {
-            PhotonNetwork.GameVersion = Ver;
-            PhotonNetwork.ConnectUsingSettings();
-        }
-    }
+            isConnect = true;
 
-    public override void OnConnectedToMaster()
-    {
-        if (isConnect)
+            findOpponent.SetActive(false);
+            waitingStatus.SetActive(true);
+
+            waitingText.text = "Wait...";
+
+            if (PhotonNetwork.IsConnected)
+            {
+                PhotonNetwork.JoinRandomRoom();
+            }
+            else
+            {
+                PhotonNetwork.GameVersion = Ver;
+                PhotonNetwork.ConnectUsingSettings();
+            }
+        }
+
+        public override void OnConnectedToMaster()
         {
-            PhotonNetwork.JoinRandomRoom();
+            if (isConnect)
+            {
+                PhotonNetwork.JoinRandomRoom();
+            }
         }
-    }
 
-    public override void OnDisconnected(DisconnectCause cause)
-    {
-        waitingStatus.SetActive(false);
-        findOpponent.SetActive(true);
-    }
-
-    public override void OnJoinRandomFailed(short returnCode, string message)
-    {
-        PhotonNetwork.CreateRoom(null, new RoomOptions {MaxPlayers = MaxPlayer});
-    }
-
-    public override void OnJoinedRoom()
-    {
-        int playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
-
-        if (playerCount != MaxPlayer)
+        public override void OnDisconnected(DisconnectCause cause)
         {
-            waitingText.text = "More waiting";
+            waitingStatus.SetActive(false);
+            findOpponent.SetActive(true);
         }
-        else
+
+        public override void OnJoinRandomFailed(short returnCode, string message)
         {
-            waitingText.text = "Check make Atheist";
-            /*PhotonNetwork.LoadLevel("");*/
+            PhotonNetwork.CreateRoom(null, new RoomOptions {MaxPlayers = MaxPlayer});
+        }
+
+        public override void OnJoinedRoom()
+        {
+            int playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
+
+            if (playerCount != MaxPlayer)
+            {
+                waitingText.text = "More waiting";
+            }
+            else
+            {
+                waitingText.text = "Check make Atheist";
+                /*PhotonNetwork.LoadLevel("");*/
+            }
+        }
+
+        public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+        {
+            if (PhotonNetwork.CurrentRoom.PlayerCount == MaxPlayer)
+            {
+                PhotonNetwork.CurrentRoom.IsOpen = false;
+                waitingText.text = "Check make Atheist";
+
+                /*PhotonNetwork.LoadLevel("");*/
+            }
+
         }
     }
 
-    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
-    {
-        if (PhotonNetwork.CurrentRoom.PlayerCount == MaxPlayer)
-        {
-            PhotonNetwork.CurrentRoom.IsOpen = false;
-            waitingText.text = "Check make Atheist";
-            
-            /*PhotonNetwork.LoadLevel("");*/
-        }
-        
-    }
 }
