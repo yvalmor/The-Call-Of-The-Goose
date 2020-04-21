@@ -1,17 +1,19 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Level
 {
 	public class Room : MonoBehaviour
 	{
+		public bool b_up, b_down, b_left, b_right;
 		public bool up, down, left, right;
-		
+
 		public GameObject[] rooms;
 		public GameObject HWall, VWall, floors, walls;
 		public GameObject Ennemy, Boss, Merchant;
 		public int size;
-		
+
 		public void Generate()
 		{
 			Instantiate(rooms[size], transform.position, Quaternion.identity);
@@ -297,5 +299,14 @@ namespace Level
 		}
 
 		#endregion
+
+		public void Reset()
+		{
+			up = b_up;
+			down = b_down;
+			left = b_left;
+			right = b_right;
+			size = 0;
+		}
 	}
 }

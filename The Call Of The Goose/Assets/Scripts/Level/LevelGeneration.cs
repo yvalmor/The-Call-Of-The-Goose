@@ -1,4 +1,5 @@
 ﻿using System;
+using Entities;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -62,6 +63,8 @@ namespace Level
 			playerSpawn.x += 15;
 			playerSpawn.y -= 17.5f;
 			player.transform.position = playerSpawn;
+			
+			player.GetComponent<PlayerUI>().GenerateMinimap();
 		}
 
 		public void DestroyLevel()
@@ -72,6 +75,10 @@ namespace Level
 				Destroy(obj);
 			foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Minimap"))
 				Destroy(obj);
+			foreach (Room room in _rooms)
+			{
+				room.Reset();
+			}
 		}
 	}
 }

@@ -11,7 +11,8 @@ namespace Level
 
         private void Awake()
         {
-            
+            min = 0;
+            max = objects.Length;
         }
 
         private void Start()
