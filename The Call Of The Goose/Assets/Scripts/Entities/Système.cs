@@ -10,7 +10,7 @@ namespace Entities
     public class Système : MonoBehaviour
     {
         public Ennemis Op;
-        public PlayerMonobehavior Pl;
+        public Player Pl;
     
         public Battle State;
     
@@ -37,7 +37,7 @@ namespace Entities
 
         IEnumerator PlayerAttack ()
         {
-            Op.TakeDamage(Pl.Attaque);
+            Op.TakeDamage(Pl.Attack);
         
             yield return new WaitForSeconds(2f);
         
@@ -74,7 +74,7 @@ namespace Entities
         {
             if (State == Battle.Lost)
             {
-                //messsage combat perdu :(
+                Pl.GameOver();
             }
             else
             {
@@ -92,7 +92,7 @@ namespace Entities
             if (Pl.Mana > 0)
             {
                 Pl.Mana -= 5;
-                Pl.ManaPlayer.SetHp(Pl.Mana);
+                Pl.ManaPlayer.Set(Pl.Mana);
                 StartCoroutine(PlayerAttack());
             }
         }
@@ -102,7 +102,7 @@ namespace Entities
             if (Pl.Endurance > 0)
             {
                 Pl.Endurance -= 5;
-                Pl.EndurancePlayer.SetHp(Pl.Endurance);
+                Pl.EndurancePlayer.Set(Pl.Endurance);
                 StartCoroutine(PlayerAttack());
             }
         }

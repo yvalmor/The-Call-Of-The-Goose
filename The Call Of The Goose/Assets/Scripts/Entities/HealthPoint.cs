@@ -15,7 +15,7 @@ namespace Entities
             slider.value = hp;
         }
         
-        public void SetHp(int hp)
+        public void Set(int hp)
         {
             slider.value = hp;
         }
