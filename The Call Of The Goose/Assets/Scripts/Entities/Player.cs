@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Entities
 {
-    public class Player
+    public class Player : MonoBehaviour
     {
         protected int maxHp;
         protected int maxMana;
@@ -17,6 +18,9 @@ namespace Entities
         protected int gold;
         protected int attack;
         public string name;
+        public HealthPoint HPPlayer;
+        public HealthPoint ManaPlayer;
+        public HealthPoint EndurancePlayer;
         public int floor;
         protected int[] expTreshold = {100, 164, 268, 441, 723, 1186, 1945, 3190, 5233}; // exp nécessaire pour lvl up
         public Consumables[] consumablesInventory;
@@ -88,6 +92,7 @@ namespace Entities
             if (hp - damage <= 0)
                 GameOver();
             hp -= damage;
+            HPPlayer.Set(hp);
         }
 
         public void Heal(int heal)
@@ -95,6 +100,7 @@ namespace Entities
             if (hp + heal > maxHp)
                 hp = maxHp;
             hp += heal;
+            HPPlayer.Set(hp);
         }
 
         public void RegenMana(int regen)
@@ -102,6 +108,7 @@ namespace Entities
             if (mana + regen > maxMana)
                 mana = maxMana;
             mana += regen;
+            ManaPlayer.Set(mana);
         }
         
         public void RegenEndurance(int regen)
@@ -109,6 +116,7 @@ namespace Entities
             if (endurance + regen > maxEndurance)
                 endurance = maxEndurance;
             endurance += regen;
+            EndurancePlayer.Set(endurance);
         }
 
         public void UseConsumable(Consumables consumable)
@@ -168,7 +176,16 @@ namespace Entities
 
             return false;
         }
+        
+        public void Start()
+        {
+            hp = maxHp;
+            mana = maxMana;
+            endurance = maxEndurance;
+        }
 
+
+        
         public void GameOver()
         {
             throw new NotImplementedException();
