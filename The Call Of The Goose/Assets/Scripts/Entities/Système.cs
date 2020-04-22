@@ -9,7 +9,7 @@ namespace Entities
     public enum Battle {PlayerTurn, EnnemyTurn, Won, Lost}
     public class Système : MonoBehaviour
     {
-        public Ennemis Op;
+        public Ennemy Op;
         public Player Pl;
     
         public Battle State;
@@ -41,7 +41,7 @@ namespace Entities
         
             yield return new WaitForSeconds(2f);
         
-            if (Op.HP <= 0)
+            if (Op.Hp <= 0)
             {
                 State = Battle.Won;
                 End();
@@ -55,7 +55,7 @@ namespace Entities
 
         IEnumerator EnemyTurn()
         {
-            Pl.TakeDamage(Op.Attaque1);
+            Pl.TakeDamage(Op.Attaque);
         
             yield return new WaitForSeconds(1f);
         
