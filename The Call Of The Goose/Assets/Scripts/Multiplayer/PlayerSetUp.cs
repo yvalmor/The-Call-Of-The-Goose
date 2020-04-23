@@ -73,7 +73,7 @@ namespace Multiplayer
             else
             {
                 waitingText.text = "Check make Atheist";
-                /*PhotonNetwork.LoadLevel("");*/
+                PhotonNetwork.LoadLevel("Niveau");
             }
         }
 
@@ -84,7 +84,7 @@ namespace Multiplayer
                 PhotonNetwork.CurrentRoom.IsOpen = false;
                 waitingText.text = "Check make Atheist";
 
-                /*PhotonNetwork.LoadLevel("");*/
+                PhotonNetwork.LoadLevel("Niveau");
             }
 
         }
