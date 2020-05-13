@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 192.07996}
-  m_SizeDelta: {x: 0, y: -434.66}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4516295497481748051
 CanvasRenderer:
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.000061035156, y: 0.000045776367, z: -0.11911011, w: -0.12950134}
+  m_margin: {x: -0.000061035156, y: 0.000045776367, z: -0.11911011, w: -0.12954712}
   m_textInfo:
     textComponent: {fileID: 6250977123682777018}
     characterCount: 20
