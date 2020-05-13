@@ -1,6 +1,8 @@
-﻿namespace Entities
+﻿using UnityEngine;
+
+namespace Entities
 {
-    public class Ennemy
+    public class Ennemy : MonoBehaviour
     {
 	    
         private int maxHp;
