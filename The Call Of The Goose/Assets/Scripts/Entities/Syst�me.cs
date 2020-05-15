@@ -13,6 +13,8 @@ namespace Entities
         public Player Pl;
     
         public Battle State;
+        
+        public bool inputB, inputSpace, action;
     
         // Start is called before the first frame update
         void Start()
@@ -24,15 +26,19 @@ namespace Entities
 
         private void Update()
         {
-            if (State == Battle.PlayerTurn && Input.GetKeyDown(KeyCode.B))
+            inputB = Input.GetKey(KeyCode.B);
+            inputSpace = Input.GetKey(KeyCode.Space);
+            
+            if (State == Battle.PlayerTurn)
             {
-                PlayerTurnB();
+                action = true;
+                if (inputB)
+                    PlayerTurnB();
+                else if (inputSpace)
+                    PlayerTurnS();
             }
 
-            if (State == Battle.PlayerTurn && Input.GetKeyDown(KeyCode.Space))
-            {
-                PlayerTurnS();
-            }
+            action = false;
         }
 
         IEnumerator PlayerAttack ()

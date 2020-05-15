@@ -390,7 +390,6 @@ GameObject:
   - component: {fileID: 987160015}
   - component: {fileID: 987160017}
   - component: {fileID: 987160016}
-  - component: {fileID: 987160018}
   m_Layer: 0
   m_Name: Manaa
   m_TagString: Untagged
@@ -481,23 +480,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &987160018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 987160014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82373be5c2f7cd44491518339f4b9459, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: 
-  HPPlayer: {fileID: 0}
-  ManaPlayer: {fileID: 0}
-  EndurancePlayer: {fileID: 0}
-  Attaque: 0
 --- !u!1 &1040424591
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,14 +567,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1040424591}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82373be5c2f7cd44491518339f4b9459, type: 3}
+  m_Script: {fileID: 11500000, guid: f9f419b73c678b246838344f18939f9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: BitchLASAGNA
+  name: player
   HPPlayer: {fileID: 773144620}
   ManaPlayer: {fileID: 987160016}
   EndurancePlayer: {fileID: 1814769440}
-  Attaque: 10
+  floor: 0
 --- !u!95 &1040424596
 Animator:
   serializedVersion: 3
@@ -877,8 +859,8 @@ GameObject:
   - component: {fileID: 1540193675}
   - component: {fileID: 1540193677}
   - component: {fileID: 1540193676}
-  - component: {fileID: 1540193678}
   - component: {fileID: 1540193679}
+  - component: {fileID: 1540193678}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -952,11 +934,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1540193674}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c111d2988d187054caebd685c9c575cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b5a30a0a53b419586afa584b4ce71a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 50
-  MaxHP: 50
   HPE: {fileID: 1363304689}
 --- !u!95 &1540193679
 Animator:
@@ -1111,6 +1091,9 @@ MonoBehaviour:
   Op: {fileID: 1540193678}
   Pl: {fileID: 1040424595}
   State: 1
+  inputB: 0
+  inputSpace: 0
+  action: 0
 --- !u!4 &1619786688
 Transform:
   m_ObjectHideFlags: 0
