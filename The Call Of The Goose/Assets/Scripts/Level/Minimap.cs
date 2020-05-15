@@ -1,11 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Level
 {
     public class Minimap : MonoBehaviour
     {
+        public Transform playerPosition;
         public Transform[] positions;
         public GameObject[] mapRooms;
+        public GameObject playerIcon;
 
         public void GenerateMinimap(Room[] rooms)
         {
@@ -46,6 +49,26 @@ namespace Level
             if (!room.left)
                 return mapRooms[12];
             return !room.right ? mapRooms[13] : mapRooms[14];
+        }
+
+        private void UpdatePlayerIconPosition()
+        {
+            Vector3 position = playerPosition.position;
+
+            position.x /= 31;
+            
+            position.y /= -35;
+
+            Transform newPos = positions[(int) position.y * 4 + (int) position.x];
+
+            Destroy(playerIcon);
+
+            playerIcon = Instantiate(playerIcon, newPos);
+        }
+
+        private void Update()
+        {
+            UpdatePlayerIconPosition();
         }
     }
 }
