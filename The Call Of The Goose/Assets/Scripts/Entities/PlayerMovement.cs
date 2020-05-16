@@ -10,6 +10,8 @@ namespace Entities
         public Rigidbody2D rb;
         public Animator Animator;
 
+        public bool Activated = true;
+
         private Vector2 _movement;
         private static readonly int Running = Animator.StringToHash("Running");
         private static readonly int Left = Animator.StringToHash("Left");
@@ -17,6 +19,12 @@ namespace Entities
 
         void Update()
         {
+            if (!Activated)
+            {
+                _movement = Vector2.zero;
+                return;
+            }
+            
             _movement.x = Input.GetAxisRaw("Horizontal") * moveSpeed;
             _movement.y = Input.GetAxisRaw("Vertical") * moveSpeed;
             
