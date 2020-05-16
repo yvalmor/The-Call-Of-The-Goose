@@ -2,14 +2,14 @@
 
 namespace Entities
 {
-    public class Relic
+    public class Relic : MonoBehaviour
     {
-        private int hp;
-        private int armor;
-        private int mana;
-        private int endurance;
-        private int gold;
-        private int attack;
+        public int hp;
+        public int armor;
+        public int mana;
+        public int endurance;
+        public int gold;
+        public int attack;
 
         public Relic(int hp, int armor, int mana, int endurance, int gold, int attack)
         {
@@ -58,5 +58,12 @@ namespace Entities
             if (attack != 0)
                 player.Attack += attack;
         }
+        
+        Relic shield = new Relic(0, 10, 0,0,0,0);
+        Relic sword = new Relic(0,0,0,0,0,10);
+        Relic cloak = new Relic(0,0,10,0,0,0);
+        Relic boots = new Relic(0,0,0,10,0,0);
+        Relic purse = new Relic(0,0,0,0,10,0);
+        Relic ring = new Relic(50,0,0,0,0,0);
     }
 }
