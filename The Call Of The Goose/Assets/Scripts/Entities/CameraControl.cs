@@ -6,7 +6,7 @@ namespace Entities
 {
     public class CameraControl : MonoBehaviour
     {
-        public new Camera camera;
+        public Camera playerCamera;
         private bool _global,
             _previousState,
             _input;
@@ -22,7 +22,7 @@ namespace Entities
             _previousState = _input;
             _input = Input.GetKey(KeyCode.C);
             if (!_input || _input == _previousState) return;
-            camera.orthographicSize = _global ? 10f : 100f;
+            playerCamera.orthographicSize = _global ? 10f : 100f;
             _global = !_global;
         }
     }
