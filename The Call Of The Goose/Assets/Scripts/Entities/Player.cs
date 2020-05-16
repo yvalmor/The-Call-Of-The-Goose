@@ -190,7 +190,5 @@ namespace Entities
         {
             throw new NotImplementedException();
         }
-
-
     }
 }
