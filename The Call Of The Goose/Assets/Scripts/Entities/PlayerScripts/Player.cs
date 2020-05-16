@@ -2,21 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Entities
+namespace Entities.PlayerScripts
 {
     public class Player : MonoBehaviour
     {
-        protected int maxHp;
-        protected int maxMana;
-        protected int maxEndurance;
-        protected int hp;
-        protected int armor;
-        protected int lvl = 1;
-        protected int exp;
-        protected int mana;
-        protected int endurance;
-        protected int gold;
-        protected int attack;
+        public Health _health;
+        public Mana _mana;
+        public Endurance _endurance;
+
+        private int armor;
+        private int lvl = 1;
+        private int exp;
+        private int gold;
+        private int attack;
         public string name;
         public HealthPoint HPPlayer;
         public HealthPoint ManaPlayer;
@@ -26,41 +24,9 @@ namespace Entities
         public Consumables[] consumablesInventory;
         public List<Relic> relicInventory;
 
-        public int Hp
-        {
-            get { return hp; }
-            set { hp = value; }
-        }
-        
-        public int MaxHp
-        {
-            get { return maxHp; }
-            set { MaxHp = value; }
-        }
-        
-        public int MaxMana
-        {
-            get { return maxMana; }
-            set { maxMana = value; }
-        }
-
-        public int Mana
-        {
-            get { return mana; }
-            set { mana = value; }
-        }
-
-        public int MaxEndurance
-        {
-            get { return maxEndurance; }
-            set { maxEndurance = value; }
-        }
-
-        public int Endurance
-        {
-            get { return endurance; }
-            set { endurance = value; }
-        }
+        public int Hp => _health.health;
+        public int Mana => _mana.mana;
+        public int Endurance => _endurance.endurance;
 
         public int Gold
         {
@@ -78,47 +44,26 @@ namespace Entities
             get => attack;
             set => attack = value;
         }
-
-
+        
         public Player(string name)
         {
             this.name = name;
-            consumablesInventory = new Consumables[5];
+            consumablesInventory = new Consumables[6];
             relicInventory = new List<Relic>();
         }
 
-        public void TakeDamage(int damage)
-        {
-            if (hp - damage <= 0)
-                GameOver();
-            hp -= damage;
-            HPPlayer.Set(hp);
-        }
-
-        public void Heal(int heal)
-        {
-            if (hp + heal > maxHp)
-                hp = maxHp;
-            hp += heal;
-            HPPlayer.Set(hp);
-        }
-
-        public void RegenMana(int regen)
-        {
-            if (mana + regen > maxMana)
-                mana = maxMana;
-            mana += regen;
-            ManaPlayer.Set(mana);
-        }
+        public void TakeDamage(int value) => _health.TakeDamage(value);
+        public void Heal(int value) => _health.Heal(value);
+        public void GainMaxHp(int value) => _health.GainMaxHp(value);
         
-        public void RegenEndurance(int regen)
-        {
-            if (endurance + regen > maxEndurance)
-                endurance = maxEndurance;
-            endurance += regen;
-            EndurancePlayer.Set(endurance);
-        }
-
+        public void RegenMana(int value) => _mana.RegenMana(value);
+        public void UseMana(int value) => _mana.UseMana(value);
+        public void GainMaxMana(int value) => _mana.GainMaxMana(value);
+        
+        public void RegenEndurance(int value) => _endurance.RegenEndurance(value);
+        public void UseEndurance(int value) => _endurance.UseEndurance(value);
+        public void GainMaxEndurance(int value) => _endurance.GainMaxEndurance(value);
+        
         public void UseConsumable(Consumables consumable)
         {
             bool faux = false;
@@ -133,9 +78,6 @@ namespace Entities
 
             if (faux)
             {
-                if (consumable.HpRegen != 0)
-                    Heal(consumable.HpRegen);
-                
                 if (consumable.ManaRegen != 0)
                     RegenMana(consumable.ManaRegen);
                 
@@ -176,15 +118,6 @@ namespace Entities
 
             return false;
         }
-        
-        public void Start()
-        {
-            hp = maxHp;
-            mana = maxMana;
-            endurance = maxEndurance;
-        }
-
-
         
         public void GameOver()
         {

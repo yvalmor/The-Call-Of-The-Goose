@@ -22,7 +22,7 @@ namespace Entities
 
         public int EnduRegen => enduRegen;
 
-        public void addToInventory(Consumables consumables, Player player)
+        public void addToInventory(Consumables consumables, PlayerScripts.Player player)
         {
             int i = 0;
             bool vrai = true;

@@ -28,29 +28,15 @@ namespace Entities
         public int Gold => gold;
         public int Attack => attack;
 
-        public void addToInventory(Relic relic, Player player)
+        public void addToInventory(Relic relic, PlayerScripts.Player player)
         {
             player.relicInventory.Add(relic);
-            if (hp != 0)
-            {
-                player.MaxHp += hp;
-                player.Hp += hp;
-            }
 
-            if (armor != 0)
-                player.Armor += armor;
-
-            if (mana != 0)
-            {
-                player.MaxMana += mana;
-                player.Mana += mana;
-            }
-
-            if (endurance != 0)
-            {
-                player.MaxEndurance += endurance;
-                player.Endurance += endurance;
-            }
+            player.GainMaxHp(hp);
+            player.GainMaxMana(mana);
+            player.GainMaxEndurance(endurance);
+            
+            player.Armor += armor;
 
             if (gold != 0)
                 player.Gold += gold;
