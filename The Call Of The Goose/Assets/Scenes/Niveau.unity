@@ -140,6 +140,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1087242979381002454, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: list.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087242979381002454, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: list.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 10706f8c2e101fa43a1a61d8b4aa0331,
+        type: 2}
+    - target: {fileID: 1087242979381002454, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: list.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 33806b7f32c0b7643af2621fc823e0d4,
+        type: 2}
     - target: {fileID: 3234615521283616272, guid: a1903329470b06047b355a2c5f3b2b29,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -199,6 +216,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Niveau
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906314574063551205, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: list.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7871961526843825746, guid: a1903329470b06047b355a2c5f3b2b29,
         type: 3}

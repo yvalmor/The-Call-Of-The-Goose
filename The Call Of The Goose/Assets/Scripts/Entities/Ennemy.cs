@@ -9,7 +9,7 @@ namespace Entities
         public int maxHp;
         public int hp;
         private int gold_loot;
-        private Relic loot;
+        private Relique loot;
         private Consumable c_loot;
         private new string name;
         private int armor;

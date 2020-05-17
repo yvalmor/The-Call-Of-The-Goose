@@ -12,13 +12,13 @@ namespace Entities.PlayerScripts
         public Mana _mana;
         public Endurance _endurance;
         public Inventory Inventory;
-        public List<Relic> relicInventory;
+        public RelicInventory RelicInventory;
 
-        private int armor;
+        public int armor;
         private int lvl = 1;
         private int exp;
         private int gold;
-        private int attack;
+        public int attack;
         public new string name;
         public HealthPoint HPPlayer;
         public HealthPoint ManaPlayer;
@@ -45,13 +45,6 @@ namespace Entities.PlayerScripts
         {
             get => attack;
             set => attack = value;
-        }
-        
-        public Player(string name)
-        {
-            this.name = name;
-            Inventory.instance = gameObject.AddComponent<Inventory>();
-            relicInventory = new List<Relic>();
         }
 
         public void TakeDamage(int value) => _health.TakeDamage(value);
@@ -80,6 +73,7 @@ namespace Entities.PlayerScripts
         }
 
         public void AddToInventory(Consumable consumable) => Inventory.Add(consumable);
+        public void AddRelicToInventory(Relique relique) => RelicInventory.Add(relique);
 
         public void GameOver()
         {
