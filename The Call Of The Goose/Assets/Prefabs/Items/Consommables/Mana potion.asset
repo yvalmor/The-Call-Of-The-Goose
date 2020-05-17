@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a74b4854610d3a943a8f21bae11a7874, type: 3}
   m_Name: Mana potion
   m_EditorClassIdentifier: 
+  dialogue: {fileID: 2483228338408357729, guid: 37d7f0560ecee174cb847fa096b676a3,
+    type: 3}
   itemName: Potion de mana
   icon: {fileID: 21300000, guid: e553ada03c680f548b6468e2fa3620c0, type: 3}
   PvHeal: 0
-  manaHeal: 10
+  ManaHeal: 0
   EnduranceHeal: 0

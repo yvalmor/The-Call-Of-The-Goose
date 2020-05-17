@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 759b570c67584664add4d5469fc5f8e2, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
+  dialogue: {fileID: 2483228338408357729, guid: 37d7f0560ecee174cb847fa096b676a3,
+    type: 3}
   itemName: Sword
   icon: {fileID: 21300000, guid: e162fc61ef21e2a4091a20a131c3d8ae, type: 3}
   HpBonus: 0
