@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Item;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Entities.PlayerScripts
 {
@@ -9,20 +11,20 @@ namespace Entities.PlayerScripts
         public Health _health;
         public Mana _mana;
         public Endurance _endurance;
+        public Inventory Inventory;
+        public List<Relic> relicInventory;
 
         private int armor;
         private int lvl = 1;
         private int exp;
         private int gold;
         private int attack;
-        public string name;
+        public new string name;
         public HealthPoint HPPlayer;
         public HealthPoint ManaPlayer;
         public HealthPoint EndurancePlayer;
         public int floor;
         protected int[] expTreshold = {100, 164, 268, 441, 723, 1186, 1945, 3190, 5233}; // exp nécessaire pour lvl up
-        public Consumables[] consumablesInventory;
-        public List<Relic> relicInventory;
 
         public int Hp => _health.health;
         public int Mana => _mana.mana;
@@ -48,7 +50,7 @@ namespace Entities.PlayerScripts
         public Player(string name)
         {
             this.name = name;
-            consumablesInventory = new Consumables[6];
+            Inventory.instance = gameObject.AddComponent<Inventory>();
             relicInventory = new List<Relic>();
         }
 
@@ -64,48 +66,6 @@ namespace Entities.PlayerScripts
         public void UseEndurance(int value) => _endurance.UseEndurance(value);
         public void GainMaxEndurance(int value) => _endurance.GainMaxEndurance(value);
         
-        public void UseConsumable(Consumables consumable)
-        {
-            bool faux = false;
-            int i = 0;
-            while (!faux && i < consumablesInventory.Length)
-            {
-                if (consumablesInventory[i] == consumable)
-                    faux = true;
-                else
-                    i++;
-            }
-
-            if (faux)
-            {
-                if (consumable.ManaRegen != 0)
-                    RegenMana(consumable.ManaRegen);
-                
-                if (consumable.EnduRegen != 0)
-                    RegenEndurance(consumable.EnduRegen);
-                
-                consumablesInventory[i] = null;
-
-                bool vrai = true;
-                while(vrai && i < consumablesInventory.Length -1)
-                {
-                    if (consumablesInventory[i] == null && consumablesInventory[i+1] != null)
-                    {
-                        consumablesInventory[i] = consumablesInventory[i + 1];
-                        consumablesInventory[i + 1] = null;
-                    }
-                    else if(consumablesInventory[i] == null && consumablesInventory[i+1] == null)
-                    {
-                        vrai = false;
-                    }
-
-                    i++;
-                }
-            }
-            else
-                throw new NotImplementedException();
-        }
-        
         public bool GainExp(int gain)
         {
             exp += gain;
@@ -118,10 +78,12 @@ namespace Entities.PlayerScripts
 
             return false;
         }
-        
+
+        public void AddToInventory(Consumable consumable) => Inventory.Add(consumable);
+
         public void GameOver()
         {
-            throw new NotImplementedException();
+            SceneManager.LoadScene("Game Over");
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using Entities;
+using Entities.PlayerScripts;
 using Level;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,7 +10,7 @@ public class CombatEncounter : MonoBehaviour
     private bool _combatInput, _quitInput, _nextLevelInput,
         _inventoryInput, _inventoryActivated, _previousInventoryInput;
     public LevelGeneration level;
-    public GameObject player, inventoryScreen;
+    public GameObject player, inventoryScreen, combat;
     public Camera playerCamera;
     public PlayerMovement PlayerMovement;
 
@@ -30,7 +31,13 @@ public class CombatEncounter : MonoBehaviour
     private void ExecuteEvents()
     {
         if (_combatInput)
-            SceneManager.LoadScene("Combat");
+        {
+            PlayerMovement.Activated = false;
+            player.tag = "playerDeactivated";
+            combat.SetActive(true);
+            playerCamera.gameObject.SetActive(false);
+            player.GetComponent<Rigidbody2D>().Sleep();
+        }
         
         else if (_quitInput)
             SceneManager.LoadScene("Menu");
@@ -44,6 +51,7 @@ public class CombatEncounter : MonoBehaviour
                 inventoryScreen.SetActive(true);
                 playerCamera.gameObject.SetActive(false);
                 _inventoryActivated = true;
+                player.GetComponent<Rigidbody2D>().Sleep();
             }
             
             else
@@ -53,6 +61,7 @@ public class CombatEncounter : MonoBehaviour
                 inventoryScreen.SetActive(false);
                 playerCamera.gameObject.SetActive(true);
                 _inventoryActivated = false;
+                player.GetComponent<Rigidbody2D>().WakeUp();
             }
         }
         

@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Entities.PlayerScripts;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Entities
 {
     public enum Battle {PlayerTurn, EnnemyTurn, Won, Lost}
-    public class Système : MonoBehaviour
+    public class Systeme : MonoBehaviour
     {
+        public GameObject player, combat;
+        
         public Ennemy Op;
         public Player Pl;
     
@@ -19,7 +22,7 @@ namespace Entities
         // Start is called before the first frame update
         void Start()
         {
-            Pl.Start();
+            Pl = player.GetComponent<Player>();
             Op.Start();
             State = Battle.PlayerTurn;
         }
@@ -88,6 +91,8 @@ namespace Entities
             {
                 //message combat gagné ;)
             }
+            
+            EndCombat();
         }
 
         public void PlayerTurn()
@@ -99,7 +104,7 @@ namespace Entities
         {
             if (Pl.Mana > 0)
             {
-                Pl.Mana -= 5;
+                Pl.UseMana(5);
                 Pl.ManaPlayer.Set(Pl.Mana);
                 StartCoroutine(PlayerAttack());
             }
@@ -110,7 +115,7 @@ namespace Entities
         {
             if (Pl.Endurance > 0)
             {
-                Pl.Endurance -= 5;
+                Pl.UseEndurance(5);
                 Pl.EndurancePlayer.Set(Pl.Endurance);
                 StartCoroutine(PlayerAttack());
             }
@@ -125,6 +130,15 @@ namespace Entities
             }
 
             StartCoroutine(EnemyTurn());
+        }
+
+        public void EndCombat()
+        {
+            player.GetComponent<PlayerMovement>().Activated = true;
+            player.tag = "Player";
+            combat.SetActive(false);
+            player.GetComponent<Camera>().gameObject.SetActive(true);
+            player.GetComponent<Rigidbody2D>().WakeUp();
         }
     }
 }

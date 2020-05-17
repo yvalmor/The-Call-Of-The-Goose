@@ -20,6 +20,8 @@ namespace Item
             if (item)
             {
                 Debug.Log($"You clicked {item.itemName}");
+                item.Use();
+                item = null;
             }
         }
 

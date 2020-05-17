@@ -6,7 +6,7 @@ namespace Item
 {
     public class Inventory : MonoBehaviour
     {
-        public List<Item> list = new List<Item>();
+        public List<Consumable> list = new List<Consumable>();
         public GameObject player;
         public GameObject inventoryPanel;
         public static Inventory instance;
@@ -33,18 +33,18 @@ namespace Item
             }
         }
 
-        public void Add(Item item)
+        public void Add(Consumable consumable)
         {
             if (list.Count < 6)
             {
-                list.Add(item);
+                list.Add(consumable);
             }
             updatePanelSlots();
         }
 
-        public void Remove(Item item)
+        public void Remove(Consumable consumable)
         {
-            list.Remove(item);
+            list.Remove(consumable);
             updatePanelSlots();
         }
         
