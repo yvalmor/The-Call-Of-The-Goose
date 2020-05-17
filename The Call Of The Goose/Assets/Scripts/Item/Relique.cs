@@ -20,8 +20,9 @@ namespace Item
             if (ManaBonus != 0) bonusStat += $"Mana: +{ManaBonus}\n";
             if (EnduranceBonus != 0) bonusStat += $"Endurance: +{EnduranceBonus}\n";
             if (AttaqueBonus != 0) bonusStat += $"Attaque: +{AttaqueBonus}\n";
-            
-            Debug.Log(bonusStat);
+
+            dialogue.name = itemName;
+            dialogue.sentences = new[] {bonusStat};
         }
 
         public void Gain(Player player)

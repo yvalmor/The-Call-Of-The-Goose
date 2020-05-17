@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using DialogueSystem;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ namespace Item
     public class InventorySlotController : MonoBehaviour
     {
         public Item item;
+        public DialogueTrigger dialogueTrigger;
 
         private void Start()
         {
@@ -21,7 +23,8 @@ namespace Item
             {
                 Debug.Log($"You clicked {item.itemName}");
                 item.Use();
-                item = null;
+                dialogueTrigger.dialogue = item.dialogue;
+                dialogueTrigger.TriggerDialogue();
             }
         }
 
