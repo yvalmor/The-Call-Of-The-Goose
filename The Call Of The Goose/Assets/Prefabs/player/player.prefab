@@ -168,6 +168,8 @@ MonoBehaviour:
   _endurance: {fileID: 7301681639402154049}
   Inventory: {fileID: 7140942610384216873}
   RelicInventory: {fileID: 2889529609270681882}
+  armor: 0
+  attack: 0
   name: player
   HPPlayer: {fileID: 5537607031862480708}
   ManaPlayer: {fileID: 5537607032051192504}
@@ -622,6 +624,11 @@ PrefabInstance:
       propertyPath: combat
       value: 
       objectReference: {fileID: 5016486917799381007}
+    - target: {fileID: 3294121414355614597, guid: c4ca2057453f1b4448425fe628e62ef7,
+        type: 3}
+      propertyPath: m_Name
+      value: Scene
+      objectReference: {fileID: 0}
     - target: {fileID: 5804522794335336795, guid: c4ca2057453f1b4448425fe628e62ef7,
         type: 3}
       propertyPath: m_LocalPosition.x

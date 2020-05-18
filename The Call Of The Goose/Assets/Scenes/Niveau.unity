@@ -140,6 +140,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 138153484432266699, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1087242979381002454, guid: a1903329470b06047b355a2c5f3b2b29,
         type: 3}
       propertyPath: list.Array.size
