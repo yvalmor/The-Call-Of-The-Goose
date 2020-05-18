@@ -1,29 +1,24 @@
 ﻿using System;
 using Photon.Pun;
 using Photon.Realtime;
+using TMPro;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Multiplayer
 {
     public class PlayerSetUp : MonoBehaviourPunCallbacks
     {
         [SerializeField] private GameObject findOpponent = null;
-        [SerializeField] private GameObject waitingStatus = null;
-        [SerializeField] private Text waitingText = null;
+        [SerializeField] private GameObject waitingStatus = null; //scène avec waiting text
+        [SerializeField] private TextMeshProUGUI waitingText = null;
 
         private bool isConnect = false;
 
-        private const String Ver = "Oui";
+        private const String Ver = "Yas";
         private const int MaxPlayer = 2;
 
-        private void Awake()
-        {
-            PhotonNetwork.AutomaticallySyncScene = true;
-        }
-
-        public void FindOpponent()
+        public void FindOpponent() //associer au bouton multi du menu
         {
             isConnect = true;
 
@@ -55,6 +50,7 @@ namespace Multiplayer
         {
             waitingStatus.SetActive(false);
             findOpponent.SetActive(true);
+            Debug.Log($"Disconected for {cause}");
         }
 
         public override void OnJoinRandomFailed(short returnCode, string message)

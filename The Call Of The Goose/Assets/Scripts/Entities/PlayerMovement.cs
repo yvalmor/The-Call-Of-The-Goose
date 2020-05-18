@@ -1,9 +1,10 @@
 ﻿using System;
+using Photon.Pun;
 using UnityEngine;
 
 namespace Entities
 {
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : MonoBehaviourPun
     {
         public float moveSpeed = 5f;
 
@@ -17,28 +18,32 @@ namespace Entities
 
         void Update()
         {
-            _movement.x = Input.GetAxisRaw("Horizontal") * moveSpeed;
-            _movement.y = Input.GetAxisRaw("Vertical") * moveSpeed;
+            if (photonView.IsMine) //ajouter script 'photon view' au joueur (observe player)
+            {
+                _movement.x = Input.GetAxisRaw("Horizontal") * moveSpeed;
+                _movement.y = Input.GetAxisRaw("Vertical") * moveSpeed;
+                           
+                if (Math.Abs(_movement.x) > 0f || Math.Abs(_movement.y) > 0f)
+                    Animator.SetBool(Running, true);
+                else Animator.SetBool(Running, false);
+                            
+                if (_movement.x > 0)
+                {
+                    Animator.SetBool(Right, true);
+                    Animator.SetBool(Left, false);
+                }
+                else if (_movement.x < 0)
+                {
+                    Animator.SetBool(Left, true);
+                    Animator.SetBool(Right, false);
+                }
+                else
+                {
+                    Animator.SetBool(Right, false);
+                    Animator.SetBool(Left, false);
+                }
+            }
             
-            if (Math.Abs(_movement.x) > 0f || Math.Abs(_movement.y) > 0f)
-                Animator.SetBool(Running, true);
-            else Animator.SetBool(Running, false);
-            
-            if (_movement.x > 0)
-            {
-                Animator.SetBool(Right, true);
-                Animator.SetBool(Left, false);
-            }
-            else if (_movement.x < 0)
-            {
-                Animator.SetBool(Left, true);
-                Animator.SetBool(Right, false);
-            }
-            else
-            {
-                Animator.SetBool(Right, false);
-                Animator.SetBool(Left, false);
-            }
         }
 
         private void FixedUpdate()
