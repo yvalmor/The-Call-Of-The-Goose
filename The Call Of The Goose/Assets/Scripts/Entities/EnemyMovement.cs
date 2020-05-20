@@ -1,29 +1,30 @@
 ﻿using System;
+using Photon.Pun;
 using UnityEngine;
 
 namespace Entities
 {
     public class EnemyMovement : MonoBehaviour
     {
-
-        private GameObject[] player;
+        public GameObject[] player;
+        public GameObject Ennemy;
 
         private Vector2 _movement;
 
         public float moveSpeed = 4f;
         public float detectionRange = 200;
 
-        private float distance;
-
         public Rigidbody2D rb;
-        
-        private void Awake()
+
+        public void GetPlayers()
         {
             player = GameObject.FindGameObjectsWithTag("Player");
         }
 
         void Update()
         {
+            if (player == null || player.Length == 0)
+                GetPlayers();
             Vector3 closest;
             if (player.Length > 1)
             {
@@ -34,19 +35,15 @@ namespace Entities
                 if (dist1 > dist0)
                 {
                     closest = player[0].transform.position;
-                    distance = dist0;
                 }
                 else
                 {
                     closest = player[1].transform.position;
-                    distance = dist1;
                 }
             }
             else
             {
                 closest = player[0].transform.position;
-                distance = player[0].transform.position.x - rb.position.x + player[0].transform.position.y -
-                           rb.position.y;
             }
 
             if (Math.Abs(closest.x - rb.position.x) + Math.Abs(closest.y - rb.position.y) < detectionRange)
@@ -64,7 +61,7 @@ namespace Entities
 
         private void FixedUpdate()
         {
-            rb.MovePosition(rb.position + Time.fixedDeltaTime * moveSpeed * _movement);
+            Ennemy.transform.position = rb.position + Time.fixedDeltaTime * moveSpeed * _movement;
         }
     }
 }

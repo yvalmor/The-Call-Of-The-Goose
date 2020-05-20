@@ -1,4 +1,5 @@
 ﻿using System;
+using Photon.Pun;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -14,19 +15,51 @@ namespace Level
 		public GameObject Ennemy, Boss, Merchant;
 		public int size;
 
+		public void Create()
+		{
+			if (PhotonNetwork.IsConnected)
+			{
+				string prefabName;
+				switch (size)
+				{
+					case 0:
+						prefabName = "Spawn lv1";
+						break;
+					case 1:
+						prefabName = "Boss lv1";
+						break;
+					case 2:
+						prefabName = "Shop Room lv1";
+						break;
+					case 3:
+						prefabName = "Room Small lv1";
+						break;
+					case 4:
+						prefabName = "Room Med lv1";
+						break;
+					default:
+						prefabName = "Room Big lv1";
+						break;
+				}
+				
+				PhotonNetwork.Instantiate(prefabName, transform.position, Quaternion.identity);
+			}
+			else Instantiate(rooms[size], transform.position, Quaternion.identity);
+			if (down || right) return;
+			if (Random.Range(0, 2) == 0)
+				down = true;
+			else right = true;
+		}
+		
 		public void Generate()
 		{
-			Instantiate(rooms[size], transform.position, Quaternion.identity);
+			Create();
 			if (size > 2)
 				GenerateMobs();
 			/*else if (size == 2)
 				GenerateBoss();
 			else if (size == 1)
 				GenerateShop();*/
-			if (down || right) return;
-			if (Random.Range(0, 2) == 0)
-				down = true;
-			else right = true;
 		}
 
 		private void GenerateMobs()
@@ -65,7 +98,10 @@ namespace Level
 				position.x += Random.Range(minX, maxX);
 				position.y -= Random.Range(minY, maxY);
 				
-				Instantiate(Ennemy, position, Quaternion.identity);
+				if (PhotonNetwork.IsConnected)
+					PhotonNetwork.Instantiate("Ennemy", position, Quaternion.identity);
+				else
+					Instantiate(Ennemy, position, Quaternion.identity);
 			}
 		}
 
@@ -107,7 +143,9 @@ namespace Level
 			{
 				position.y -= max;
 
-				Instantiate(HWall, position, Quaternion.identity);
+				if (PhotonNetwork.IsConnected)
+					PhotonNetwork.Instantiate("HWall", position, Quaternion.identity);
+				else Instantiate(HWall, position, Quaternion.identity);
 			}
 			else
 			{
@@ -116,18 +154,24 @@ namespace Level
 				for (int i = 0; i < max; i++)
 				{
 					if (i != max - 1)
-						Instantiate(walls, position, Quaternion.identity);
+						if (PhotonNetwork.IsConnected)
+							PhotonNetwork.Instantiate("walls", position, Quaternion.identity);
+						else Instantiate(walls, position, Quaternion.identity);
 					position.x++;
 					
 					for (int j = 0; j < 5; j++)
 					{
-						Instantiate(floors, position, Quaternion.identity);
+						if (PhotonNetwork.IsConnected)
+							PhotonNetwork.Instantiate("floors", position, Quaternion.identity);
+						else Instantiate(floors, position, Quaternion.identity);
 						position.x++;
 					}
 
 					if (i != max - 1)
 					{
-						Instantiate(walls, position, Quaternion.identity);
+						if (PhotonNetwork.IsConnected)
+							PhotonNetwork.Instantiate("walls", position, Quaternion.identity);
+						else Instantiate(walls, position, Quaternion.identity);
 						position.x++;
 					}
 					position.x -= 7;
@@ -164,7 +208,9 @@ namespace Level
 			{
 				position.y -= 34 - max;
             
-				Instantiate(HWall, position, Quaternion.identity);
+				if (PhotonNetwork.IsConnected)
+					PhotonNetwork.Instantiate("HWall", position, Quaternion.identity);
+				else Instantiate(HWall, position, Quaternion.identity);
 			}
 			else
 			{
@@ -173,18 +219,24 @@ namespace Level
 				for (int i = 0; i <= max + 1; i++)
 				{
 					if (i != 0)
-						Instantiate(walls, position, Quaternion.identity);
+						if (PhotonNetwork.IsConnected)
+							PhotonNetwork.Instantiate("walls", position, Quaternion.identity);
+						else Instantiate(walls, position, Quaternion.identity);
 					position.x++;
             					
 					for (int j = 0; j < 5; j++)
 					{
-						Instantiate(floors, position, Quaternion.identity);
+						if (PhotonNetwork.IsConnected)
+							PhotonNetwork.Instantiate("floors", position, Quaternion.identity);
+						else Instantiate(floors, position, Quaternion.identity);
 						position.x++;
 					}
             
 					if (i != 0)
 					{
-						Instantiate(walls, position, Quaternion.identity);
+						if (PhotonNetwork.IsConnected)
+							PhotonNetwork.Instantiate("walls", position, Quaternion.identity);
+						else Instantiate(walls, position, Quaternion.identity);
 					}
 					position.x++;
 					position.x -= 7;
@@ -218,7 +270,9 @@ namespace Level
 			{
 				position.x += max;
             
-				Instantiate(VWall, position, Quaternion.identity);
+				if (PhotonNetwork.IsConnected)
+					PhotonNetwork.Instantiate("VWall", position, Quaternion.identity);
+				else Instantiate(VWall, position, Quaternion.identity);
 			}
 			else
 			{
@@ -227,18 +281,24 @@ namespace Level
 				for (int i = 0; i <= max; i++)
 				{
 					if (i != max)
-						Instantiate(walls, position, Quaternion.identity);
+						if (PhotonNetwork.IsConnected)
+							PhotonNetwork.Instantiate("walls", position, Quaternion.identity);
+						else Instantiate(walls, position, Quaternion.identity);
 					position.y++;
             					
 					for (int j = 0; j < 5; j++)
 					{
-						Instantiate(floors, position, Quaternion.identity);
+						if (PhotonNetwork.IsConnected)
+							PhotonNetwork.Instantiate("floors", position, Quaternion.identity);
+						else Instantiate(floors, position, Quaternion.identity);
 						position.y++;
 					}
             
 					if (i != max)
 					{
-						Instantiate(walls, position, Quaternion.identity);
+						if (PhotonNetwork.IsConnected)
+							PhotonNetwork.Instantiate("walls", position, Quaternion.identity);
+						else Instantiate(walls, position, Quaternion.identity);
 					}
 					position.y -= 6;
 					position.x++;
@@ -270,7 +330,9 @@ namespace Level
 			if (right)
 			{
 				position.x += 30 - max;
-				Instantiate(VWall, position, Quaternion.identity);
+				if (PhotonNetwork.IsConnected)
+					PhotonNetwork.Instantiate("VWall", position, Quaternion.identity);
+				else Instantiate(VWall, position, Quaternion.identity);
 			}
 			else
 			{
@@ -279,18 +341,24 @@ namespace Level
 				for (int i = 0; i <= max; i++)
 				{
 					if (i != 0)
-						Instantiate(walls, position, Quaternion.identity);
+						if (PhotonNetwork.IsConnected)
+							PhotonNetwork.Instantiate("walls", position, Quaternion.identity);
+						else Instantiate(walls, position, Quaternion.identity);
 					position.y++;
             					
 					for (int j = 0; j < 5; j++)
 					{
-						Instantiate(floors, position, Quaternion.identity);
+						if (PhotonNetwork.IsConnected)
+							PhotonNetwork.Instantiate("floors", position, Quaternion.identity);
+						else Instantiate(floors, position, Quaternion.identity);
 						position.y++;
 					}
             
 					if (i != 0)
 					{
-						Instantiate(walls, position, Quaternion.identity);
+						if (PhotonNetwork.IsConnected)
+							PhotonNetwork.Instantiate("walls", position, Quaternion.identity);
+						else Instantiate(walls, position, Quaternion.identity);
 					}
 					position.y -= 6;
 					position.x++;

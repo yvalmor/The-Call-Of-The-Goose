@@ -24,7 +24,7 @@ namespace Entities.PlayerScripts
         public HealthPoint ManaPlayer;
         public HealthPoint EndurancePlayer;
         public int floor;
-        protected int[] expTreshold = {100, 164, 268, 441, 723, 1186, 1945, 3190, 5233}; // exp nécessaire pour lvl up
+        private int[] expTreshold = {100, 164, 268, 441, 723, 1186, 1945, 3190, 5233}; // exp nécessaire pour lvl up
 
         public int Hp => _health.health;
         public int Mana => _mana.mana;
@@ -78,6 +78,11 @@ namespace Entities.PlayerScripts
         public void GameOver()
         {
             SceneManager.LoadScene("Game Over");
+        }
+
+        public void LaunchFight(Ennemy ennemy)
+        {
+            
         }
     }
 }

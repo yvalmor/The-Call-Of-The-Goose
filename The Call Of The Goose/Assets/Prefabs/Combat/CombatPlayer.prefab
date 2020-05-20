@@ -186,10 +186,9 @@ GameObject:
   - component: {fileID: 2245636183840863891}
   - component: {fileID: 2245636183840863889}
   - component: {fileID: 2245636183840863890}
-  - component: {fileID: 2245636183840863888}
   - component: {fileID: 2245636183840863895}
   m_Layer: 0
-  m_Name: Player
+  m_Name: CombatPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -253,24 +252,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2245636183840863888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2245636183840863884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9f419b73c678b246838344f18939f9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: player
-  HPPlayer: {fileID: 2245636183571818543}
-  ManaPlayer: {fileID: 2245636183902942675}
-  EndurancePlayer: {fileID: 2245636184681318179}
-  floor: 0
-  relicInventory: []
 --- !u!95 &2245636183840863895
 Animator:
   serializedVersion: 3

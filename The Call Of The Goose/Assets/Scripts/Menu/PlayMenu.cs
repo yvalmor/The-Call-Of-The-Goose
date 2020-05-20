@@ -14,10 +14,5 @@ namespace Menu
         {
             SceneManager.LoadScene("Tuto");
         }
-
-        public void BeginMulti()
-        {
-            SceneManager.LoadScene("Multiplayer");
-        }
     }
 }

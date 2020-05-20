@@ -1,3 +1,20 @@
-﻿fileFormatVersion: 2
+fileFormatVersion: 2
 guid: 9e1a5a05ea80418a847a42236f252764
-timeCreated: 1586016798
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - HWall: {fileID: 5184629432134559919, guid: c3a45e7d67977614f87e1a3236239260, type: 3}
+  - VWall: {fileID: 3072078105137263574, guid: 73eddb477de940f4885ce5b98e2f5370, type: 3}
+  - floors: {fileID: 7862645733754939744, guid: aeb7d50fafc8fd646a2c23b8ad2d2e64,
+      type: 3}
+  - walls: {fileID: 2671490675865338511, guid: edb50d76d9b25d541976013253947cca, type: 3}
+  - Ennemy: {fileID: 4754841578696095726, guid: a902537fc3e4c9f4d85510551f5cec3a,
+      type: 3}
+  - Boss: {instanceID: 0}
+  - Merchant: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

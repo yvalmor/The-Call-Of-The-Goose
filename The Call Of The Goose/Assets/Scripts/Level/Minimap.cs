@@ -59,7 +59,9 @@ namespace Level
             
             position.y /= -35;
 
-            Transform newPos = positions[(int) position.y * 4 + (int) position.x];
+            int index = (int) position.y * 4 + (int) position.x;
+            
+            Transform newPos = positions[index];
 
             Destroy(playerIcon);
 

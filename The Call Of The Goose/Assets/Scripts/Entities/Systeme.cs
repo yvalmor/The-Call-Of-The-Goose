@@ -2,13 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using Entities.PlayerScripts;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Entities
 {
     public enum Battle {PlayerTurn, EnnemyTurn, Won, Lost}
-    public class Systeme : MonoBehaviour
+    public class Systeme : MonoBehaviourPun
     {
         public GameObject player, combat;
         
@@ -29,6 +30,9 @@ namespace Entities
 
         private void Update()
         {
+            if (PhotonNetwork.IsConnected && photonView.IsMine)
+                return;
+            
             inputB = Input.GetKey(KeyCode.B);
             inputSpace = Input.GetKey(KeyCode.Space);
             

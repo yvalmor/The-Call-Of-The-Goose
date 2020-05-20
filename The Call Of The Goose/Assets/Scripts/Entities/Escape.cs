@@ -1,23 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Escape : MonoBehaviour
+namespace Entities
 {
-    private bool _quit;
-
-    // Start is called before the first frame update
-    void Start()
+    public class Escape : MonoBehaviourPun
     {
-        _quit = false;
-    }
+        private bool _quit;
 
-    // Update is called once per frame
-    void Update()
-    {
-        _quit = Input.GetKey(KeyCode.Escape);
-        if (_quit)
-            SceneManager.LoadScene("Menu");
+        // Start is called before the first frame update
+        void Start()
+        {
+            _quit = false;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (PhotonNetwork.IsConnected && !photonView.IsMine)
+                return;
+        
+            _quit = Input.GetKey(KeyCode.Escape);
+            if (_quit)
+                SceneManager.LoadScene("Menu");
+        }
     }
 }

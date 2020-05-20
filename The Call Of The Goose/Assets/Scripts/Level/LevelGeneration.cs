@@ -1,15 +1,18 @@
 ﻿using System;
 using Entities;
+using Entities.PlayerScripts;
+using Photon.Pun;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Level
 {
-	public class LevelGeneration : MonoBehaviour
+	public class LevelGeneration : MonoBehaviourPun
 	{
 		public GameObject[] positions;
-		public GameObject player;
 		private Transform _spawnRoom, _bossRoom, _shopRoom;
+
+		public Vector3 SpawnRoom => _spawnRoom.position;
 
 		private Room[] _rooms;
 
@@ -17,7 +20,8 @@ namespace Level
 
 		private void Awake()
 		{
-			GenLevel();
+			if (!PhotonNetwork.IsConnected)
+				GenLevel();
 		}
 
 		private void GetPositions()
@@ -62,9 +66,11 @@ namespace Level
 			Vector3 playerSpawn = _spawnRoom.position;
 			playerSpawn.x += 15;
 			playerSpawn.y -= 17.5f;
-			player.transform.position = playerSpawn;
-			
-			player.GetComponent<PlayerUI>().GenerateMinimap();
+
+			foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+			{
+				player.transform.position = playerSpawn;
+			}
 		}
 
 		public void DestroyLevel()
