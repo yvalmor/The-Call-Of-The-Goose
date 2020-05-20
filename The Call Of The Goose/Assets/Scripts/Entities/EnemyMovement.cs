@@ -14,7 +14,6 @@ namespace Entities
         public float detectionRange = 200;
 
         private float distance;
-        private int playerNumber;
 
         public Rigidbody2D rb;
         
@@ -36,13 +35,11 @@ namespace Entities
                 {
                     closest = player[0].transform.position;
                     distance = dist0;
-                    playerNumber = 0;
                 }
                 else
                 {
                     closest = player[1].transform.position;
                     distance = dist1;
-                    playerNumber = 1;
                 }
             }
             else
@@ -50,7 +47,6 @@ namespace Entities
                 closest = player[0].transform.position;
                 distance = player[0].transform.position.x - rb.position.x + player[0].transform.position.y -
                            rb.position.y;
-                playerNumber = 0;
             }
 
             if (Math.Abs(closest.x - rb.position.x) + Math.Abs(closest.y - rb.position.y) < detectionRange)

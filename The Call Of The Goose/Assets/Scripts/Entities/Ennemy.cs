@@ -1,16 +1,19 @@
-﻿namespace Entities
+﻿using Item;
+using UnityEngine;
+
+namespace Entities
 {
-    public class Ennemy
+    public class Ennemy : MonoBehaviour
     {
 	    
-        private int maxHp;
-        private int hp;
+        public int maxHp;
+        public int hp;
         private int gold_loot;
-        private Relic loot;
-        private Consumables c_loot;
-        private string name;
+        private Relique loot;
+        private Consumable c_loot;
+        private new string name;
         private int armor;
-        protected int attack;
+        private int attack;
         public HealthPoint HPE;
         
         public int Attaque => attack;
