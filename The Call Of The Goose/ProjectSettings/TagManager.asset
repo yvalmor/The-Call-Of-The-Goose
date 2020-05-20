@@ -10,6 +10,8 @@ TagManager:
   - Minimap
   - Level
   - playerDeactivated
+  - playerCanvas
+  - Room
   layers:
   - Default
   - TransparentFX
