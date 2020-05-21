@@ -6,27 +6,23 @@ using UnityEngine.SceneManagement;
 
 namespace Entities.PlayerScripts
 {
-    public class Player : MonoBehaviour
+    public class Player : Entity
     {
-        public Health _health;
         public Mana _mana;
         public Endurance _endurance;
         public Inventory Inventory;
         public RelicInventory RelicInventory;
-
-        public int armor;
-        private int lvl = 1;
+        
         private int exp;
         private int gold;
         public int attack;
-        public new string name;
         public HealthPoint HPPlayer;
         public HealthPoint ManaPlayer;
         public HealthPoint EndurancePlayer;
         public int floor;
         private int[] expTreshold = {100, 164, 268, 441, 723, 1186, 1945, 3190, 5233}; // exp nécessaire pour lvl up
 
-        public int Hp => _health.health;
+        public int Hp => health.health;
         public int Mana => _mana.mana;
         public int Endurance => _endurance.endurance;
 
@@ -47,9 +43,9 @@ namespace Entities.PlayerScripts
             set => attack = value;
         }
 
-        public void TakeDamage(int value) => _health.TakeDamage(value);
-        public void Heal(int value) => _health.Heal(value);
-        public void GainMaxHp(int value) => _health.GainMaxHp(value);
+        public void TakeDamage(int value) => health.TakeDamage(value);
+        public void Heal(int value) => health.Heal(value);
+        public void GainMaxHp(int value) => health.GainMaxHp(value);
         
         public void RegenMana(int value) => _mana.RegenMana(value);
         public void UseMana(int value) => _mana.UseMana(value);
