@@ -23,23 +23,24 @@ namespace Entities
 
         void Update()
         {
-            if (player == null || player.Length == 0)
-                GetPlayers();
+            GetPlayers();
+
+            if (player.Length == 0)
+            {
+                _movement = Vector2.zero;
+                return;
+            }
+
             Vector3 closest;
+            
             if (player.Length > 1)
             {
                 float dist0 = player[0].transform.position.x - rb.position.x + player[0].transform.position.y -
-                              rb.position.y;
-                float dist1 = player[1].transform.position.x - rb.position.x + player[1].transform.position.y -
-                              rb.position.y;
-                if (dist1 > dist0)
-                {
-                    closest = player[0].transform.position;
-                }
-                else
-                {
-                    closest = player[1].transform.position;
-                }
+                              rb.position.y,
+                    dist1 = player[1].transform.position.x - rb.position.x + player[1].transform.position.y -
+                                                     rb.position.y;
+                
+                closest = dist1 > dist0 ? player[0].transform.position : player[1].transform.position;
             }
             else
             {
@@ -52,16 +53,14 @@ namespace Entities
                 _movement.y = closest.y - rb.position.y;
             }
             else
-            {
-                _movement.x = 0;
-                _movement.y = 0;
-            }
+                _movement = Vector2.zero;
         }
 
 
         private void FixedUpdate()
         {
-            Ennemy.transform.position = rb.position + Time.fixedDeltaTime * moveSpeed * _movement;
+            rb.transform.position = rb.position + Time.fixedDeltaTime * moveSpeed * _movement;
+            Ennemy.transform.position = rb.transform.position;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
 namespace Item
@@ -11,6 +12,19 @@ namespace Item
         public GameObject inventoryPanel;
         public static Inventory instance;
 
+        private GameObject[] childs;
+
+        private void Awake()
+        {
+            if (PhotonNetwork.IsConnected)
+                inventoryPanel = GameObject.FindGameObjectWithTag("Inventory panel");
+            
+            childs = new GameObject[inventoryPanel.transform.childCount];
+            
+            for (int i = 0; i < inventoryPanel.transform.childCount; i++)
+                childs[i] = inventoryPanel.transform.GetChild(i).gameObject;
+        }
+
         private void Start()
         {
             instance = this;
@@ -20,14 +34,11 @@ namespace Item
         private void updatePanelSlots()
         {
             int index = 0;
-            foreach (Transform child in inventoryPanel.transform)
+            foreach (GameObject child in childs)
             {
                 InventorySlotController slot = child.GetComponent<InventorySlotController>();
-                if (index < list.Count)
-                    slot.item = list[index];
-                else
-                    slot.item = null;
-
+                
+                slot.item = index < list.Count ? list[index] : null;
                 slot.updateInfo();
                 index++;
             }
