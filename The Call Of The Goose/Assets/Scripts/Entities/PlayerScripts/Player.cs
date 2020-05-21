@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Item;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Entities.PlayerScripts
 {
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviourPun
     {
         public Health _health;
         public Mana _mana;
@@ -25,6 +26,14 @@ namespace Entities.PlayerScripts
         public HealthPoint EndurancePlayer;
         public int floor;
         private int[] expTreshold = {100, 164, 268, 441, 723, 1186, 1945, 3190, 5233}; // exp nécessaire pour lvl up
+
+        private void Awake()
+        {
+            if (!PhotonNetwork.IsConnected) return;
+            
+            Inventory.player = gameObject;
+            RelicInventory.player = gameObject;
+        }
 
         public int Hp => _health.health;
         public int Mana => _mana.mana;
@@ -83,6 +92,11 @@ namespace Entities.PlayerScripts
         public void LaunchFight(Ennemy ennemy)
         {
             
+        }
+
+        public bool IsMine()
+        {
+            return !PhotonNetwork.IsConnected || photonView.IsMine;
         }
     }
 }

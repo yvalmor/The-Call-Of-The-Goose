@@ -12,6 +12,8 @@ TagManager:
   - playerDeactivated
   - playerCanvas
   - Room
+  - Relic panel
+  - Inventory panel
   layers:
   - Default
   - TransparentFX
