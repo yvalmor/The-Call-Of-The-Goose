@@ -18,6 +18,8 @@ namespace Entities.PlayerScripts
         // Update is called once per frame
         void Update()
         {
+            if (!photonView.IsMine) return;
+            
             Vector3 pos = transform.position;
             pos.z = playerCamera.transform.position.z;
             playerCamera.transform.position = pos;

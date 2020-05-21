@@ -280,6 +280,11 @@ PrefabInstance:
       propertyPath: viewIdField
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6074018829921354687, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: playerPosition
+      value: 
+      objectReference: {fileID: 478781860}
     - target: {fileID: 7314286145567587190, guid: a1903329470b06047b355a2c5f3b2b29,
         type: 3}
       propertyPath: viewIdField

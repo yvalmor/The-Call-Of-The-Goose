@@ -1,11 +1,12 @@
 ﻿using System;
+using Photon.Pun;
 using UnityEngine;
 
 namespace Level
 {
     public class Minimap : MonoBehaviour
     {
-        public Transform playerPosition;
+        public GameObject playerPosition;
         public Transform[] positions;
         public GameObject[] mapRooms;
         public GameObject playerIcon;
@@ -19,6 +20,8 @@ namespace Level
                 Instantiate(r, positions[i].position, Quaternion.identity, transform);
             }
         }
+
+        public void SetPlayer(GameObject player) => playerPosition = player;
 
         private GameObject getMapRoom(Room room)
         {
@@ -53,7 +56,7 @@ namespace Level
 
         private void UpdatePlayerIconPosition()
         {
-            Vector3 position = playerPosition.position;
+            Vector3 position = playerPosition.transform.position;
 
             position.x /= 31;
             
@@ -70,7 +73,8 @@ namespace Level
 
         private void Update()
         {
-            UpdatePlayerIconPosition();
+            if (playerPosition.GetPhotonView().IsMine)
+                UpdatePlayerIconPosition();
         }
     }
 }

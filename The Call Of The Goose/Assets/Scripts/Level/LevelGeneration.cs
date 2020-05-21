@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using Entities;
 using Entities.PlayerScripts;
 using Photon.Pun;
@@ -10,18 +12,80 @@ namespace Level
 	public class LevelGeneration : MonoBehaviourPun
 	{
 		public GameObject[] positions;
-		private Transform _spawnRoom, _bossRoom, _shopRoom;
-
-		public Vector3 SpawnRoom => _spawnRoom.position;
+		public Transform _spawnRoom, _bossRoom, _shopRoom;
 
 		private Room[] _rooms;
 
 		public Room[] Rooms => _rooms;
 
+		public Vector3 SpawnRoom => _spawnRoom.position;
+
 		private void Awake()
 		{
 			if (!PhotonNetwork.IsConnected)
 				GenLevel();
+			else if (!PhotonNetwork.IsMasterClient)
+			{
+				GetPositions();
+				_rooms = new Room[20];
+				GameObject[] roomObjects = GameObject.FindGameObjectsWithTag("Room");
+				for (int i = 0; i < _rooms.Length; i++)
+					_rooms[i] = roomObjects[i].GetComponent<Room>();
+			}
+		}
+
+		public byte[][] Serialize()
+		{
+			Debug.Log("Serializing level");
+			
+			List<byte[]> toSend = new List<byte[]>();
+
+			foreach (Room room in _rooms)
+				toSend.Add(room.Serialize());
+			
+			MemoryStream ms = new MemoryStream(12);
+			ms.Write(BitConverter.GetBytes(_spawnRoom.position.x), 0, 4);
+			ms.Write(BitConverter.GetBytes(_spawnRoom.position.y), 0, 4);
+			ms.Write(BitConverter.GetBytes(_spawnRoom.position.z), 0, 4);
+			toSend.Add(ms.ToArray());
+			ms = new MemoryStream(12);
+			ms.Write(BitConverter.GetBytes(_bossRoom.position.x), 0, 4);
+			ms.Write(BitConverter.GetBytes(_bossRoom.position.y), 0, 4);
+			ms.Write(BitConverter.GetBytes(_bossRoom.position.z), 0, 4);
+			toSend.Add(ms.ToArray());
+			ms = new MemoryStream(12);
+			ms.Write(BitConverter.GetBytes(_shopRoom.position.x), 0, 4);
+			ms.Write(BitConverter.GetBytes(_shopRoom.position.y), 0, 4);
+			ms.Write(BitConverter.GetBytes(_shopRoom.position.z), 0, 4);
+			toSend.Add(ms.ToArray());
+
+			return toSend.ToArray();
+		}
+
+		public void Deserialize(byte[][] bytes)
+		{
+			Debug.Log("Deserializing level");
+			
+			for (int i = 0; i < bytes.Length - 3; i++)
+				_rooms[i].Deserialize(bytes[i]);
+
+			Vector3 spawn, boss, shop;
+			
+			spawn.x = BitConverter.ToSingle(bytes[bytes.Length - 3], 0);
+			spawn.y = BitConverter.ToSingle(bytes[bytes.Length - 3], 4);
+			spawn.z = BitConverter.ToSingle(bytes[bytes.Length - 3], 8);
+			
+			boss.x = BitConverter.ToSingle(bytes[bytes.Length - 2], 0);
+			boss.y = BitConverter.ToSingle(bytes[bytes.Length - 2], 4);
+			boss.z = BitConverter.ToSingle(bytes[bytes.Length - 2], 8);
+			
+			shop.x = BitConverter.ToSingle(bytes[bytes.Length - 1], 0);
+			shop.y = BitConverter.ToSingle(bytes[bytes.Length - 1], 4);
+			shop.z = BitConverter.ToSingle(bytes[bytes.Length - 1], 8);
+
+			_spawnRoom.position = spawn;
+			_shopRoom.position = shop;
+			_bossRoom.position = boss;
 		}
 
 		private void GetPositions()
@@ -62,15 +126,15 @@ namespace Level
 
 			foreach (Room room in _rooms)
 				room.GenerateCorridors();
+			
+			if (PhotonNetwork.IsConnected) return;
 
 			Vector3 playerSpawn = _spawnRoom.position;
 			playerSpawn.x += 15;
 			playerSpawn.y -= 17.5f;
 
 			foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
-			{
 				player.transform.position = playerSpawn;
-			}
 		}
 
 		public void DestroyLevel()

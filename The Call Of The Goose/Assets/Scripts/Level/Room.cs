@@ -5,15 +5,58 @@ using Random = UnityEngine.Random;
 
 namespace Level
 {
-	public class Room : MonoBehaviour
+	public class Room : MonoBehaviourPun
 	{
 		public bool b_up, b_down, b_left, b_right;
 		public bool up, down, left, right;
-
+		public int size;
+		
 		public GameObject[] rooms;
 		public GameObject HWall, VWall, floors, walls;
 		public GameObject Ennemy, Boss, Merchant;
-		public int size;
+
+		public void Deserialize(byte[] bytes)
+		{
+			RoomStats roomStats = RoomStats.Deserialize(bytes);
+			
+			size = roomStats.size;
+			b_up = roomStats.b_up;
+			b_down = roomStats.b_down;
+			b_left = roomStats.b_left;
+			b_right = roomStats.b_right;
+			up = roomStats.up;
+			down = roomStats.down;
+			left = roomStats.left;
+			right = roomStats.right;
+
+			Vector3 pos = new Vector3(roomStats.x, roomStats.y, roomStats.z);
+			transform.position = pos;
+			
+			Create();
+		}
+
+		public byte[] Serialize()
+		{
+			Vector3 pos = transform.position;
+			
+			RoomStats roomStats = new RoomStats
+			{
+				size = size,
+				b_up = b_up,
+				b_down = b_down,
+				b_left = b_left,
+				b_right = b_right,
+				up = up,
+				down = down,
+				left = left,
+				right = right,
+				x = pos.x,
+				y = pos.y,
+				z = pos.z
+			};
+
+			return RoomStats.Serialize(roomStats);
+		}
 
 		public void Create()
 		{

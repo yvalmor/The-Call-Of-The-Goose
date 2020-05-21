@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7841500718889239340}
   m_Layer: 0
   m_Name: Room
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,6 +51,7 @@ MonoBehaviour:
   down: 0
   left: 0
   right: 0
+  size: 0
   rooms:
   - {fileID: 3804077594849077171, guid: 1e9aa93976f0c4146b3c429a94fd6520, type: 3}
   - {fileID: 8968917157128882613, guid: c205b8c044c9bde4a9eb617b986b5208, type: 3}
@@ -65,4 +66,3 @@ MonoBehaviour:
   Ennemy: {fileID: 4754841578696095726, guid: a902537fc3e4c9f4d85510551f5cec3a, type: 3}
   Boss: {fileID: 0}
   Merchant: {fileID: 0}
-  size: 0

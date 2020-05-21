@@ -15,7 +15,7 @@ namespace Entities.PlayerScripts
                 GenerateMinimap();
         }
 
-        public void GenerateMinimap()
+        private void GenerateMinimap()
         {
             GameObject go = GameObject.FindWithTag("Level");
             LevelGeneration level = go.GetComponent<LevelGeneration>();

@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 4795931299436714682}
   - component: {fileID: 6435547756831380200}
   - component: {fileID: 3411699265805607514}
-  - component: {fileID: 3546891959461054189}
+  - component: {fileID: -4395209629804953212}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -343,7 +343,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 6435547756831380200}
   - {fileID: 3411699265805607514}
-  - {fileID: 3546891959461054189}
+  - {fileID: -4395209629804953212}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -389,7 +389,7 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
---- !u!114 &3546891959461054189
+--- !u!114 &-4395209629804953212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -403,7 +403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizeVelocity: 1
   m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 0
+  m_TeleportEnabled: 1
   m_TeleportIfDistanceGreaterThan: 3
 --- !u!1001 &369539741099355771
 PrefabInstance:

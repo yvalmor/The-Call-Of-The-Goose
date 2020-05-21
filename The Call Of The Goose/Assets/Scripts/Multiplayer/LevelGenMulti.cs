@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using Entities.PlayerScripts;
 using Level;
 using Photon.Pun;
 using UnityEngine;
@@ -9,34 +11,76 @@ namespace Multiplayer
 {
     public class LevelGenMulti : MonoBehaviourPun
     {
-        public GameObject level;
-        public Camera camera;
-        
+        public GameObject playerPrefab;
+        public GameObject levelPrefab;
+        public GameObject player;
+        public new Camera camera;
+        private LevelGeneration _levelGen;
+
         private void Start()
         {
-            Instantiate(level);
+            player = PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
+            player.GetComponent<CameraControl>().playerCamera = camera;
+            _levelGen = Instantiate(levelPrefab).GetComponent<LevelGeneration>();
+            
+            Minimap minimap = GameObject.FindWithTag("Minimap").GetComponent<Minimap>();
+            
             if (PhotonNetwork.IsMasterClient)
             {
-                LevelGeneration levelGen = GameObject.FindWithTag("Level").GetComponent<LevelGeneration>();
-                levelGen.GenLevel();
-                photonView.RPC("SpawnMinimap", RpcTarget.All, levelGen);
-                Vector3 pos = levelGen.SpawnRoom;
-                pos.x += 15;
+                _levelGen.GenLevel();
+                
+                
+                Vector3 pos = _levelGen.SpawnRoom;
+                pos.x += 17.5f;
                 pos.y -= 17.5f;
-                photonView.RPC("SpawnPlayer", RpcTarget.All, pos);
+                player.transform.position = pos;
+                minimap.GenerateMinimap(_levelGen.Rooms);
+                
+                MemoryStream ms = new MemoryStream(12);
+                ms.Write(BitConverter.GetBytes(player.transform.position.x), 0, 4);
+                ms.Write(BitConverter.GetBytes(player.transform.position.y), 0, 4);
+                ms.Write(BitConverter.GetBytes(player.transform.position.z), 0, 4);
+                
+                photonView.RPC("SpawnPlayer", RpcTarget.Others, ms.ToArray());
             }
+            
+            minimap.SetPlayer(player);
         }
 
         [PunRPC]
-        public void SpawnMinimap(LevelGeneration levelGen)
+        public void SpawnPlayer(byte[] bytes)
         {
-            GameObject.FindWithTag("Minimap").GetComponent<Minimap>().GenerateMinimap(levelGen.Rooms);
+            Vector3 spawn;
+			
+            spawn.x = BitConverter.ToSingle(bytes, 0);
+            spawn.y = BitConverter.ToSingle(bytes, 4);
+            spawn.z = BitConverter.ToSingle(bytes, 8);
+
+            player.transform.position = spawn;
+        }
+
+        /*[PunRPC]
+        public void GetLevel(byte[][] level)
+        {
+            _levelGen.Deserialize(level);
+        }
+
+        [PunRPC]
+        public void GetSpawn(Vector3 spawnRoom)
+        {
+            _levelGen._spawnRoom.position = spawnRoom;
+        }
+
+        [PunRPC]
+        public void GetBoss(Vector3 bossRoom)
+        {
+            _levelGen._bossRoom.position = bossRoom;
         }
         
         [PunRPC]
-        public void SpawnPlayer(Vector3 position)
+        public void GetShop(Vector3 shopRoom)
         {
-            PhotonNetwork.Instantiate("player", position, Quaternion.identity);
-        }
+            _levelGen._shopRoom.position = shopRoom;
+        }*/
     }
 }
