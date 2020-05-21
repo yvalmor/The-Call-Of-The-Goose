@@ -1,4 +1,5 @@
-﻿using Entities.PlayerScripts;
+﻿using System;
+using Entities.PlayerScripts;
 using Level;
 using Photon.Pun;
 using UnityEngine;
@@ -11,11 +12,17 @@ namespace Entities
         private bool _combatInput, _quitInput, _nextLevelInput,
             _inventoryInput, _inventoryActivated, _previousInventoryInput;
         public GameObject player, inventoryScreen, combat;
-        public Camera playerCamera;
         public PlayerMovement PlayerMovement;
+
+        private void Awake()
+        {
+            if (PhotonNetwork.IsConnected && photonView.IsMine)
+                inventoryScreen = GameObject.Find("Inventory Screen");
+        }
 
         private void Start()
         {
+            inventoryScreen.SetActive(false);
             _inventoryActivated = false;
         }
 
@@ -35,7 +42,6 @@ namespace Entities
                 PlayerMovement.Activated = false;
                 player.tag = "playerDeactivated";
                 combat.SetActive(true);
-                playerCamera.gameObject.SetActive(false);
             }
         
             else if (_quitInput)
@@ -48,7 +54,6 @@ namespace Entities
                     PlayerMovement.Activated = false;
                     player.tag = "playerDeactivated";
                     inventoryScreen.SetActive(true);
-                    playerCamera.gameObject.SetActive(false);
                     _inventoryActivated = true;
                 }
             
@@ -57,7 +62,6 @@ namespace Entities
                     PlayerMovement.Activated = true;
                     player.tag = "Player";
                     inventoryScreen.SetActive(false);
-                    playerCamera.gameObject.SetActive(true);
                     _inventoryActivated = false;
                 }
             }

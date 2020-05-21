@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
 namespace Item
@@ -10,6 +11,12 @@ namespace Item
         public GameObject player;
         public GameObject inventoryPanel;
         public static Inventory instance;
+
+        private void Awake()
+        {
+            if (PhotonNetwork.IsConnected)
+                inventoryPanel = GameObject.FindGameObjectWithTag("Inventory Panel");
+        }
 
         private void Start()
         {

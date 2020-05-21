@@ -73,7 +73,7 @@ namespace Level
 
         private void Update()
         {
-            if (playerPosition.GetPhotonView().IsMine)
+            if (!PhotonNetwork.IsConnected || playerPosition.GetPhotonView().IsMine)
                 UpdatePlayerIconPosition();
         }
     }

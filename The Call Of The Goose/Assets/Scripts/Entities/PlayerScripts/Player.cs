@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Item;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,6 +24,15 @@ namespace Entities.PlayerScripts
         private int[] expTreshold = {100, 164, 268, 441, 723, 1186, 1945, 3190, 5233}; // exp nécessaire pour lvl up
 
         public int Hp => health.health;
+        private void Awake()
+        {
+            if (!PhotonNetwork.IsConnected) return;
+            
+            Inventory.player = gameObject;
+            RelicInventory.player = gameObject;
+        }
+
+        public int Hp => _health.health;
         public int Mana => _mana.mana;
         public int Endurance => _endurance.endurance;
 
@@ -79,6 +89,11 @@ namespace Entities.PlayerScripts
         public void LaunchFight(Ennemy ennemy)
         {
             
+        }
+
+        public bool IsMine()
+        {
+            return !PhotonNetwork.IsConnected || photonView.IsMine;
         }
     }
 }

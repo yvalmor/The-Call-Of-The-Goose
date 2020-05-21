@@ -20,4 +20,4 @@ MonoBehaviour:
   ArmorBonus: 0
   ManaBonus: 0
   EnduranceBonus: 0
-  AttaqueBonus: 5
+  AttaqueBonus: 10
