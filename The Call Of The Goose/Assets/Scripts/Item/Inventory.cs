@@ -12,17 +12,10 @@ namespace Item
         public GameObject inventoryPanel;
         public static Inventory instance;
 
-        private GameObject[] childs;
-
         private void Awake()
         {
             if (PhotonNetwork.IsConnected)
-                inventoryPanel = GameObject.FindGameObjectWithTag("Inventory panel");
-            
-            childs = new GameObject[inventoryPanel.transform.childCount];
-            
-            for (int i = 0; i < inventoryPanel.transform.childCount; i++)
-                childs[i] = inventoryPanel.transform.GetChild(i).gameObject;
+                inventoryPanel = GameObject.FindGameObjectWithTag("Inventory Panel");
         }
 
         private void Start()
@@ -34,11 +27,14 @@ namespace Item
         private void updatePanelSlots()
         {
             int index = 0;
-            foreach (GameObject child in childs)
+            foreach (Transform child in inventoryPanel.transform)
             {
                 InventorySlotController slot = child.GetComponent<InventorySlotController>();
-                
-                slot.item = index < list.Count ? list[index] : null;
+                if (index < list.Count)
+                    slot.item = list[index];
+                else
+                    slot.item = null;
+
                 slot.updateInfo();
                 index++;
             }

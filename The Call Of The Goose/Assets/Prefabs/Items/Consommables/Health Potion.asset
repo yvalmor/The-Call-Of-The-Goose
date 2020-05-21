@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue: {fileID: 2483228338408357729, guid: 37d7f0560ecee174cb847fa096b676a3,
     type: 3}
-  itemName: Potion de vie
-  icon: {fileID: 21300000, guid: 82a815627841c0c48b906c304f8fdbf4, type: 3}
+  itemName: Health beer
+  icon: {fileID: 21300000, guid: e506b2f1f56c2b44d8f4a16a552f4b60, type: 3}
   PvHeal: 10
   ManaHeal: 0
   EnduranceHeal: 0

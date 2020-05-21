@@ -22,9 +22,9 @@ namespace Item
             if (item)
             {
                 Debug.Log($"You clicked {item.itemName}");
-                item.Use();
                 dialogueTrigger.dialogue = item.dialogue;
                 dialogueTrigger.TriggerDialogue();
+                item.Use();
             }
         }
 

@@ -9,13 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a74b4854610d3a943a8f21bae11a7874, type: 3}
-  m_Name: Mana potion
+  m_Script: {fileID: 11500000, guid: de8dbc008e6d4d4ba8e4640a4f44c5d0, type: 3}
+  m_Name: Key
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 2483228338408357729, guid: 37d7f0560ecee174cb847fa096b676a3,
-    type: 3}
-  itemName: Mana beer
-  icon: {fileID: 21300000, guid: df44acc641b5057439a370aa72c2f2e0, type: 3}
+  dialogue: {fileID: 0}
+  itemName: Key
+  icon: {fileID: 21300000, guid: 484b124ec2fc9e04999c69ee58da677c, type: 3}
   PvHeal: 0
-  ManaHeal: 10
+  ManaHeal: 0
   EnduranceHeal: 0
+  boss: {fileID: 0}
+  description: Use to make the boss appear
