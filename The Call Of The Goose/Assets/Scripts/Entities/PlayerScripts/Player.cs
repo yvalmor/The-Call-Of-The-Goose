@@ -33,9 +33,20 @@ namespace Entities.PlayerScripts
             Combat.SetActive(false);
         }
 
-        public int Hp => health.health;
-        public int Mana => _mana.mana;
-        public int Endurance => _endurance.endurance;
+        public int Hp{
+            get => health.health;
+            set => health.health = value;
+        }
+        public int Mana
+        {
+            get => _mana.mana;
+            set => _mana.mana = value;
+        }
+        public int Endurance
+        {
+            get => _endurance.endurance;
+            set => _endurance.endurance = value;
+        }
 
         public int Gold
         {
