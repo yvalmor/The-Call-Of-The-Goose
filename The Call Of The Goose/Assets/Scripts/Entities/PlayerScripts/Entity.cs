@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
+using UnityEngine;
 
 namespace Entities.PlayerScripts
 {
-    public class Entity : MonoBehaviour
+    public class Entity : MonoBehaviourPun
     {
         public Health health;
         public int lvl;
