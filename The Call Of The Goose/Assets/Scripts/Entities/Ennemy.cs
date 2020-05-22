@@ -11,10 +11,10 @@ namespace Entities
     {
         public GameObject ennemy;
         
-        private int gold_loot;
-        private Relique loot;
-        private Consumable c_loot;
-        private int attack;
+        public int gold_loot;
+        public Relique[] loot;
+        public Consumable[] c_loot;
+        public int attack;
 
         private GameObject[] players;
         private Rigidbody2D rb2d;
