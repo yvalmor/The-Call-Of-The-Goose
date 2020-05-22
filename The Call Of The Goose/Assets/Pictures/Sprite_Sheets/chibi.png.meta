@@ -1,0 +1,706 @@
+fileFormatVersion: 2
+guid: 5565f3383e59d104e9f8488e7ea3f0be
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6990192437353819765
+    second: chibi_0
+  - first:
+      213: -5979310753914878098
+    second: chibi_1
+  - first:
+      213: -6862093946473257265
+    second: chibi_2
+  - first:
+      213: -1286012502855455914
+    second: chibi_3
+  - first:
+      213: 8281681058424225486
+    second: chibi_4
+  - first:
+      213: 7537142569540474027
+    second: chibi_5
+  - first:
+      213: 6312792408618873485
+    second: chibi_6
+  - first:
+      213: -6503553676468145707
+    second: chibi_7
+  - first:
+      213: 6748581871301699968
+    second: chibi_8
+  - first:
+      213: -5462861477301875486
+    second: chibi_9
+  - first:
+      213: -4696481726679904859
+    second: chibi_10
+  - first:
+      213: -926532367622458045
+    second: chibi_11
+  - first:
+      213: -6937907451844458073
+    second: chibi_12
+  - first:
+      213: -1546698970945026851
+    second: chibi_13
+  - first:
+      213: -7337161930849016936
+    second: chibi_14
+  - first:
+      213: -9202653010432906036
+    second: chibi_15
+  - first:
+      213: -5954427020968166594
+    second: chibi_16
+  - first:
+      213: -8125373506257365828
+    second: chibi_17
+  - first:
+      213: -6263683543884152113
+    second: chibi_18
+  - first:
+      213: -6436434979758438493
+    second: chibi_19
+  - first:
+      213: -7266151715370140960
+    second: chibi_20
+  - first:
+      213: 6184205258234974984
+    second: chibi_21
+  - first:
+      213: -758173576764280430
+    second: chibi_22
+  - first:
+      213: 1342147686622023258
+    second: chibi_23
+  - first:
+      213: 8854960781404533678
+    second: chibi_24
+  - first:
+      213: 8502029080200642284
+    second: chibi_25
+  - first:
+      213: 9040813759083082782
+    second: chibi_26
+  - first:
+      213: -5334527063850818773
+    second: chibi_27
+  - first:
+      213: -9063915985011215690
+    second: chibi_28
+  - first:
+      213: -6626878001447856550
+    second: chibi_29
+  - first:
+      213: -9196875291298510764
+    second: chibi_30
+  - first:
+      213: 8857039521256942633
+    second: chibi_31
+  - first:
+      213: -1735216662146038721
+    second: chibi_32
+  - first:
+      213: -8992197969875922185
+    second: chibi_33
+  - first:
+      213: 8183061997501766563
+    second: chibi_34
+  - first:
+      213: -1801770922728274640
+    second: chibi_35
+  - first:
+      213: -3701942149285866849
+    second: chibi_36
+  - first:
+      213: 5961136581613642099
+    second: chibi_37
+  - first:
+      213: -629456930266250774
+    second: chibi_38
+  - first:
+      213: 8873379556857277700
+    second: chibi_39
+  - first:
+      213: 3430382490092487027
+    second: chibi_40
+  - first:
+      213: -8745204325776610141
+    second: chibi_41
+  - first:
+      213: -2809558197152515248
+    second: chibi_42
+  - first:
+      213: 8817235564478245707
+    second: chibi_43
+  - first:
+      213: -3526615267791767112
+    second: chibi_44
+  - first:
+      213: -3555838715361096318
+    second: chibi_45
+  - first:
+      213: -2520261447705776853
+    second: chibi_46
+  - first:
+      213: 969417315199074672
+    second: chibi_47
+  - first:
+      213: -2496084322123820699
+    second: chibi_48
+  - first:
+      213: 4744597911134497929
+    second: chibi_49
+  - first:
+      213: 1884227446061447318
+    second: chibi_50
+  - first:
+      213: -7982822316539201043
+    second: chibi_51
+  - first:
+      213: 5258642131304462437
+    second: chibi_52
+  - first:
+      213: -1714325260922697238
+    second: chibi_53
+  - first:
+      213: -3799208275486630846
+    second: chibi_54
+  - first:
+      213: 3355477643640359270
+    second: chibi_55
+  - first:
+      213: 3963192597011582093
+    second: chibi_56
+  - first:
+      213: -3493764419955836129
+    second: chibi_57
+  - first:
+      213: 790132355763393873
+    second: chibi_58
+  - first:
+      213: 8105514278362010109
+    second: chibi_59
+  - first:
+      213: -388402392329869050
+    second: chibi_60
+  - first:
+      213: -2274824267223413382
+    second: chibi_61
+  - first:
+      213: -2127762573379140305
+    second: chibi_62
+  - first:
+      213: -4719815220615264480
+    second: chibi_63
+  - first:
+      213: -5396587061692857525
+    second: chibi_64
+  - first:
+      213: 196698459380377365
+    second: chibi_65
+  - first:
+      213: 1669437326883576534
+    second: chibi_66
+  - first:
+      213: -4245853309267370054
+    second: chibi_67
+  - first:
+      213: 3782103185563666520
+    second: chibi_68
+  - first:
+      213: -6514572487308794600
+    second: chibi_69
+  - first:
+      213: 8866340518182964700
+    second: chibi_70
+  - first:
+      213: 2347192759972579808
+    second: chibi_71
+  - first:
+      213: -1800746765005526036
+    second: chibi_72
+  - first:
+      213: -2658768956405520530
+    second: chibi_73
+  - first:
+      213: 5426728746433213468
+    second: chibi_74
+  - first:
+      213: -4807943547735358625
+    second: chibi_75
+  - first:
+      213: -6348422698817746700
+    second: chibi_76
+  - first:
+      213: 5507746210097637180
+    second: chibi_77
+  - first:
+      213: 4199581342722746263
+    second: chibi_78
+  - first:
+      213: 5274064235126380914
+    second: chibi_79
+  - first:
+      213: -7407851356945630682
+    second: chibi_80
+  - first:
+      213: 6274222523408135573
+    second: chibi_81
+  - first:
+      213: -1828589267941452820
+    second: chibi_82
+  - first:
+      213: 4345289208974751898
+    second: chibi_83
+  - first:
+      213: 2785458317097701754
+    second: chibi_84
+  - first:
+      213: -6789037518179869508
+    second: chibi_85
+  - first:
+      213: -5409680758176650320
+    second: chibi_86
+  - first:
+      213: 7017885317042082815
+    second: chibi_87
+  - first:
+      213: -6887424330070426323
+    second: chibi_88
+  - first:
+      213: 6407359623721826655
+    second: chibi_89
+  - first:
+      213: -1134634892418741106
+    second: chibi_90
+  - first:
+      213: -1737156399741443744
+    second: chibi_91
+  - first:
+      213: -7135139036736143539
+    second: chibi_92
+  - first:
+      213: -4704032778800501970
+    second: chibi_93
+  - first:
+      213: -2437343600362565066
+    second: chibi_94
+  - first:
+      213: 1829895330918878855
+    second: chibi_95
+  - first:
+      213: 4844583253225569239
+    second: chibi_96
+  - first:
+      213: -9204325749582242210
+    second: chibi_97
+  - first:
+      213: -7811640197062621211
+    second: chibi_98
+  - first:
+      213: -797386683069045410
+    second: chibi_99
+  - first:
+      213: 4636852688073485622
+    second: chibi_100
+  - first:
+      213: -68784002712293065
+    second: chibi_101
+  - first:
+      213: 1885011781191999305
+    second: chibi_102
+  - first:
+      213: 3479455828288426349
+    second: chibi_103
+  - first:
+      213: -2580507698812438342
+    second: chibi_104
+  - first:
+      213: -4985846448947424262
+    second: chibi_105
+  - first:
+      213: 5706248906144075751
+    second: chibi_106
+  - first:
+      213: 6978531910063590117
+    second: chibi_107
+  - first:
+      213: 9134391004594428160
+    second: chibi_108
+  - first:
+      213: 1026391614400685152
+    second: chibi_109
+  - first:
+      213: 2264055968536671606
+    second: chibi_110
+  - first:
+      213: 749787446603755835
+    second: chibi_111
+  - first:
+      213: 2524681169021259612
+    second: chibi_112
+  - first:
+      213: -592848934291664475
+    second: chibi_113
+  - first:
+      213: -5122206564985920952
+    second: chibi_114
+  - first:
+      213: -5227042736295565295
+    second: chibi_115
+  - first:
+      213: -7906914775555977617
+    second: chibi_116
+  - first:
+      213: -6472055659579255865
+    second: chibi_0
+  - first:
+      213: -1899213405272561649
+    second: chibi_1
+  - first:
+      213: -5088545219789664219
+    second: chibi_2
+  - first:
+      213: -6825870244238432296
+    second: chibi_3
+  - first:
+      213: 8483264705976057316
+    second: chibi_4
+  - first:
+      213: -5417278676433949131
+    second: chibi_5
+  - first:
+      213: 7201974889993206101
+    second: chibi_6
+  - first:
+      213: -5176074211957122613
+    second: chibi_7
+  - first:
+      213: -903098866498963064
+    second: chibi_8
+  - first:
+      213: 1610655576643202663
+    second: chibi_9
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 125
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: chibi_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 520
+        width: 190
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c3d8340ba3ae26a0800000000000000
+      internalID: -6472055659579255865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chibi_1
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 520
+        width: 190
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f08a11a6873a4a5e0800000000000000
+      internalID: -1899213405272561649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chibi_2
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 520
+        width: 190
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 520dce6351bd169b0800000000000000
+      internalID: -5088545219789664219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chibi_3
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 520
+        width: 190
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d762498d23a541a0800000000000000
+      internalID: -6825870244238432296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chibi_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 260
+        width: 190
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4edbf47cd4c9ab570800000000000000
+      internalID: 8483264705976057316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chibi_5
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 260
+        width: 190
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53e2bd9eeb5f1d4b0800000000000000
+      internalID: -5417278676433949131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chibi_6
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 260
+        width: 190
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 559f357310e82f360800000000000000
+      internalID: 7201974889993206101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chibi_7
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 260
+        width: 190
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc95c31ade3ea28b0800000000000000
+      internalID: -5176074211957122613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chibi_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 190
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8897541ad5c8773f0800000000000000
+      internalID: -903098866498963064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chibi_9
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 0
+        width: 190
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76ee15d96b23a5610800000000000000
+      internalID: 1610655576643202663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
