@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using Entities;
@@ -33,22 +34,31 @@ public class BattleSystem : MonoBehaviour
 
     public BattleState state;
 
-    void Start()
+    void StartCombat()
     {
         state = BattleState.START;
         StartCoroutine(SetupBattle());
     }
 
+    private void OnEnable()
+    {
+        StartCombat();
+    }
+
     IEnumerator SetupBattle()
     {
-        GameObject playerGO = Instantiate(playerPrefab, playerBattleStation);
+        Vector3 playerPos = playerBattleStation.position,
+            ennemyPos = enemyBattleStation.position;
+        playerPos.y += 1f;
+        ennemyPos.y += 0.2f;
+        GameObject playerGO = Instantiate(playerPrefab, playerPos, Quaternion.identity, playerBattleStation);
         player = playerGO.GetComponent<Player>();
-        GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation);
+        GameObject enemyGO = Instantiate(enemyPrefab, ennemyPos, Quaternion.identity, enemyBattleStation);
         enemy = enemyGO.GetComponent<Ennemy>();
 
         dialogText.text = $"A wild {enemy.name} approaches ...";
-        playerBattleHud.SetHUD(player);
-        enemyBattleHud.SetHUD(enemy);
+        playerBattleHud.InitHUD(player);
+        enemyBattleHud.InitHUD(enemy);
 
         yield return new WaitForSeconds(2f);
 
@@ -92,6 +102,7 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         player.TakeDamage(enemy.Attaque);
+        playerBattleHud.SetHUD(player);
 
         if (player.health.health == 0)
         {
@@ -122,6 +133,8 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator EndBattle()
     {
+        Destroy(enemy.gameObject);
+        
         if (state == BattleState.WON)
         {
             dialogText.text = $"You defeated {enemy.name}!";

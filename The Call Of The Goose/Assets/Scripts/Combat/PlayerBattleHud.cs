@@ -13,12 +13,19 @@ public class PlayerBattleHud : MonoBehaviour
     public HealthBar mana;
     public HealthBar endu;
 
-    public void SetHUD(Player player)
+    public void InitHUD(Player player)
     {
         entityName.text = player.name;
         entityLvl.text += $" {player.lvl}"; 
         hp.SetMaxHealth(player.health.maxHealth); 
         mana.SetMaxHealth(player._mana.maxMana); 
         endu.SetMaxHealth(player._endurance.maxEndurance);
+    }
+
+    public void SetHUD(Player player)
+    {
+        hp.SetHealth(player.health.health);
+        mana.SetHealth(player._mana.mana);
+        endu.SetHealth(player._endurance.endurance);
     }
 }

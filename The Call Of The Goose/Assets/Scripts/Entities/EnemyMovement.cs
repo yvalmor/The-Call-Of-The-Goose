@@ -1,4 +1,5 @@
 ﻿using System;
+using Entities.PlayerScripts;
 using Photon.Pun;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ namespace Entities
 {
     public class EnemyMovement : MonoBehaviour
     {
-        public GameObject[] player;
+        public GameObject[] players;
         public GameObject Ennemy;
 
         private Vector2 _movement;
@@ -16,16 +17,16 @@ namespace Entities
 
         public Rigidbody2D rb;
 
-        public void GetPlayers()
+        private void GetPlayers()
         {
-            player = GameObject.FindGameObjectsWithTag("Player");
+            players = GameObject.FindGameObjectsWithTag("Player");
         }
 
         void Update()
         {
             GetPlayers();
 
-            if (player.Length == 0)
+            if (players.Length == 0)
             {
                 _movement = Vector2.zero;
                 return;
@@ -33,18 +34,18 @@ namespace Entities
 
             Vector3 closest;
             
-            if (player.Length > 1)
+            if (players.Length > 1)
             {
-                float dist0 = player[0].transform.position.x - rb.position.x + player[0].transform.position.y -
+                float dist0 = players[0].transform.position.x - rb.position.x + players[0].transform.position.y -
                               rb.position.y,
-                    dist1 = player[1].transform.position.x - rb.position.x + player[1].transform.position.y -
+                    dist1 = players[1].transform.position.x - rb.position.x + players[1].transform.position.y -
                                                      rb.position.y;
                 
-                closest = dist1 > dist0 ? player[0].transform.position : player[1].transform.position;
+                closest = dist1 > dist0 ? players[0].transform.position : players[1].transform.position;
             }
             else
             {
-                closest = player[0].transform.position;
+                closest = players[0].transform.position;
             }
 
             if (Math.Abs(closest.x - rb.position.x) + Math.Abs(closest.y - rb.position.y) < detectionRange)
@@ -54,13 +55,28 @@ namespace Entities
             }
             else
                 _movement = Vector2.zero;
+            
         }
-
 
         private void FixedUpdate()
         {
             rb.transform.position = rb.position + Time.fixedDeltaTime * moveSpeed * _movement;
             Ennemy.transform.position = rb.transform.position;
+            CheckFight();
+        }
+
+        private void CheckFight()
+        {
+            if(players.Length == 0)
+                return;
+
+            foreach (GameObject player in players)
+            {
+                if (!rb.IsTouching(player.GetComponent<Collider2D>())) continue;
+                
+                player.GetComponent<Player>().BeginFight(gameObject.GetComponent<Ennemy>());
+                return;
+            }
         }
     }
 }

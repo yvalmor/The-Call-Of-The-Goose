@@ -17,18 +17,20 @@ namespace Entities.PlayerScripts
         private int exp;
         private int gold;
         public int attack;
-        public HealthPoint HPPlayer;
         public HealthPoint ManaPlayer;
         public HealthPoint EndurancePlayer;
-        public int floor;
         private int[] expTreshold = {100, 164, 268, 441, 723, 1186, 1945, 3190, 5233}; // exp nécessaire pour lvl up
 
+        public GameObject Combat;
+        
         private void Awake()
         {
             if (!PhotonNetwork.IsConnected) return;
             
             Inventory.player = gameObject;
             RelicInventory.player = gameObject;
+            Combat = GameObject.Find("Combat");
+            Combat.SetActive(false);
         }
 
         public int Hp => health.health;
@@ -77,6 +79,24 @@ namespace Entities.PlayerScripts
             return false;
         }
 
+        public void BuyItem(Item.Item item)
+        {
+            if (gold < item.price)
+                return;
+
+            gold -= item.price;
+            
+            switch (item)
+            {
+                case Consumable consumable:
+                    AddToInventory(consumable);
+                    break;
+                case Relique relique:
+                    AddRelicToInventory(relique);
+                    break;
+            }
+        }
+
         public void AddToInventory(Consumable consumable) => Inventory.Add(consumable);
         public void AddRelicToInventory(Relique relique) => RelicInventory.Add(relique);
 
@@ -85,7 +105,7 @@ namespace Entities.PlayerScripts
             SceneManager.LoadScene("Game Over");
         }
 
-        public void LaunchFight(Ennemy ennemy)
+        public void BeginFight(Ennemy ennemy)
         {
             
         }

@@ -41,7 +41,7 @@ namespace Entities
                 Collider2D colliderPlayer = player.GetComponent<Collider2D>();
 
                 if (rb2d.IsTouching(colliderPlayer))
-                    player.GetComponent<Player>().LaunchFight(this);
+                    player.GetComponent<Player>().BeginFight(this);
             }
         }
     }
