@@ -54,8 +54,8 @@ MonoBehaviour:
   size: 0
   rooms:
   - {fileID: 3804077594849077171, guid: 1e9aa93976f0c4146b3c429a94fd6520, type: 3}
-  - {fileID: 3997633794379796319, guid: 65a74988ba9d60444b7f1ce413407f26, type: 3}
   - {fileID: 8968917157128882613, guid: fd6f527ff72212b4cabdd377a7442a20, type: 3}
+  - {fileID: 3997633794379796319, guid: 65a74988ba9d60444b7f1ce413407f26, type: 3}
   - {fileID: 5847145199152699834, guid: 2836790d932556e47a65ca06f2c65ccd, type: 3}
   - {fileID: 4397745424675400857, guid: 88f65b6f702e7cf4289f7f2d51d0694c, type: 3}
   - {fileID: 3182325479087611457, guid: bedb9198f44fbd64a94bf0758e43f0a9, type: 3}
@@ -66,4 +66,3 @@ MonoBehaviour:
   Ennemy: {fileID: 4754841578696095726, guid: a902537fc3e4c9f4d85510551f5cec3a, type: 3}
   Boss: {fileID: 75778845104723559, guid: b81b3e34d2304ed44b0649279e9e3b2c, type: 3}
   ShopKeeper: {fileID: 0}
-  Items: {fileID: 8029065685794919031, guid: 68492e3144b983f409d77d2e8c4c8f17, type: 3}

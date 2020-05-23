@@ -59,7 +59,7 @@ namespace Level
 			return RoomStats.Serialize(roomStats);
 		}
 
-		public void Create()
+		private void Create()
 		{
 			if (PhotonNetwork.IsConnected)
 			{
@@ -100,8 +100,6 @@ namespace Level
 			Create();
 			if (size > 2)
 				GenerateMobs();
-			else if (size == 2)
-				GenerateBoss();
 		}
 
 		private void GenerateMobs()

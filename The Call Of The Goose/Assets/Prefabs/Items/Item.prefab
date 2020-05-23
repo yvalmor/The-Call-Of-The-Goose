@@ -154,6 +154,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 33806b7f32c0b7643af2621fc823e0d4, type: 2}
   - {fileID: 11400000, guid: 10706f8c2e101fa43a1a61d8b4aa0331, type: 2}
   choosen: {fileID: 0}
+  Button: {fileID: 1954097956236519874}
   Image: {fileID: 1954097956236519875}
   price: {fileID: 3877407160995298174}
 --- !u!1 &4452793250885051361
