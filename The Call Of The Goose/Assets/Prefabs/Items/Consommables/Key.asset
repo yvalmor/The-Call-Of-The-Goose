@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue: {fileID: 2483228338408357729, guid: 37d7f0560ecee174cb847fa096b676a3,
     type: 3}
-  price: 0
+  price: 500
   itemName: Key
   icon: {fileID: 21300000, guid: 484b124ec2fc9e04999c69ee58da677c, type: 3}
   PvHeal: 0
