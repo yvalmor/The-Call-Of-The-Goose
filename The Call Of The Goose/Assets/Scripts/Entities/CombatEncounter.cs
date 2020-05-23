@@ -27,11 +27,11 @@ namespace Entities
                 inventoryScreen = GameObject.Find("Inventory Screen");
                 shopScreen = GameObject.Find("ShopMenu");
             }
-            shopKeeper = GameObject.Find("Shopkeeper");
         }
 
         private void Start()
         {
+            shopKeeper = GameObject.FindWithTag("shopkeeper");
             inventoryScreen.SetActive(false);
             _inventoryActivated = false;
         }
