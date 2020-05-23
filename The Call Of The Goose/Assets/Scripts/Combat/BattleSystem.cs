@@ -82,7 +82,7 @@ namespace Combat
         {
             dialogText.text = $"You attack {enemy.name} physically";
 
-            player.Endurance -= 5;
+            player.UseEndurance(5);
         
             enemy.TakeDamage(player.attack);
             enemyBattleHud.SetHUD(enemy);
@@ -106,7 +106,7 @@ namespace Combat
         {
             dialogText.text = $"You attack {enemy.name} with magic";
 
-            player.Mana -= 5;
+            player.UseMana(5);
         
             enemy.TakeDamage(player.attack);
             enemyBattleHud.SetHUD(enemy);

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using Item;
 using Photon.Pun;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Entities.PlayerScripts
 {
@@ -13,25 +15,26 @@ namespace Entities.PlayerScripts
         public Endurance _endurance;
         public Inventory Inventory;
         public RelicInventory RelicInventory;
-        
+
         private int exp;
         private int gold;
         public int attack;
-        public HealthPoint ManaPlayer;
-        public HealthPoint EndurancePlayer;
         private int[] expTreshold = {100, 164, 268, 441, 723, 1186, 1945, 3190, 5233}; // exp nécessaire pour lvl up
 
-        public GameObject Combat;
+        public GameObject Combat, boss;
         
         private void Awake()
         {
             if (!PhotonNetwork.IsConnected) return;
-            
-            Inventory.player = gameObject;
-            RelicInventory.player = gameObject;
+
+            GameObject playerObject = gameObject;
+            Inventory.player = playerObject;
+            RelicInventory.player = playerObject;
             Combat = GameObject.Find("Combat");
             Combat.SetActive(false);
         }
+
+        #region Getters Setters
 
         public int Hp{
             get => health.health;
@@ -65,10 +68,14 @@ namespace Entities.PlayerScripts
             set => attack = value;
         }
 
-        public void TakeDamage(int value) => health.TakeDamage(value);
-        public void Heal(int value) => health.Heal(value);
-        public void GainMaxHp(int value) => health.GainMaxHp(value);
+        #endregion
+
+        #region Regen Gain Use
         
+        public new void TakeDamage(int value) => health.TakeDamage(value);
+        public new void Heal(int value) => health.Heal(value);
+        public new void GainMaxHp(int value) => health.GainMaxHp(value);
+
         public void RegenMana(int value) => _mana.RegenMana(value);
         public void UseMana(int value) => _mana.UseMana(value);
         public void GainMaxMana(int value) => _mana.GainMaxMana(value);
@@ -90,13 +97,17 @@ namespace Entities.PlayerScripts
             return false;
         }
 
+        #endregion
+
+        #region Items
+        
         public void BuyItem(Item.Item item)
         {
-            if (gold < item.price)
+            if (gold < item.price) 
                 return;
-
-            gold -= item.price;
             
+            gold -= item.price;
+
             switch (item)
             {
                 case Consumable consumable:
@@ -110,6 +121,8 @@ namespace Entities.PlayerScripts
 
         public void AddToInventory(Consumable consumable) => Inventory.Add(consumable);
         public void AddRelicToInventory(Relique relique) => RelicInventory.Add(relique);
+
+        #endregion
 
         public void GameOver()
         {

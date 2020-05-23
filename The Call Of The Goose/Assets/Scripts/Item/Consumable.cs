@@ -14,9 +14,9 @@ namespace Item
         public override void Use()
         {
             GameObject player = Inventory.instance.player;
-            player.GetComponent<Health>().Heal(PvHeal);
-            player.GetComponent<Mana>().RegenMana(ManaHeal);
-            player.GetComponent<Endurance>().RegenEndurance(EnduranceHeal);
+            player.GetComponent<Player>().Heal(PvHeal);
+            player.GetComponent<Player>().RegenMana(ManaHeal);
+            player.GetComponent<Player>().RegenEndurance(EnduranceHeal);
 
             string healed = "Gained:\n";
             if (PvHeal != 0) healed += $"PV: +{PvHeal}";
@@ -27,7 +27,6 @@ namespace Item
             dialogue.sentences = new[] { healed };
             
             Inventory.instance.Remove(this);
-            Destroy(this);
         }
     }
 }

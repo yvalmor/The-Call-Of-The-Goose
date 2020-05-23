@@ -1,4 +1,5 @@
 ﻿using System;
+using Entities.PlayerScripts;
 using Photon.Pun;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -14,7 +15,6 @@ namespace Level
 		public GameObject[] rooms;
 		public GameObject HWall, VWall, floors, walls;
 		public GameObject Ennemy, Boss, ShopKeeper;
-		public GameObject[] Items;
 
 		public void Deserialize(byte[] bytes)
 		{
@@ -102,8 +102,6 @@ namespace Level
 				GenerateMobs();
 			else if (size == 2)
 				GenerateBoss();
-			else if (size == 1)
-				GenerateShop();
 		}
 
 		private void GenerateMobs()
@@ -156,38 +154,12 @@ namespace Level
 			pos.y += 17.5f;
 
 			Boss = PhotonNetwork.IsConnected ?
-				PhotonNetwork.Instantiate(Boss.name, pos, Quaternion.identity) : Instantiate(Boss);
+				PhotonNetwork.Instantiate(Boss.name, pos, Quaternion.identity) : Instantiate(Boss, pos, Quaternion.identity);
+
+			foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+				player.GetComponent<Player>().boss = Boss;
 			
 			Boss.SetActive(false);
-		}
-
-		private void GenerateShop()
-		{
-			Vector3 shopKeeperPos = transform.position,
-				item1Pos = shopKeeperPos,
-				item2Pos = shopKeeperPos,
-				item3Pos = shopKeeperPos;
-
-			shopKeeperPos.x += 15f;
-			shopKeeperPos.y += 13.5f;
-
-			Instantiate(ShopKeeper, shopKeeperPos, Quaternion.identity);
-
-			item1Pos.x += 12.5f;
-			item2Pos.x += 15f;
-			item3Pos.x += 17.5f;
-
-			item1Pos.y += 16.5f;
-			item2Pos.y += 16.5f;
-			item3Pos.y += 16.5f;
-
-			GameObject Item1 = Items[Random.Range(0, Items.Length)],
-				Item2 = Items[Random.Range(0, Items.Length)],
-				Item3 = Items[Random.Range(0, Items.Length)];
-
-			Instantiate(Item1, item1Pos, Quaternion.identity);
-			Instantiate(Item2, item2Pos, Quaternion.identity);
-			Instantiate(Item3, item3Pos, Quaternion.identity);
 		}
 
 		#region Corridors

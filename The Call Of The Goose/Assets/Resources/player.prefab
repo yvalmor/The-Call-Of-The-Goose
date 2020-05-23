@@ -160,18 +160,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd0a96192cb20054996298e3ae8263ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: {fileID: -8944509478052804765}
+  health: {fileID: -8944509478052804765}
+  lvl: 1
+  name: player
+  armor: 5
   _mana: {fileID: 5494920870177392591}
   _endurance: {fileID: 7301681639402154049}
   Inventory: {fileID: 7140942610384216873}
   RelicInventory: {fileID: 2889529609270681882}
-  armor: 0
+  Buttons: []
   attack: 0
-  name: player
-  HPPlayer: {fileID: 0}
   ManaPlayer: {fileID: 0}
   EndurancePlayer: {fileID: 0}
-  floor: 0
+  Combat: {fileID: 0}
+  boss: {fileID: 0}
 --- !u!114 &7140942610384216873
 MonoBehaviour:
   m_ObjectHideFlags: 0
