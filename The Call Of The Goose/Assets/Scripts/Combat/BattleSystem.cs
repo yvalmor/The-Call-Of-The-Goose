@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.Threading;
 using Entities;
 using Entities.PlayerScripts;
+using Item;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
+
 
 namespace Combat
 {
@@ -236,6 +239,33 @@ namespace Combat
                 dialogText.text = $"You defeated {enemy.name}!";
 
                 yield return new WaitForSeconds(2f);
+
+                int rand1 = Random.Range(0, 1);
+                Consumable drop_c = enemy.c_loot[Random.Range(0, enemy.c_loot.Length)];
+                Relique r_drop = enemy.loot[Random.Range(0, enemy.loot.Length)];
+
+                if (rand1 == 0)
+                {
+                    player.AddToInventory(drop_c);
+                    dialogText.text = $"You looted a {drop_c}";
+                }
+                else
+                    dialogText.text = "You looted no consumable";
+
+                if (Random.Range(0, 4) < 2)
+                {
+                    player.AddRelicToInventory(r_drop);
+                    if (rand1 == 0)
+                        dialogText.text += $" and a {r_drop}";
+                    else
+                        dialogText.text = $"You looted a {r_drop}";
+                }
+                else
+                    dialogText.text += "and no relic";
+                
+                yield return new WaitForSeconds(2f);
+                player.Gold += enemy.gold_loot;
+                dialogText.text = $"You also found {enemy.gold_loot} gold";
             }
             else
             {
