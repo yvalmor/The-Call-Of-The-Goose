@@ -129,11 +129,6 @@ namespace Entities.PlayerScripts
             SceneManager.LoadScene("Game Over");
         }
 
-        public void BeginFight(Ennemy ennemy)
-        {
-            
-        }
-
         public bool IsMine()
         {
             return !PhotonNetwork.IsConnected || photonView.IsMine;

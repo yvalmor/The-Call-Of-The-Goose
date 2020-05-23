@@ -17,6 +17,11 @@ namespace Entities
 
         public Rigidbody2D rb;
 
+        private void Start()
+        {
+            Ennemy = gameObject;
+        }
+
         private void GetPlayers()
         {
             players = GameObject.FindGameObjectsWithTag("Player");
@@ -73,8 +78,7 @@ namespace Entities
             foreach (GameObject player in players)
             {
                 if (!rb.IsTouching(player.GetComponent<Collider2D>())) continue;
-                
-                player.GetComponent<Player>().BeginFight(gameObject.GetComponent<Ennemy>());
+                player.GetComponent<CombatEncounter>().BeginFight(Ennemy.GetComponent<Ennemy>());
                 return;
             }
         }

@@ -22,14 +22,11 @@ namespace Combat
     {
         #region Variables
 
-        public GameObject enemyPrefab;
-        public GameObject playerPrefab;
-
         public Transform playerBattleStation;
         public Transform enemyBattleStation;
 
         public Player player;
-        public Ennemy enemy;
+        public Ennemy ennemy;
 
         public EnemyBattleHud enemyBattleHud;
         public PlayerBattleHud playerBattleHud;
@@ -59,14 +56,10 @@ namespace Combat
                 ennemyPos = enemyBattleStation.position;
             playerPos.y += 1f;
             ennemyPos.y += 0.2f;
-            GameObject playerGO = Instantiate(playerPrefab, playerPos, Quaternion.identity, playerBattleStation);
-            player = playerGO.GetComponent<Player>();
-            GameObject enemyGO = Instantiate(enemyPrefab, ennemyPos, Quaternion.identity, enemyBattleStation);
-            enemy = enemyGO.GetComponent<Ennemy>();
 
-            dialogText.text = $"A wild {enemy.name} approaches ...";
+            dialogText.text = $"A wild {ennemy.name} approaches ...";
             playerBattleHud.InitHUD(player);
-            enemyBattleHud.InitHUD(enemy);
+            enemyBattleHud.InitHUD(ennemy);
 
             yield return new WaitForSeconds(2f);
 
@@ -80,16 +73,16 @@ namespace Combat
 
         IEnumerator PhysicalAttack()
         {
-            dialogText.text = $"You attack {enemy.name} physically";
+            dialogText.text = $"You attack {ennemy.name} physically";
 
             player.UseEndurance(5);
         
-            enemy.TakeDamage(player.attack);
-            enemyBattleHud.SetHUD(enemy);
+            ennemy.TakeDamage(player.attack);
+            enemyBattleHud.SetHUD(ennemy);
 
             yield return new WaitForSeconds(1f);
 
-            if (enemy.health.health == 0)
+            if (ennemy.health.health == 0)
             {
                 state = BattleState.WON;
                 StartCoroutine(EndBattle());
@@ -104,16 +97,16 @@ namespace Combat
     
         IEnumerator MagicalAttack()
         {
-            dialogText.text = $"You attack {enemy.name} with magic";
+            dialogText.text = $"You attack {ennemy.name} with magic";
 
             player.UseMana(5);
         
-            enemy.TakeDamage(player.attack);
-            enemyBattleHud.SetHUD(enemy);
+            ennemy.TakeDamage(player.attack);
+            enemyBattleHud.SetHUD(ennemy);
 
             yield return new WaitForSeconds(1f);
 
-            if (enemy.Hp == 0)
+            if (ennemy.Hp == 0)
             {
                 state = BattleState.WON;
                 StartCoroutine(EndBattle());
@@ -128,14 +121,14 @@ namespace Combat
     
         IEnumerator NeutralAttack()
         {
-            dialogText.text = $"You attack {enemy.name}";
+            dialogText.text = $"You attack {ennemy.name}";
 
-            enemy.TakeDamage(player.attack / 2);
-            enemyBattleHud.SetHUD(enemy);
+            ennemy.TakeDamage(player.attack / 2);
+            enemyBattleHud.SetHUD(ennemy);
 
             yield return new WaitForSeconds(1f);
 
-            if (enemy.Hp == 0)
+            if (ennemy.Hp == 0)
             {
                 state = BattleState.WON;
                 StartCoroutine(EndBattle());
@@ -171,11 +164,11 @@ namespace Combat
 
         IEnumerator EnemyTurn()
         {
-            dialogText.text = $"{enemy.name} attacks!";
+            dialogText.text = $"{ennemy.name} attacks!";
 
             yield return new WaitForSeconds(1f);
 
-            player.TakeDamage(enemy.Attaque);
+            player.TakeDamage(ennemy.Attaque);
             playerBattleHud.SetHUD(player);
 
             if (player.health.health == 0)
@@ -229,17 +222,17 @@ namespace Combat
 
         IEnumerator EndBattle()
         {
-            Destroy(enemy.gameObject);
+            Destroy(ennemy.gameObject);
         
             if (state == BattleState.WON)
             {
-                dialogText.text = $"You defeated {enemy.name}!";
+                dialogText.text = $"You defeated {ennemy.name}!";
 
                 yield return new WaitForSeconds(2f);
             }
             else
             {
-                dialogText.text = $"You were slain by {enemy.name}...";
+                dialogText.text = $"You were slain by {ennemy.name}...";
 
                 yield return new WaitForSeconds(2f);
 
@@ -248,5 +241,11 @@ namespace Combat
         }
 
         #endregion
+
+        public void SetFighters(Player player, Ennemy ennemy)
+        {
+            this.player = player;
+            this.ennemy = ennemy;
+        }
     }
 }

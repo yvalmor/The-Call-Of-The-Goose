@@ -1,4 +1,5 @@
 ﻿using System;
+using Combat;
 using Entities.PlayerScripts;
 using Level;
 using Photon.Pun;
@@ -92,6 +93,13 @@ namespace Entities
                 level.DestroyLevel();
                 level.GenLevel();
             }
+        }
+
+        public void BeginFight(Ennemy ennemy)
+        {
+            player.GetComponent<PlayerMovement>().Deactivate();
+            FindObjectOfType<BattleSystem>().SetFighters(player.GetComponent<Player>(), ennemy);
+            combat.SetActive(true);
         }
     
         // Update is called once per frame
