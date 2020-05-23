@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Entities;
-using Entities.PlayerScripts;
 using Photon.Pun;
 using UnityEngine;
 using Random = UnityEngine.Random;

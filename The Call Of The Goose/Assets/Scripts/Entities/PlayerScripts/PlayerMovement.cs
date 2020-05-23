@@ -57,5 +57,17 @@ namespace Entities.PlayerScripts
         {
             rb.MovePosition(rb.position + _movement * Time.fixedDeltaTime);
         }
+
+        public void Deactivate()
+        {
+            Activated = false;
+            gameObject.tag = "playerDeactivated";
+        }
+        
+        public void Activate()
+        {
+            Activated = true;
+            gameObject.tag = "Player";
+        }
     }
 }
