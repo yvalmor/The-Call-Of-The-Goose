@@ -9,6 +9,7 @@ namespace Entities
     {
         public GameObject[] players;
         public GameObject Ennemy;
+        public SpriteRenderer SpriteRenderer;
 
         private Vector2 _movement;
 
@@ -16,6 +17,7 @@ namespace Entities
         public float detectionRange = 200;
 
         public Rigidbody2D rb;
+        private static readonly int fighting = Animator.StringToHash("fighting");
 
         private void Start()
         {
@@ -78,7 +80,12 @@ namespace Entities
             foreach (GameObject player in players)
             {
                 if (!rb.IsTouching(player.GetComponent<Collider2D>())) continue;
-                player.GetComponent<CombatEncounter>().BeginFight(Ennemy.GetComponent<Ennemy>());
+
+                SpriteRenderer.sortingLayerName = "Fight";
+                
+                Ennemy ennemy = rb.gameObject.GetComponent<Ennemy>();
+                ennemy.Animator.SetBool(fighting, true);
+                player.GetComponent<CombatEncounter>().BeginFight(ennemy);
                 return;
             }
         }

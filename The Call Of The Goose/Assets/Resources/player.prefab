@@ -23,10 +23,10 @@ GameObject:
   - component: {fileID: 4898484496559628100}
   - component: {fileID: 4898484496559628103}
   - component: {fileID: 4898484496559628097}
-  - component: {fileID: 4795931299436714682}
-  - component: {fileID: 6435547756831380200}
-  - component: {fileID: 3411699265805607514}
-  - component: {fileID: -4395209629804953212}
+  - component: {fileID: 5479321572831927749}
+  - component: {fileID: 935534483954446736}
+  - component: {fileID: -7853847644134123281}
+  - component: {fileID: -7132937749110894237}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -89,10 +89,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 817292ac61990c846aacf3fd6d8c9c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animator: {fileID: 4780406045498662168}
+  _combatInput: 0
+  _quitInput: 0
+  _nextLevelInput: 0
+  _shopInput: 0
+  _inventoryInput: 0
+  _inventoryActivated: 0
+  _shopActivated: 0
   player: {fileID: 4898484496559628096}
   inventoryScreen: {fileID: 0}
   combat: {fileID: 0}
+  shopKeeper: {fileID: 0}
+  shopScreen: {fileID: 0}
   PlayerMovement: {fileID: 5346284208418914206}
+  battleSystem: {fileID: 0}
 --- !u!114 &5571336849882933564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,6 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b49a2ea90d52d184590a202f7faa4ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disabled: 0
   playerCamera: {fileID: 0}
 --- !u!114 &-8944509478052804765
 MonoBehaviour:
@@ -118,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3b505067201bb49ad8e66be6b2eee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 200
   health: 0
 --- !u!114 &5494920870177392591
 MonoBehaviour:
@@ -168,10 +180,9 @@ MonoBehaviour:
   _endurance: {fileID: 7301681639402154049}
   Inventory: {fileID: 7140942610384216873}
   RelicInventory: {fileID: 2889529609270681882}
-  Buttons: []
-  attack: 0
-  ManaPlayer: {fileID: 0}
-  EndurancePlayer: {fileID: 0}
+  SpriteRenderer: {fileID: 4898484496559628100}
+  gold: 250
+  attack: 15
   Combat: {fileID: 0}
   boss: {fileID: 0}
 --- !u!114 &7140942610384216873
@@ -321,7 +332,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.52, y: 2}
   m_EdgeRadius: 0
---- !u!114 &4795931299436714682
+--- !u!114 &5479321572831927749
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -339,13 +350,13 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 6435547756831380200}
-  - {fileID: 3411699265805607514}
-  - {fileID: -4395209629804953212}
+  - {fileID: 935534483954446736}
+  - {fileID: -7853847644134123281}
+  - {fileID: -7132937749110894237}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &6435547756831380200
+--- !u!114 &935534483954446736
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -358,36 +369,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SynchronizePosition: 1
-  m_SynchronizeRotation: 0
+  m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
---- !u!114 &3411699265805607514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4898484496559628096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowLayerWeightsInspector: 0
-  ShowParameterInspector: 1
-  m_SynchronizeParameters:
-  - Type: 4
-    SynchronizeType: 1
-    Name: Running
-  - Type: 4
-    SynchronizeType: 1
-    Name: Left
-  - Type: 4
-    SynchronizeType: 1
-    Name: Right
-  m_SynchronizeLayers:
-  - SynchronizeType: 0
-    LayerIndex: 0
---- !u!114 &-4395209629804953212
+--- !u!114 &-7853847644134123281
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -401,5 +385,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizeVelocity: 1
   m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 1
+  m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &-7132937749110894237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4898484496559628096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 0
+    Name: Running
+  - Type: 4
+    SynchronizeType: 0
+    Name: Left
+  - Type: 4
+    SynchronizeType: 0
+    Name: Right
+  - Type: 4
+    SynchronizeType: 0
+    Name: fighting
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0

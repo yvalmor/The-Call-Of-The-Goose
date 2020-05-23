@@ -769,7 +769,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3471602507745932509}
-        m_MethodName: OnPhysicalAttackButton
+        m_MethodName: OnMagicalAttackButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1039,7 +1039,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 220.43, y: 172.8}
+  m_AnchoredPosition: {x: 220.43, y: 203}
   m_SizeDelta: {x: 329.4, y: 58.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3471602507141492145
@@ -1234,7 +1234,7 @@ GameObject:
   - component: {fileID: 3471602507308794003}
   - component: {fileID: 3471602507308794000}
   m_Layer: 5
-  m_Name: Items
+  m_Name: Flee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1338,7 +1338,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3471602507308794003}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3471602507745932509}
+        m_MethodName: OnFleeButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3471602507393058910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1678,7 +1689,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3471602507745932509}
-        m_MethodName: OnPhysicalAttackButton
+        m_MethodName: OnNeutralAttackButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2045,7 +2056,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2059,7 +2070,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 3471602506367606792}
   m_FillRect: {fileID: 3471602506367606793}
   m_HandleRect: {fileID: 0}
@@ -2160,7 +2171,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Items
+  m_Text: Flee
 --- !u!1 &3471602507734994703
 GameObject:
   m_ObjectHideFlags: 0
@@ -2225,7 +2236,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2239,7 +2250,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 3471602507393058896}
   m_FillRect: {fileID: 3471602507393058897}
   m_HandleRect: {fileID: 0}
@@ -2307,15 +2318,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4496dd9a92e9b7c4ebeaf26a98680ee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 613117484608702301, guid: 57b052beaedbde74c9b0becee33d61b1,
-    type: 3}
-  playerPrefab: {fileID: 1651199358318297337, guid: 40a165ba391150a4eb73177329b1c457,
-    type: 3}
   playerBattleStation: {fileID: 3471602508106202710}
-  enemyBattleStation: {fileID: 3471602507508898628}
-  player: {fileID: 0}
-  enemy: {fileID: 0}
-  enemyBattleHud: {fileID: 3471602507141492144}
+  ennemyBattleStation: {fileID: 3471602507508898628}
+  player: {fileID: 1651199358318297318, guid: 40a165ba391150a4eb73177329b1c457, type: 3}
+  ennemy: {fileID: 2038488846979368970, guid: 57b052beaedbde74c9b0becee33d61b1, type: 3}
+  ennemyBattleHud: {fileID: 3471602507141492144}
   playerBattleHud: {fileID: 3471602507904864356}
   dialogText: {fileID: 3471602507525647314}
   state: 0
@@ -2615,7 +2622,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -227.3, y: 172.8}
+  m_AnchoredPosition: {x: -227.3, y: 203}
   m_SizeDelta: {x: 329.4, y: 58.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3471602507904864357
@@ -2743,7 +2750,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2757,7 +2764,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 3471602506454637614}
   m_FillRect: {fileID: 3471602506454637615}
   m_HandleRect: {fileID: 0}
@@ -2995,7 +3002,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -3009,7 +3016,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 3471602506538805851}
   m_FillRect: {fileID: 3471602506538805848}
   m_HandleRect: {fileID: 0}

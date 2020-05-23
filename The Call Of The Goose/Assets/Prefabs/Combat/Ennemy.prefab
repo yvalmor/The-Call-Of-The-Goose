@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 613117484608702275}
   - component: {fileID: 7317752646119827314}
   - component: {fileID: 2038488846979368970}
+  - component: {fileID: 3380948262419134157}
+  - component: {fileID: 2909735887397558989}
   m_Layer: 0
   m_Name: Ennemy
   m_TagString: Untagged
@@ -26,10 +28,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 613117484608702301}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 10.162975, y: -4.3766966, z: 0.000009536743}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 941224668981130474}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -63,7 +64,9 @@ MonoBehaviour:
   lvl: 1
   name: Enemy
   armor: 0
-  ennemy: {fileID: 613117484608702301}
+  Animator: {fileID: 0}
+  Ennemies_list: []
+  Ennemies: {fileID: 0}
   gold_loot: 150
   loot:
   - {fileID: 11400000, guid: cc68f45a969ce1142b28e65e0a556c9f, type: 2}
@@ -78,44 +81,32 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0e3c6f291b260a34998fc8b349879edb, type: 2}
   - {fileID: 11400000, guid: f78fd71afce97e6428103518704ac6b1, type: 2}
   attack: 10
---- !u!1 &6079273321080970599
-GameObject:
+--- !u!95 &3380948262419134157
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 941224668981130474}
-  - component: {fileID: 4306994776969676692}
-  m_Layer: 0
-  m_Name: Idle_Slime_ennemie_0
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &941224668981130474
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6079273321080970599}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 613117484608702275}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4306994776969676692
+  m_GameObject: {fileID: 613117484608702301}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d5f25e5fc2fbc384c939b4759e63f122, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!212 &2909735887397558989
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6079273321080970599}
+  m_GameObject: {fileID: 613117484608702301}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -147,7 +138,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 7056497386987827371, guid: d5594bfcee496864f83f9c42fea7df91,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

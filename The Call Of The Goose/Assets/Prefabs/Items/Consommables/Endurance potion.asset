@@ -15,8 +15,8 @@ MonoBehaviour:
   dialogue: {fileID: 2483228338408357729, guid: 37d7f0560ecee174cb847fa096b676a3,
     type: 3}
   price: 200
-  itemName: Potion d'endurance
-  icon: {fileID: 21300000, guid: 0eda3c7f1e661ee4a848116fccb90ec8, type: 3}
+  itemName: Endurance Beer
+  icon: {fileID: 21300000, guid: 371a447ce5a23aa40a32df0633e4ff56, type: 3}
   PvHeal: 0
   ManaHeal: 0
   EnduranceHeal: 10

@@ -10,10 +10,15 @@ namespace Entities
 {
     public class CombatEncounter : MonoBehaviourPun
     {
+        public Animator Animator;
+        
         public bool _combatInput, _quitInput, _nextLevelInput, _shopInput,
             _inventoryInput, _inventoryActivated, _shopActivated;
         public GameObject player, inventoryScreen, combat, shopKeeper, shopScreen;
         public PlayerMovement PlayerMovement;
+        public BattleSystem battleSystem;
+        
+        private static readonly int fighting = Animator.StringToHash("fighting");
 
         private void Awake()
         {
@@ -25,8 +30,11 @@ namespace Entities
             
             if (PhotonNetwork.IsConnected && photonView.IsMine)
             {
+                combat = GameObject.Find("Combat");
+                battleSystem = GameObject.Find("Battle system").GetComponent<BattleSystem>();
                 inventoryScreen = GameObject.Find("Inventory Screen");
                 shopScreen = GameObject.Find("ShopMenu");
+                shopScreen.SetActive(false);
             }
         }
 
@@ -97,9 +105,19 @@ namespace Entities
 
         public void BeginFight(Ennemy ennemy)
         {
+            Animator.SetBool(fighting, true);
             player.GetComponent<PlayerMovement>().Deactivate();
-            FindObjectOfType<BattleSystem>().SetFighters(player.GetComponent<Player>(), ennemy);
+            player.GetComponent<SpriteRenderer>().sortingLayerName = "Fight";
+            battleSystem.SetFighters(player.GetComponent<Player>(), ennemy);
             combat.SetActive(true);
+        }
+
+        public void EndFight()
+        {
+            Animator.SetBool(fighting, false);
+            player.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+            player.GetComponent<PlayerMovement>().Activate();
+            combat.SetActive(false);
         }
     
         // Update is called once per frame

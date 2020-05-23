@@ -5,6 +5,7 @@ using System.Threading;
 using Entities;
 using Entities.PlayerScripts;
 using Item;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -25,13 +26,13 @@ namespace Combat
     {
         #region Variables
 
-        public Transform playerBattleStation;
-        public Transform enemyBattleStation;
+        public Transform playerBattleStation, ennemyBattleStation;
+        private Transform oldPosition;
 
         public Player player;
         public Ennemy ennemy;
 
-        public EnemyBattleHud enemyBattleHud;
+        public EnemyBattleHud ennemyBattleHud;
         public PlayerBattleHud playerBattleHud;
 
         public Text dialogText;
@@ -41,6 +42,18 @@ namespace Combat
         #endregion
 
         #region Setup
+
+        private void Start()
+        {
+            if (!PhotonNetwork.IsConnected)
+                return;
+
+            foreach (GameObject o in GameObject.FindGameObjectsWithTag("Player"))
+            {
+                if (o.GetComponent<Player>().IsMine())
+                    player = o.GetComponent<Player>();
+            }
+        }
 
         void StartCombat()
         {
@@ -55,14 +68,16 @@ namespace Combat
 
         IEnumerator SetupBattle()
         {
-            Vector3 playerPos = playerBattleStation.position,
-                ennemyPos = enemyBattleStation.position;
-            playerPos.y += 1f;
-            ennemyPos.y += 0.2f;
+            Vector3 newPosition = ennemyBattleStation.position;
 
+            newPosition.x += 0.1f;
+            newPosition.y -= 1f;
+            
+            ennemy.transform.position = newPosition;
+            
             dialogText.text = $"A wild {ennemy.name} approaches ...";
             playerBattleHud.InitHUD(player);
-            enemyBattleHud.InitHUD(ennemy);
+            ennemyBattleHud.InitHUD(ennemy);
 
             yield return new WaitForSeconds(2f);
 
@@ -81,7 +96,7 @@ namespace Combat
             player.UseEndurance(5);
         
             ennemy.TakeDamage(player.attack);
-            enemyBattleHud.SetHUD(ennemy);
+            ennemyBattleHud.SetHUD(ennemy);
 
             yield return new WaitForSeconds(1f);
 
@@ -89,7 +104,6 @@ namespace Combat
             {
                 state = BattleState.WON;
                 StartCoroutine(EndBattle());
-                // ecran fin de combat
             }
             else
             {
@@ -105,7 +119,7 @@ namespace Combat
             player.UseMana(5);
         
             ennemy.TakeDamage(player.attack);
-            enemyBattleHud.SetHUD(ennemy);
+            ennemyBattleHud.SetHUD(ennemy);
 
             yield return new WaitForSeconds(1f);
 
@@ -127,7 +141,7 @@ namespace Combat
             dialogText.text = $"You attack {ennemy.name}";
 
             ennemy.TakeDamage(player.attack / 2);
-            enemyBattleHud.SetHUD(ennemy);
+            ennemyBattleHud.SetHUD(ennemy);
 
             yield return new WaitForSeconds(1f);
 
@@ -219,14 +233,26 @@ namespace Combat
             PlayerNeutralAttack();
         }
 
+        public void OnFleeButton()
+        {
+            if (state != BattleState.PLAYERTURN)
+                return;
+            StartCoroutine(Random.Range(0f, 1f) < 0.8f ? EndBattle() : CouldntFlee());
+        }
+
+        IEnumerator CouldntFlee()
+        {
+            dialogText.text = "You couldn't flee!";
+            yield return new WaitForSeconds(2f);
+            StartCoroutine(EnemyTurn());
+        }
+
         #endregion
 
         #region End
 
         IEnumerator EndBattle()
         {
-            Destroy(ennemy.gameObject);
-        
             if (state == BattleState.WON)
             {
                 dialogText.text = $"You defeated {ennemy.name}!";
@@ -234,13 +260,13 @@ namespace Combat
                 yield return new WaitForSeconds(2f);
 
                 int rand1 = Random.Range(0, 1);
-                Consumable drop_c = enemy.c_loot[Random.Range(0, enemy.c_loot.Length)];
-                Relique r_drop = enemy.loot[Random.Range(0, enemy.loot.Length)];
+                Consumable drop_c = ennemy.c_loot[Random.Range(0, ennemy.c_loot.Length)];
+                Relique r_drop = ennemy.loot[Random.Range(0, ennemy.loot.Length)];
 
                 if (rand1 == 0)
                 {
                     player.AddToInventory(drop_c);
-                    dialogText.text = $"You looted a {drop_c}";
+                    dialogText.text = $"You looted a {drop_c.name}";
                 }
                 else
                     dialogText.text = "You looted no consumable";
@@ -249,24 +275,35 @@ namespace Combat
                 {
                     player.AddRelicToInventory(r_drop);
                     if (rand1 == 0)
-                        dialogText.text += $" and a {r_drop}";
+                        dialogText.text += $" and a {r_drop.name}";
                     else
-                        dialogText.text = $"You looted a {r_drop}";
+                        dialogText.text = $"You looted a {r_drop.name}";
                 }
                 else
-                    dialogText.text += "and no relic";
+                    dialogText.text += " and no relic";
                 
                 yield return new WaitForSeconds(2f);
-                player.Gold += enemy.gold_loot;
-                dialogText.text = $"You also found {enemy.gold_loot} gold";
+                player.Gold += ennemy.gold_loot;
+                dialogText.text = $"You also found {ennemy.gold_loot} gold";
+                
+                yield return new WaitForSeconds(1.5f);
+                player.EndFight();
             }
-            else
+            else if (state == BattleState.LOST)
             {
                 dialogText.text = $"You were slain by {ennemy.name}...";
 
                 yield return new WaitForSeconds(2f);
 
                 player.GameOver();
+            }
+            else if (!ennemy.Ennemies.Boss)
+            {
+                dialogText.text = "You flee!";
+                
+                yield return new WaitForSeconds(2f);
+                Destroy(ennemy.gameObject);
+                player.EndFight();
             }
         }
 

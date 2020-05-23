@@ -15,9 +15,10 @@ namespace Entities.PlayerScripts
         public Endurance _endurance;
         public Inventory Inventory;
         public RelicInventory RelicInventory;
+        public SpriteRenderer SpriteRenderer;
 
         private int exp;
-        private int gold;
+        public int gold;
         public int attack;
         private int[] expTreshold = {100, 164, 268, 441, 723, 1186, 1945, 3190, 5233}; // exp nécessaire pour lvl up
 
@@ -101,10 +102,10 @@ namespace Entities.PlayerScripts
 
         #region Items
         
-        public void BuyItem(Item.Item item)
+        public bool BuyItem(Item.Item item)
         {
             if (gold < item.price) 
-                return;
+                return false;
             
             gold -= item.price;
 
@@ -117,6 +118,8 @@ namespace Entities.PlayerScripts
                     AddRelicToInventory(relique);
                     break;
             }
+
+            return true;
         }
 
         public void AddToInventory(Consumable consumable) => Inventory.Add(consumable);
@@ -132,6 +135,11 @@ namespace Entities.PlayerScripts
         public bool IsMine()
         {
             return !PhotonNetwork.IsConnected || photonView.IsMine;
+        }
+
+        public void EndFight()
+        {
+            GetComponent<CombatEncounter>().EndFight();
         }
     }
 }

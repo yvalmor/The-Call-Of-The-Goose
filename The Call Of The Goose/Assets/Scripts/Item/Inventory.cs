@@ -15,7 +15,7 @@ namespace Item
         private void Awake()
         {
             if (PhotonNetwork.IsConnected)
-                inventoryPanel = GameObject.FindGameObjectWithTag("Inventory Panel");
+                inventoryPanel = GameObject.FindGameObjectWithTag("Inventory panel");
         }
 
         private void Start()

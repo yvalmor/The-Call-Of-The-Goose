@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddcae571c49648d08e19753fa3224c74, type: 3}
+  m_Name: Boss
+  m_EditorClassIdentifier: 
+  hp: 2000
+  armor: 100
+  attack: 50
+  gold_loot: 8000
+  loot_c: []
+  loot_r: []
+  animator: {fileID: 0}

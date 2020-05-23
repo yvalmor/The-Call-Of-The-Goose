@@ -14,10 +14,12 @@ GameObject:
   - component: {fileID: 4754841578696095717}
   - component: {fileID: 4754841578696095722}
   - component: {fileID: 3361441779423790520}
-  - component: {fileID: -4992974755616732140}
-  - component: {fileID: -1334450847929982822}
-  - component: {fileID: 7445380630278031676}
-  - component: {fileID: -2881616484317612188}
+  - component: {fileID: -7665111033691873279}
+  - component: {fileID: 2118305263357384587}
+  - component: {fileID: -651926129830654618}
+  - component: {fileID: -5022088795264167731}
+  - component: {fileID: -8735059863580918455}
+  - component: {fileID: -2298748135620631289}
   m_Layer: 0
   m_Name: Ennemy
   m_TagString: Ennemy
@@ -123,8 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f846ac3421cf464aacc7fae2c885828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: []
-  Ennemy: {fileID: 4754841578696095726}
+  players: []
+  Ennemy: {fileID: 0}
+  SpriteRenderer: {fileID: 4754841578696095720}
   moveSpeed: 1.8
   detectionRange: 15
   rb: {fileID: 4754841578696095721}
@@ -164,7 +167,7 @@ Animator:
   m_GameObject: {fileID: 4754841578696095726}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bf893a13b6050814492bb20751dba800, type: 2}
+  m_Controller: {fileID: 9100000, guid: d5f25e5fc2fbc384c939b4759e63f122, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -173,7 +176,46 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-4992974755616732140
+--- !u!114 &-7665111033691873279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4754841578696095726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b5a30a0a53b419586afa584b4ce71a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 2118305263357384587}
+  lvl: 1
+  name: 
+  armor: 0
+  Animator: {fileID: 3361441779423790520}
+  Ennemies_list:
+  - {fileID: 11400000, guid: 06fff2084e06309428e75f679b769687, type: 2}
+  - {fileID: 11400000, guid: de65e907926b52b469142f754e93b3fd, type: 2}
+  Ennemies: {fileID: 0}
+  gold_loot: 0
+  loot: []
+  c_loot: []
+  attack: 0
+--- !u!114 &2118305263357384587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4754841578696095726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc3b505067201bb49ad8e66be6b2eee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  health: 0
+--- !u!114 &-651926129830654618
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,31 +233,13 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 7445380630278031676}
-  - {fileID: -1334450847929982822}
-  - {fileID: -2881616484317612188}
+  - {fileID: -5022088795264167731}
+  - {fileID: -2298748135620631289}
+  - {fileID: -8735059863580918455}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &-1334450847929982822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4754841578696095726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowLayerWeightsInspector: 1
-  ShowParameterInspector: 1
-  m_SynchronizeParameters: []
-  m_SynchronizeLayers:
-  - SynchronizeType: 0
-    LayerIndex: 0
---- !u!114 &7445380630278031676
+--- !u!114 &-5022088795264167731
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -230,7 +254,7 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
---- !u!114 &-2881616484317612188
+--- !u!114 &-8735059863580918455
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,3 +270,24 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &-2298748135620631289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4754841578696095726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 0
+    Name: fighting
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0

@@ -5,6 +5,8 @@ namespace Entities.PlayerScripts
 {
     public class CameraControl : MonoBehaviourPun
     {
+        public bool disabled = false;
+        
         public Camera playerCamera;
         private bool _global,
             _previousState,
@@ -22,7 +24,15 @@ namespace Entities.PlayerScripts
             
             Vector3 pos = transform.position;
             pos.z = playerCamera.transform.position.z;
-            playerCamera.transform.position = pos;
+            if (!disabled)
+                playerCamera.transform.position = pos;
+            else
+            {
+                pos.x += 9.5f;
+                pos.y -= 2f;
+                playerCamera.transform.position = pos;
+                return;
+            }
             
             if (PhotonNetwork.IsConnected && !photonView.IsMine)
                 return;

@@ -31,7 +31,8 @@ namespace Item
                 Player player = playerObject.GetComponent<Player>();
                 if (PhotonNetwork.IsConnected && !player.IsMine()) continue;
                 
-                player.BuyItem(choosen);
+                if (!player.BuyItem(choosen))
+                    return;
 
                 Debug.Log($"Added {(choosen != null ? choosen.itemName : null)} to inventory");
 
