@@ -7,6 +7,8 @@ namespace Entities
 {
     public class EnemyMovement : MonoBehaviour
     {
+        private bool fight;
+        
         public GameObject[] players;
         public GameObject Ennemy;
         public SpriteRenderer SpriteRenderer;
@@ -79,8 +81,11 @@ namespace Entities
 
             foreach (GameObject player in players)
             {
-                if (!rb.IsTouching(player.GetComponent<Collider2D>())) continue;
+                if (!rb.IsTouching(player.GetComponent<Collider2D>()) || fight ||
+                    PhotonNetwork.IsConnected && !player.GetComponent<Player>().IsMine()) continue;
 
+                fight = true;
+                
                 SpriteRenderer.sortingLayerName = "Fight";
                 
                 Ennemy ennemy = rb.gameObject.GetComponent<Ennemy>();

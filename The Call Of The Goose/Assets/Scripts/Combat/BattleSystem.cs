@@ -304,7 +304,10 @@ namespace Combat
                 dialogText.text = "You flee!";
                 
                 yield return new WaitForSeconds(2f);
-                Destroy(ennemy.gameObject);
+                if (PhotonNetwork.IsConnected)
+                    PhotonNetwork.Destroy(ennemy.gameObject);
+                else
+                    Destroy(ennemy.gameObject);
                 player.EndFight();
             }
         }

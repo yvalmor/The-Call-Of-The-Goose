@@ -24,12 +24,18 @@ namespace Multiplayer
             RelicsInventory,
             InventoryPanel,
             Inventory,
-            shopScreen;
+            shopScreen,
+            shopKeeper;
         public BattleSystem battleSystem;
 
         private void Awake()
         {
             player = PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
+
+            Vector3 scale = player.transform.localScale;
+            scale *= 1.5f;
+            player.transform.localScale = scale;
+            
             player.GetComponent<CameraControl>().playerCamera = camera;
             _levelGen = Instantiate(levelPrefab).GetComponent<LevelGeneration>();
 
@@ -66,6 +72,9 @@ namespace Multiplayer
                 
                 photonView.RPC("SpawnPlayer", RpcTarget.Others, ms.ToArray());
             }
+            
+            shopKeeper = GameObject.FindWithTag("shopkeeper");
+            player.GetComponent<CombatEncounter>().shopKeeper = shopKeeper;
         }
 
         [PunRPC]

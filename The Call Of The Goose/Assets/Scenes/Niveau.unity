@@ -448,6 +448,131 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4754841578696095726, guid: c38c23b5f83278b44971065e7a181021,
         type: 3}
+    - target: {fileID: 3234615520086069832, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: Ennemy
+      value: 
+      objectReference: {fileID: 4754841578696095726, guid: c38c23b5f83278b44971065e7a181021,
+        type: 3}
+    - target: {fileID: 3234615520086070142, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: Ennemy
+      value: 
+      objectReference: {fileID: 4754841578696095726, guid: c38c23b5f83278b44971065e7a181021,
+        type: 3}
+    - target: {fileID: 3234615520086070715, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: Ennemy
+      value: 
+      objectReference: {fileID: 4754841578696095726, guid: c38c23b5f83278b44971065e7a181021,
+        type: 3}
+    - target: {fileID: 3234615520086071716, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: Ennemy
+      value: 
+      objectReference: {fileID: 4754841578696095726, guid: c38c23b5f83278b44971065e7a181021,
+        type: 3}
+    - target: {fileID: 3234615520086090246, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: Ennemy
+      value: 
+      objectReference: {fileID: 4754841578696095726, guid: c38c23b5f83278b44971065e7a181021,
+        type: 3}
+    - target: {fileID: 3234615520086090368, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: Ennemy
+      value: 
+      objectReference: {fileID: 4754841578696095726, guid: c38c23b5f83278b44971065e7a181021,
+        type: 3}
+    - target: {fileID: 3234615520086090647, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: Ennemy
+      value: 
+      objectReference: {fileID: 4754841578696095726, guid: c38c23b5f83278b44971065e7a181021,
+        type: 3}
+    - target: {fileID: 3234615520086090878, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: Ennemy
+      value: 
+      objectReference: {fileID: 4754841578696095726, guid: c38c23b5f83278b44971065e7a181021,
+        type: 3}
+    - target: {fileID: 3234615520086091378, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: Ennemy
+      value: 
+      objectReference: {fileID: 4754841578696095726, guid: c38c23b5f83278b44971065e7a181021,
+        type: 3}
+    - target: {fileID: 3234615520086092359, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: Ennemy
+      value: 
+      objectReference: {fileID: 4754841578696095726, guid: c38c23b5f83278b44971065e7a181021,
+        type: 3}
+    - target: {fileID: 3234615520086092410, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: Ennemy
+      value: 
+      objectReference: {fileID: 4754841578696095726, guid: c38c23b5f83278b44971065e7a181021,
+        type: 3}
+    - target: {fileID: 3234615520086092508, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: Ennemy
+      value: 
+      objectReference: {fileID: 4754841578696095726, guid: c38c23b5f83278b44971065e7a181021,
+        type: 3}
+    - target: {fileID: 3234615520086093049, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: Ennemy
+      value: 
+      objectReference: {fileID: 4754841578696095726, guid: c38c23b5f83278b44971065e7a181021,
+        type: 3}
+    - target: {fileID: 3234615520086093248, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: Ennemy
+      value: 
+      objectReference: {fileID: 4754841578696095726, guid: c38c23b5f83278b44971065e7a181021,
+        type: 3}
+    - target: {fileID: 3234615520086096075, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: Ennemy
+      value: 
+      objectReference: {fileID: 4754841578696095726, guid: c38c23b5f83278b44971065e7a181021,
+        type: 3}
+    - target: {fileID: 3234615520086096391, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: Ennemy
+      value: 
+      objectReference: {fileID: 4754841578696095726, guid: c38c23b5f83278b44971065e7a181021,
+        type: 3}
+    - target: {fileID: 3234615520086096557, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3234615520086096654, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: Ennemy
+      value: 
+      objectReference: {fileID: 4754841578696095726, guid: c38c23b5f83278b44971065e7a181021,
+        type: 3}
+    - target: {fileID: 3234615520086096799, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: Ennemy
+      value: 
+      objectReference: {fileID: 4754841578696095726, guid: c38c23b5f83278b44971065e7a181021,
+        type: 3}
+    - target: {fileID: 3234615520086097177, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: Ennemy
+      value: 
+      objectReference: {fileID: 4754841578696095726, guid: c38c23b5f83278b44971065e7a181021,
+        type: 3}
+    - target: {fileID: 3234615520086097212, guid: a1903329470b06047b355a2c5f3b2b29,
+        type: 3}
+      propertyPath: Ennemy
+      value: 
+      objectReference: {fileID: 4754841578696095726, guid: c38c23b5f83278b44971065e7a181021,
+        type: 3}
     - target: {fileID: 3234615521283616272, guid: a1903329470b06047b355a2c5f3b2b29,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -539,7 +664,7 @@ PrefabInstance:
         type: 3}
       propertyPath: level
       value: 
-      objectReference: {fileID: 716399339}
+      objectReference: {fileID: 0}
     - target: {fileID: 3751420785997418807, guid: a1903329470b06047b355a2c5f3b2b29,
         type: 3}
       propertyPath: combat
@@ -1130,12 +1255,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &716399339 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7485209010269584599, guid: a1903329470b06047b355a2c5f3b2b29,
-    type: 3}
-  m_PrefabInstance: {fileID: 478781859}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &825917478 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2446210781406248452, guid: a1903329470b06047b355a2c5f3b2b29,

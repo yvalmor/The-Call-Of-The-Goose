@@ -145,21 +145,6 @@ namespace Level
 			}
 		}
 
-		private void GenerateBoss()
-		{
-			Vector3 pos = transform.position;
-			pos.x += 15;
-			pos.y += 17.5f;
-
-			Boss = PhotonNetwork.IsConnected ?
-				PhotonNetwork.Instantiate(Boss.name, pos, Quaternion.identity) : Instantiate(Boss, pos, Quaternion.identity);
-
-			foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
-				player.GetComponent<Player>().boss = Boss;
-			
-			Boss.SetActive(false);
-		}
-
 		#region Corridors
 
 		public void GenerateCorridors()

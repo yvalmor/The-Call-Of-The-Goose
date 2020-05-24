@@ -19,6 +19,9 @@ namespace Entities.PlayerScripts
 
         public void Disable()
         {
+            if (PhotonNetwork.IsConnected && !photonView.IsMine)
+                return;
+
             disabled = true;
             
             Vector3 pos = transform.position;

@@ -24,9 +24,12 @@ namespace Entities
         {
             if (PhotonNetwork.IsConnected && !player.GetComponent<Player>().IsMine())
                 return;
-            
-            shopKeeper = GameObject.FindWithTag("shopkeeper");
-            inventoryScreen.SetActive(false);
+            if (!PhotonNetwork.IsConnected)
+            {
+                shopKeeper = GameObject.FindWithTag("shopkeeper");
+                shopScreen.SetActive(false);
+                inventoryScreen.SetActive(false);
+            }
             _inventoryActivated = false;
             EndFight();
         }
