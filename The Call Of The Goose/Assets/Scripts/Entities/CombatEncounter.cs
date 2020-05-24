@@ -20,31 +20,15 @@ namespace Entities
         
         private static readonly int fighting = Animator.StringToHash("fighting");
 
-        private void Awake()
-        {
-            foreach (GameObject playerObject in GameObject.FindGameObjectsWithTag("Player"))
-            {
-                if (playerObject.GetComponent<Player>().IsMine())
-                    player = playerObject;
-            }
-
-            if (PhotonNetwork.IsConnected && photonView.IsMine)
-            {
-                combat = GameObject.Find("Combat");
-                battleSystem = GameObject.Find("Battle system").GetComponent<BattleSystem>();
-                inventoryScreen = GameObject.Find("Inventory Screen");
-                shopScreen = GameObject.Find("ShopMenu");
-                shopScreen.SetActive(false);
-            }
-            
-            EndFight();
-        }
-
         private void Start()
         {
+            if (PhotonNetwork.IsConnected && !player.GetComponent<Player>().IsMine())
+                return;
+            
             shopKeeper = GameObject.FindWithTag("shopkeeper");
             inventoryScreen.SetActive(false);
             _inventoryActivated = false;
+            EndFight();
         }
 
         private void UpdateInputs()

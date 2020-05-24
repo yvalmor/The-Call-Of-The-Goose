@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Combat;
+using Entities;
 using Entities.PlayerScripts;
+using Item;
 using Level;
 using Photon.Pun;
 using UnityEngine;
@@ -17,12 +20,35 @@ namespace Multiplayer
         public new Camera camera;
         private LevelGeneration _levelGen;
 
-        private void Start()
+        public GameObject Combat,
+            RelicsInventory,
+            InventoryPanel,
+            Inventory,
+            shopScreen;
+        public BattleSystem battleSystem;
+
+        private void Awake()
         {
             player = PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
             player.GetComponent<CameraControl>().playerCamera = camera;
             _levelGen = Instantiate(levelPrefab).GetComponent<LevelGeneration>();
+
+            player.GetComponent<CombatEncounter>().combat = Combat;
+            player.GetComponent<Inventory>().inventoryPanel = InventoryPanel;
+            player.GetComponent<Inventory>().player = player;
+            player.GetComponent<RelicInventory>().inventoryPanel = RelicsInventory;
+            player.GetComponent<RelicInventory>().player = player;
+            player.GetComponent<CombatEncounter>().player = player;
+            player.GetComponent<CombatEncounter>().combat = Combat;
+            player.GetComponent<CombatEncounter>().inventoryScreen = Inventory;
+            player.GetComponent<CombatEncounter>().battleSystem = battleSystem;
+            player.GetComponent<CombatEncounter>().shopScreen = shopScreen;
+            player.GetComponent<CameraControl>().playerCamera = camera;
             
+            shopScreen.SetActive(false);
+            Combat.SetActive(false);
+            Inventory.SetActive(false);
+
             if (PhotonNetwork.IsMasterClient)
             {
                 _levelGen.GenLevel();

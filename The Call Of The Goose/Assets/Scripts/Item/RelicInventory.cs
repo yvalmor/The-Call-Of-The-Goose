@@ -15,19 +15,16 @@ namespace Item
 
         private GameObject[] childs;
 
-        private void Awake()
+        private void Start()
         {
-            if (PhotonNetwork.IsConnected)
-                inventoryPanel = GameObject.FindWithTag("Relic panel");
-
+            if (PhotonNetwork.IsConnected && !player.GetComponent<Player>().IsMine())
+                return;
+            
             childs = new GameObject[inventoryPanel.transform.childCount];
             
             for (int i = 0; i < inventoryPanel.transform.childCount; i++)
                 childs[i] = inventoryPanel.transform.GetChild(i).gameObject;
-        }
-
-        private void Start()
-        {
+            
             instance = this;
             updatePanelSlots();
         }

@@ -7,11 +7,6 @@ using UnityEngine;
 
 public class ShopMenu : MonoBehaviour
 {
-    private void Start()
-    {
-        gameObject.SetActive(false);
-    }
-
     public void OnClick()
     {
         foreach (GameObject playerObject in GameObject.FindGameObjectsWithTag("playerDeactivated"))

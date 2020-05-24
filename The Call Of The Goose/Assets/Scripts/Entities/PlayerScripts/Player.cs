@@ -22,19 +22,8 @@ namespace Entities.PlayerScripts
         public int attack;
         private int[] expTreshold = {100, 164, 268, 441, 723, 1186, 1945, 3190, 5233}; // exp nécessaire pour lvl up
 
-        public GameObject Combat, boss;
+        public GameObject boss;
         
-        private void Awake()
-        {
-            if (!PhotonNetwork.IsConnected) return;
-
-            GameObject playerObject = gameObject;
-            Inventory.player = playerObject;
-            RelicInventory.player = playerObject;
-            Combat = GameObject.Find("Combat");
-            Combat.SetActive(false);
-        }
-
         #region Getters Setters
 
         public int Hp{
