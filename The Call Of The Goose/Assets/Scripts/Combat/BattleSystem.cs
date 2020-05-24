@@ -305,6 +305,12 @@ namespace Combat
                 Destroy(ennemy.gameObject);
                 player.EndFight();
             }
+
+            player.GetComponent<CameraControl>().disabled = false;
+            Vector3 scale = player.transform.localScale;
+            scale.x /= 1.5f;
+            scale.y /= 1.5f;
+            player.transform.localScale = scale;
         }
 
         #endregion

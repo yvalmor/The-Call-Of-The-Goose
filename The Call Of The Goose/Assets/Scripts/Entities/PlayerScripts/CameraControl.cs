@@ -17,22 +17,32 @@ namespace Entities.PlayerScripts
             _global = false;
         }
 
-        // Update is called once per frame
-        void Update()
+        public void Disable()
         {
-            if (PhotonNetwork.IsConnected && !photonView.IsMine) return;
+            disabled = true;
             
             Vector3 pos = transform.position;
             pos.z = playerCamera.transform.position.z;
-            if (!disabled)
-                playerCamera.transform.position = pos;
-            else
-            {
-                pos.x += 9.5f;
-                pos.y -= 2f;
-                playerCamera.transform.position = pos;
-                return;
-            }
+            pos.x += 11f;
+            pos.y += 1.5f;
+            
+            playerCamera.transform.position = pos;
+            
+            Vector3 scale = transform.localScale;
+            scale.x *= 1.5f;
+            scale.y *= 1.5f;
+            transform.localScale = scale;
+        }
+        
+        // Update is called once per frame
+        void Update()
+        {
+            if (disabled || PhotonNetwork.IsConnected && !photonView.IsMine) return;
+
+            Vector3 pos = transform.position;
+            pos.z = playerCamera.transform.position.z;
+            playerCamera.transform.position = pos;
+            
             
             if (PhotonNetwork.IsConnected && !photonView.IsMine)
                 return;

@@ -86,6 +86,7 @@ namespace Entities
                 Ennemy ennemy = rb.gameObject.GetComponent<Ennemy>();
                 ennemy.Animator.SetBool(fighting, true);
                 player.GetComponent<CombatEncounter>().BeginFight(ennemy);
+                player.GetComponent<CameraControl>().Disable();
                 return;
             }
         }
