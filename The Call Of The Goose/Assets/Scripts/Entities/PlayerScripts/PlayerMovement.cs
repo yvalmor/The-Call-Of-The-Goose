@@ -37,8 +37,6 @@ namespace Entities.PlayerScripts
             _movement.x = Input.GetAxisRaw("Horizontal") * moveSpeed;
             _movement.y = Input.GetAxisRaw("Vertical") * moveSpeed;
             
-            Debug.Log(_movement);
-
             if (Math.Abs(_movement.x) > 0f || Math.Abs(_movement.y) > 0f)
                 Animator.SetBool(Running, true);
             else Animator.SetBool(Running, false);

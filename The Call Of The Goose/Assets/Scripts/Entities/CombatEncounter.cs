@@ -100,6 +100,12 @@ namespace Entities
 
         public void BeginFight(Ennemy ennemy)
         {
+            player.GetComponent<CameraControl>().Disable();
+            Vector3 scale = player.transform.localScale;
+            scale.x *= 1.5f;
+            scale.y *= 1.5f;
+            player.transform.localScale = scale;
+
             Animator.SetBool(fighting, true);
             player.GetComponent<PlayerMovement>().Deactivate();
             player.GetComponent<SpriteRenderer>().sortingLayerName = "Fight";
@@ -109,6 +115,12 @@ namespace Entities
 
         public void EndFight()
         {
+            player.GetComponent<CameraControl>().disabled = false;
+            Vector3 scale = player.transform.localScale;
+            scale.x /= 1.5f;
+            scale.y /= 1.5f;
+            player.transform.localScale = scale;
+            
             Animator.SetBool(fighting, false);
             player.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
             player.GetComponent<PlayerMovement>().Activate();

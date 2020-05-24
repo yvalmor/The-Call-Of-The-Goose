@@ -27,11 +27,6 @@ namespace Entities.PlayerScripts
             pos.y += 1.5f;
             
             playerCamera.transform.position = pos;
-            
-            Vector3 scale = transform.localScale;
-            scale.x *= 1.5f;
-            scale.y *= 1.5f;
-            transform.localScale = scale;
         }
         
         // Update is called once per frame
