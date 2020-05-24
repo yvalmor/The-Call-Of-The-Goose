@@ -12,7 +12,7 @@ namespace Entities
     {
         public Animator Animator;
         
-        public bool _combatInput, _quitInput, _nextLevelInput, _shopInput,
+        public bool _quitInput, _nextLevelInput, _shopInput,
             _inventoryInput, _inventoryActivated, _shopActivated;
         public GameObject player, inventoryScreen, combat, shopKeeper, shopScreen;
         public PlayerMovement PlayerMovement;
@@ -27,7 +27,7 @@ namespace Entities
                 if (playerObject.GetComponent<Player>().IsMine())
                     player = playerObject;
             }
-            
+
             if (PhotonNetwork.IsConnected && photonView.IsMine)
             {
                 combat = GameObject.Find("Combat");
@@ -36,6 +36,8 @@ namespace Entities
                 shopScreen = GameObject.Find("ShopMenu");
                 shopScreen.SetActive(false);
             }
+            
+            EndFight();
         }
 
         private void Start()
@@ -47,7 +49,6 @@ namespace Entities
 
         private void UpdateInputs()
         {
-            _combatInput = Input.GetKeyDown(KeyCode.K);
             _quitInput = Input.GetKeyDown(KeyCode.Escape);
             _nextLevelInput = Input.GetKeyDown(KeyCode.N);
             _inventoryInput = Input.GetKeyDown(KeyCode.E);
@@ -56,13 +57,7 @@ namespace Entities
 
         private void ExecuteEvents()
         {
-            if (_combatInput)
-            {
-                PlayerMovement.Deactivate();
-                combat.SetActive(true);
-            }
-            
-            else if (_shopInput && !_shopActivated && 
+            if (_shopInput && !_shopActivated && 
                      Vector3.Distance(player.transform.position, shopKeeper.transform.position) < 5)
             {
                 _shopActivated = true;
@@ -105,6 +100,12 @@ namespace Entities
 
         public void BeginFight(Ennemy ennemy)
         {
+            player.GetComponent<CameraControl>().Disable();
+            Vector3 scale = player.transform.localScale;
+            scale.x *= 1.5f;
+            scale.y *= 1.5f;
+            player.transform.localScale = scale;
+
             Animator.SetBool(fighting, true);
             player.GetComponent<PlayerMovement>().Deactivate();
             player.GetComponent<SpriteRenderer>().sortingLayerName = "Fight";
@@ -114,6 +115,12 @@ namespace Entities
 
         public void EndFight()
         {
+            player.GetComponent<CameraControl>().disabled = false;
+            Vector3 scale = player.transform.localScale;
+            scale.x /= 1.5f;
+            scale.y /= 1.5f;
+            player.transform.localScale = scale;
+            
             Animator.SetBool(fighting, false);
             player.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
             player.GetComponent<PlayerMovement>().Activate();

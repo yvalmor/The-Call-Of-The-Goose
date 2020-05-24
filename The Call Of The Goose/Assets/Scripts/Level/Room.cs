@@ -14,7 +14,7 @@ namespace Level
 		
 		public GameObject[] rooms;
 		public GameObject HWall, VWall, floors, walls;
-		public GameObject Ennemy, Boss, ShopKeeper;
+		public GameObject Ennemy, Boss;
 
 		public void Deserialize(byte[] bytes)
 		{

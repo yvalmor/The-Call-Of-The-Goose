@@ -6,7 +6,7 @@ namespace Entities.PlayerScripts
 {
     public class PlayerMovement : MonoBehaviourPun
     {
-        public float moveSpeed = 5f;
+        public float moveSpeed = 30f;
 
         public Rigidbody2D rb;
         public Animator Animator;
@@ -18,11 +18,16 @@ namespace Entities.PlayerScripts
         private static readonly int Left = Animator.StringToHash("Left");
         private static readonly int Right = Animator.StringToHash("Right");
 
+        private void Start()
+        {
+            Activated = true;
+        }
+
         void Update()
         {
             if (PhotonNetwork.IsConnected && !photonView.IsMine)
                 return;
-            
+
             if (!Activated)
             {
                 _movement = Vector2.zero;
@@ -55,7 +60,10 @@ namespace Entities.PlayerScripts
 
         private void FixedUpdate()
         {
-            rb.MovePosition(rb.position + _movement * Time.fixedDeltaTime);
+            Vector3 newPos = transform.position;
+            newPos.x += _movement.x * Time.fixedDeltaTime;
+            newPos.y += _movement.y * Time.fixedDeltaTime;
+            transform.position = newPos;
         }
 
         public void Deactivate()

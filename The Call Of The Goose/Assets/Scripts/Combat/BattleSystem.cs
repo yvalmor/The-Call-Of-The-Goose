@@ -26,7 +26,7 @@ namespace Combat
     {
         #region Variables
 
-        public Transform playerBattleStation, ennemyBattleStation;
+        public Transform ennemyBattleStation;
         private Transform oldPosition;
 
         public Player player;
@@ -71,13 +71,15 @@ namespace Combat
             Vector3 newPosition = ennemyBattleStation.position;
 
             newPosition.x += 0.1f;
-            newPosition.y -= 1f;
+            newPosition.y += 1f;
             
             ennemy.transform.position = newPosition;
             
             dialogText.text = $"A wild {ennemy.name} approaches ...";
             playerBattleHud.InitHUD(player);
             ennemyBattleHud.InitHUD(ennemy);
+            playerBattleHud.SetHUD(player);
+            ennemyBattleHud.SetHUD(ennemy);
 
             yield return new WaitForSeconds(2f);
 
@@ -237,7 +239,7 @@ namespace Combat
         {
             if (state != BattleState.PLAYERTURN)
                 return;
-            StartCoroutine(Random.Range(0f, 1f) < 0.8f ? EndBattle() : CouldntFlee());
+            StartCoroutine(Random.Range(0f, 1f) < 0.8f && !ennemy.Ennemies.Boss ? EndBattle() : CouldntFlee());
         }
 
         IEnumerator CouldntFlee()
@@ -297,7 +299,7 @@ namespace Combat
 
                 player.GameOver();
             }
-            else if (!ennemy.Ennemies.Boss)
+            else
             {
                 dialogText.text = "You flee!";
                 
