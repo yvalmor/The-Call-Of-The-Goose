@@ -36,6 +36,8 @@ namespace Entities.PlayerScripts
             
             _movement.x = Input.GetAxisRaw("Horizontal") * moveSpeed;
             _movement.y = Input.GetAxisRaw("Vertical") * moveSpeed;
+            
+            Debug.Log(_movement);
 
             if (Math.Abs(_movement.x) > 0f || Math.Abs(_movement.y) > 0f)
                 Animator.SetBool(Running, true);
@@ -60,7 +62,10 @@ namespace Entities.PlayerScripts
 
         private void FixedUpdate()
         {
-            rb.MovePosition(rb.position + _movement * Time.fixedDeltaTime);
+            Vector3 newPos = transform.position;
+            newPos.x += _movement.x * Time.fixedDeltaTime;
+            newPos.y += _movement.y * Time.fixedDeltaTime;
+            transform.position = newPos;
         }
 
         public void Deactivate()
